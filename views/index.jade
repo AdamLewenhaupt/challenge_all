@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    #content
+        #header
+            #top-menu
+            button#submit-query Search
+            form#query-form(method='get', action='/query')
+                input(name='query', type='text')
+        #main-frame
+            #side-menu
+            #main-display
+            #social
+            #sub-display
+        #footer

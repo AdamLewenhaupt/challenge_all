@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#content{
+    width: 100%;
+}
+
+#header{
+    background-color: green;
+    width: 100%;
+    position: absolute;
+}
+
+#top-menu{
+    background-color: yellow;
+    width: 300px;
+    height: 30px;
+    float: right;
+    margin: 2px;
+}
+
+#main-frame{
+    background-color: purple;
+}
+
+#side-menu{
+    background-color: orange;
+}
+
+#main-display{ background-color: blue; }
+
+#social{ background-color: black; }
+
+#sub-display{ background-color: red; }
+
+#footer{ background-color: gray; }
+
+#query-form{   
+    float: right;
+    margin: 2px;
+}
+
+#submit-query{    
+    border: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    float: right;
+}
