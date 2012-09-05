@@ -16,44 +16,39 @@ a {
 }
 
 #header{
+    margin: 10px;
     background-color: green;
-    width: 100%;
-    position: absolute;
-}
-
-#top-menu{
-    background-color: yellow;
-    width: 300px;
+    width: fill;
     height: 30px;
-    float: right;
-    margin: 2px;
 }
 
-#main-frame{
+#side-bar{
+    margin: 10px;
+    background-color: yellow;
+    position: absolute;
+    width: 20%;
+    height: 70%;
+    float: left;
+}
+
+#side-profile-frame{
+    margin: 10px;
+    width: fill;
+    height: 20%;
+    background-color: red;
+}
+
+#side-nav{
+    margin: 10px;
+    width: fill;
+    height: 75%;
     background-color: purple;
 }
 
-#side-menu{
-    background-color: orange;
-}
-
-#main-display{ background-color: blue; }
-
-#social{ background-color: black; }
-
-#sub-display{ background-color: red; }
-
-#footer{ background-color: gray; }
-
-#query-form{   
-    float: right;
-    margin: 2px;
-}
-
-#submit-query{    
-    border: 0;
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-right: 4px;
-    float: right;
+#main-frame{
+    position: absolute;
+    float: left;
+    width: 70%;
+    height: 70%;
+    background-color: black;
 }
