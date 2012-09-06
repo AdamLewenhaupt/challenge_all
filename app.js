@@ -1,4 +1,3 @@
-
 /*
 Author: Adam Lewenhaupt
 Keywords: Main, Server

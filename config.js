@@ -2,7 +2,7 @@
 Author: Adam Lewenhauppt
 Keywords: Config, Helper.
 Description:
-This is where you config the shit.
+This is where the server configurations are set.
 */
 
 var express = require('express'),
