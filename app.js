@@ -1,7 +1,9 @@
-
 /*
- * Module dependencies.
- */
+Author: Adam Lewenhaupt
+Keywords: Main, Server
+Description:
+This file lanuches the server.
+*/
 
 var express = require('express'),
     routes = require('./routes'),
