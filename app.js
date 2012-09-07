@@ -19,11 +19,17 @@ config.app = app;
 
 app.configure(config.dev);
 
+//Gets
 app.get('/', routes.index);
 app.get('/cs_testing', routes.cs_testing);
 app.get('/ss_testing', routes.ss_testing);
 app.get('/ss_testing/profiles', routes.ss_testing_profiles);
+
+//Posts
 app.post('/ss_testing/profiles', routes.ss_testing_create_profile);
+
+//Deletes
+app.del('/ss_testing/profiles/:tag', routes.ss_testing_delete_profile);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server up and running on port: " + app.get('port'));
