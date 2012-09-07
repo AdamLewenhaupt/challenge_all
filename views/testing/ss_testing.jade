@@ -1,0 +1,34 @@
+doctype 5
+html
+  head
+    script(type="text/javascript", src="/javascripts/jquery.js")
+    script(type="text/javascript", src="/javascripts/underscore.js")
+    script(type="text/javascript", src="/javascripts/backbone.js")
+    script(type="text/javascript", src="/testing/ss_testing.js")
+    title= title
+  body
+    #content
+        #add-div(style='border: 4px solid black;')
+            form#add-form(method='post')
+                | First name: 
+                input(type='text', name='fname', value='')
+                br
+                | Last name: 
+                input(type='text', name='lname', value='')
+                br
+                | Tag: 
+                input(type='text', name='tag', value='')
+                br
+                | Age: 
+                input(type='text', name='age', value='')
+                br
+            button#add-user Add user
+
+        #rem-div(style='border: 4px solid black;')
+            form#del-form(method='delete')
+                | Tag: 
+                input(type='text', name='tag', value='')
+            button#del-user Delete user
+        br
+        | Output:
+        #output(style='border. 40px solid black;')
