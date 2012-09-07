@@ -8,8 +8,7 @@ This file lanuches the server.
 var express = require('express'),
     routes = require('./routes'),
     config = require('./config'),
-    http = require('http'),
-    path = require('path');
+    http = require('http');
 
 var app = express();
 
