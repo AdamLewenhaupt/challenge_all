@@ -15,3 +15,5 @@ exports.index = function(req, res){
 
 exports.cs_testing = cs_testing.cs_testing;
 exports.ss_testing = ss_testing.ss_testing;
+exports.ss_testing_profiles = ss_testing.ss_testing_profiles;
+exports.ss_testing_create_profile = ss_testing.create_profile;
