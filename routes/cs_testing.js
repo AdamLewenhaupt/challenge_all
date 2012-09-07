@@ -6,5 +6,5 @@ This route provides a test environment for client-side scripting.
 */
 
 exports.cs_testing = function(req, res){
-  res.render('cs_testing', { title: 'CS Testing' });
+  res.render('testing/cs_testing', { title: 'CS Testing' });
 };

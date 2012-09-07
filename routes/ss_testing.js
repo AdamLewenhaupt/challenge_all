@@ -2,7 +2,7 @@ var models = require ('../models'),
 	User = models.schemas.User;
 
 exports.ss_testing = function(req, res){
-	res.render('ss_testing', { title: 'SS Testing' });
+	res.render('testing/ss_testing', { title: 'SS Testing' });
 }
 
 exports.ss_testing_profiles = function(req, res){
