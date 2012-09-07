@@ -5,10 +5,7 @@ Description:
 This file is only used for testing database features.
 */
 
-var mongoose = require('mongoose');
+var db = require('../../models').db;
 
-mongoose.connect('mongodb://admin:access@alex.mongohq.com:10032/challengeall');
-
-mongoose.connection.close(function(){
-    console.log("successfuly accessed db and is now closeing the connection.");
-});
+db.connect();
+db.disconnect();

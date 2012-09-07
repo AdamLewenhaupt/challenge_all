@@ -8,5 +8,11 @@ This file serves as a wrapper for the database and provides access and helper fu
 var mongoose = require('mongoose');
 
 exports.connect = function(){
+    console.log("Connecting to database.");
     return mongoose.connect('mongodb://admin:access@alex.mongohq.com:10032/challengeall');
+}
+
+exports.disconnect = function(){
+    mongoose.disconnect();
+    console.log("Disconnecting from database");
 }
