@@ -18,6 +18,7 @@ app.configure(config.dev);
 
 app.get('/', routes.index);
 app.get('/cs_testing', routes.cs_testing);
+app.get('/ss_testing', routes.ss_testing);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server up and running on port: " + app.get('port'));
