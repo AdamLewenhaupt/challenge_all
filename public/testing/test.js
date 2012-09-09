@@ -2,11 +2,13 @@ $(document).ready(function(){
 
 function makeButton()
 {
-    $("#content").html("<button id='maker'>Make another button</button>");
+    $new = $("<button/>");
+    $new.html("A button");
+    $new.click(makeButton);
+    $("#content").append($new);
 }
 
-$("#maker").click(function(){
+$(".maker").click(function(){
     makeButton();
 });
-
 });
