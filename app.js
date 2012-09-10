@@ -20,13 +20,17 @@ config.app = app;
 var connections = [];
 
 app.configure(config.dev);
+<<<<<<< HEAD
 //var publisherClient = redis.createClient(process.env.PORT, process.env.IP);
+=======
+>>>>>>> 7fd79a49d01ed5d97af522c0e086550891d62c7c
 
 //Gets
 app.get('/', routes.index);
 app.get('/cs_testing', routes.cs_testing);
 app.get('/ss_testing', routes.ss_testing);
 app.get('/ss_testing/profiles', routes.ss_testing_profiles);
+<<<<<<< HEAD
 
 app.get('/update-stream', function(req, res){
     console.log("got new sse connection.");
@@ -54,6 +58,8 @@ app.get('/scream', function(req, res){
         response.write('data: Everybody hears the scream!\n\n');
     }
 });
+=======
+>>>>>>> 7fd79a49d01ed5d97af522c0e086550891d62c7c
 
 //Posts
 app.post('/ss_testing/profiles', routes.ss_testing_create_profile);
