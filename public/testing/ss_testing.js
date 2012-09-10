@@ -27,4 +27,9 @@ $(document).ready(function(){
 			this.html(msg);
 		});
 	})
+    
+    var source = new EventSource('/update-stream');
+    source.addEventListener('scream', function(e){
+        $("#sse").append($("<li></li>").html(e.data));
+    }, false);
 });
