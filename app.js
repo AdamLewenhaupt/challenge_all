@@ -17,6 +17,8 @@ var app = express();
 
 config.app = app;
 
+var connections = [];
+
 app.configure(config.dev);
 //var publisherClient = redis.createClient(process.env.PORT, process.env.IP);
 
@@ -25,6 +27,33 @@ app.get('/', routes.index);
 app.get('/cs_testing', routes.cs_testing);
 app.get('/ss_testing', routes.ss_testing);
 app.get('/ss_testing/profiles', routes.ss_testing_profiles);
+
+app.get('/update-stream', function(req, res){
+    console.log("got new sse connection.");
+    res.writeHead(200, {
+        "content-type": "text/html",
+        "cache-control": "no-cache",
+        "connection": "keep-alive"
+    });
+    
+    res.write('id\n\n');
+    
+    connections.push(res);
+    console.log("Current connections: " + connections.length);
+    
+    req.on('close', function(){
+        console.log("closeing sse connection");
+        res.end();
+        connections = connections.remove(res);
+    });
+});
+
+app.get('/scream', function(req, res){
+    for(var response in connections){
+        response.write('event: scream\n');
+        response.write('data: Everybody hears the scream!\n\n');
+    }
+});
 
 //Posts
 app.post('/ss_testing/profiles', routes.ss_testing_create_profile);

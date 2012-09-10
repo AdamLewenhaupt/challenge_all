@@ -29,7 +29,7 @@ $(document).ready(function(){
 	})
     
     var source = new EventSource('/update-stream');
-    source.addEventListener('message', function(e){
+    source.addEventListener('scream', function(e){
         $("#sse").append($("<li></li>").html(e.data));
     }, false);
 });
