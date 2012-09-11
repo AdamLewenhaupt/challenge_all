@@ -30,7 +30,7 @@ app.get('/ss_testing/profiles', routes.ss_testing_profiles);
 app.get('/update-stream', function(req, res){
     console.log("got new sse connection.");
     res.writeHead(200, {
-        "content-type": "text/html",
+        "content-type": "text/event-stream",
         "cache-control": "no-cache",
         "connection": "keep-alive"
     });
@@ -43,16 +43,32 @@ app.get('/update-stream', function(req, res){
     req.on('close', function(){
         console.log("closeing sse connection");
         res.end();
-        connections = connections.remove(res);
+        removeConnection(res);
     });
 });
 
 app.get('/scream', function(req, res){
-    for(var response in connections){
-        response.write('event: scream\n');
-        response.write('data: Everybody hears the scream!\n\n');
-    }
+    broadcast('scream', 'Wooha');
+    res.redirect('/');
 });
+
+function removeConnection(res){
+    var index = connections.indexOf(res);
+    connections.splice(index, 1);
+    console.log("Removed connection");
+    console.log("Connections:" + connections.length);
+}
+
+function sseMessage(res, event, data){
+    res.write("event: " + event + "\n");
+    res.write("data: " + data + "\n\n");
+}
+
+function broadcast(event, data){
+    for(i = 0; i < connections.length; i++){
+        sseMessage(connections[i], event, data);
+    }
+}
 
 //Posts
 app.post('/ss_testing/profiles', routes.ss_testing_create_profile);
