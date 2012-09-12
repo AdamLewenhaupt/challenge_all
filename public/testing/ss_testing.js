@@ -27,9 +27,4 @@ $(document).ready(function(){
 			this.html(msg);
 		});
 	})
-    
-    var source = new EventSource('/event-stream/adam');
-    source.addEventListener('hello', function(e){
-        $("#sse").append(e.data);
-    }, false);
 });

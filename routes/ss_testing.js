@@ -54,3 +54,7 @@ exports.delete_profile = function(req, res){
 		}
 	});
 }
+
+exports.sse_testing = function(req, res){
+	res.render('testing/ss_sse', {title: "SSE Testing"});
+}

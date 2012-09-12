@@ -56,12 +56,20 @@ function broadcast(event, data, id){
             sseMessage(connections[i], event, data);
         }  
     }else{
-        sseMessage(connections[connectionIds[id]], event, data);
+        if(typeof connectionIds[id] != "undefined")
+            sseMessage(connections[connectionIds[id]], event, data);
+        else
+            return false;
     }
+
+    return true;
 }
 
 exports.helloWorld = function(req, res){
-    broadcast("hello", "<button>hello world from: " + req.params.id + "</button>", req.params.to);
-    res.write("Sent a message to: " +  req.params.to);
+    if(broadcast("hello", "<script type='text/javascript'>alert('hello from "+req.params.id+"')</script>", req.params.to)){
+        res.write("Sent a message to: " +  req.params.to);
+    }else{
+        res.send(400);
+    }
     res.end();
 }
