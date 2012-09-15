@@ -10,7 +10,8 @@ var express = require('express'),
     config = require('./config'),
     sse = require('./sse'),
     http = require('http'),
-    models = require('./models');
+    models = require('./models'),
+    Newsfeed = require('./features/newsfeed/Newsfeed');
 
 models.db.connect();
 

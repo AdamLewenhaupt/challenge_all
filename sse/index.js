@@ -6,8 +6,11 @@ This is the index file of the sse module which provides
 a api to the websites sse utilities.
 */
 
-var connections = [];
-var connectionIds = {};
+var EventEmitter = require('events').EventEmitter,
+    connections = [],
+    connectionIds = {};
+
+exports.Events = new EventEmitter();
 
 exports.eventStream =  function(req, res){
     
@@ -24,6 +27,7 @@ exports.eventStream =  function(req, res){
         
         connectionIds[res.id] = connections.length;
         connections.push(res);
+        exports.Events.emit("connection", req.params.id);
         console.log("Established connection to: '" +  req.params.id + "'");
         console.log("Connections: " + connections.length);
         

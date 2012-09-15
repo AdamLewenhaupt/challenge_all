@@ -5,14 +5,18 @@ Description:
 This file provides the Newsfeed class.
 */
 
-var broadcast = require('../../sse').broadcast;
-	events = require('events'),
-	EventEmitter = events.EventEmitter;
+var sse = require('../../sse'),
+	broadcast = sse.broadcast,
+	Events = sse.Events,
+	EventEmitter = require('events').EventEmitter;
 
-var Newsfeed = function(){
-	broadcast("newsfeed", "this is a newsfeed");
+var Newsfeed = function(id){
+	this.id = id;
+	broadcast("newsfeed", id + " signed in!");
 };
 
 Newsfeed.prototype.__proto__ = EventEmitter.prototype;
 
-exports = new Newsfeed();
+sse.Events.on("connection", function(id){
+	var newsfeed = new Newsfeed(id);
+});

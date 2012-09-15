@@ -51,6 +51,7 @@ a {
     float: left;
     height: 70%;
     background-color: black;
+    color: white;
 }
 
 #newsfeed-frame{
@@ -59,6 +60,7 @@ a {
     height: 20%;
     background-color: blue;
     clear: both;
+    color: white;
 }
 
 #footer{
