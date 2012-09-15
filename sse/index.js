@@ -73,3 +73,5 @@ exports.helloWorld = function(req, res){
     }
     res.end();
 }
+
+exports.broadcast = broadcast;
