@@ -38,7 +38,7 @@ function makeButton()
 
 function removeButton()
 {
-    alert("HEJ");
+    
 }
 
 $("#maker").click(function(){
