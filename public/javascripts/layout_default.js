@@ -22,22 +22,43 @@ function getFormFields(form){
  	return retval;
 }
 
+function novelcy(data){
+	$newsfeed = $("#newsfeed-frame");
+	var position = $newsfeed.position(),
+		height = $newsfeed.height() - 20;
+	$new = $("<div/>")
+			.addClass("novelcy spawned")
+			.css({
+				left: -200,
+				top: 10,
+				height: height,
+				"line-height": height + "px"
+			})
+			.html($("<p/>").addClass("data").html(data));
+
+	return $new;
+}
+
 function sseConnect(){
 	if(signedIn){
 		$("#main-frame").html("");
 		source = new EventSource('/event-stream/' + id);
 		source.addEventListener("newsfeed", function(e){
-			$("#newsfeed-frame").html(e.data);
+			$("#newsfeed-frame").append(novelcy(e.data));
+			$("#newsfeed-frame .spawned").each(function(){
+				$(this).animate({left: $(document).width()}, 10000, function(){
+				})
+			})
 		});
 	}else{
 		$("#main-frame").html("<form id='login-fields'>Name: <input type='text' name='id'/></form><br/>")
-						.append($("<button/>").click(function(){
-							id = getFormFields($("#login-fields")).id;
-							if(id){
-								signedIn = true;
-								sseConnect();
-							}
-						}).html("Sign in"));
+				.append($("<button/>").click(function(){
+					id = getFormFields($("#login-fields")).id;
+					if(id){
+						signedIn = true;
+						sseConnect();
+					}
+				}).html("Sign in"));
 	}
 }
 

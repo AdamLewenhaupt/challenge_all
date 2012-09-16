@@ -61,6 +61,7 @@ a {
     background-color: blue;
     clear: both;
     color: white;
+    overflow: hidden;
 }
 
 #footer{
@@ -69,4 +70,20 @@ a {
     height: 30px;
     float: bottom;
     position: absolute;
+}
+
+.novelcy{
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    border: 2px solid white;
+    line-height: 100px;
+}
+
+.novelcy:hover{
+    background-color: purple;
 }
