@@ -68,3 +68,11 @@ a {
     float: bottom;
     position: absolute;
 }
+
+.button{
+    margin: 5px;
+    background-color: blue;
+    width:fill;
+    height:20%;
+    font: 30px "Lucida Grande";
+}

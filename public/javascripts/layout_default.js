@@ -16,4 +16,21 @@ $(document).ready(function(){
 	$("#footer").css("top", $("#sub-frame").position().top
 			+ $("#sub-frame").height() + 10)
 					.width($("#sub-frame").width());
+
+	$("#hot").click(function(){
+		$.ajax({
+			url: "/",
+  			cache: false
+		}).done(function( html ) {
+		  $("#main-frame").html(html);
+		});
+	});		
+	$("#new").click(function(){
+		$.ajax({
+			url: "/",
+  			cache: false
+		}).done(function( html ) {
+		  $("#main-frame").html(html);
+		});
+	});		
 });
