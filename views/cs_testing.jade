@@ -1,7 +1,8 @@
 doctype 5
 html
   head
-    script(type="text/javascript", src="/javascripts/jquery.js")
+    - for (var n in injections)
+        script(type='text/javascript', src= injections[n] )
     script(type="text/javascript", src="/testing/test.js")
     title= title
   body 

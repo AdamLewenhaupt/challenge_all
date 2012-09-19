@@ -11,9 +11,10 @@ var express = require('express'),
     sse = require('./sse'),
     http = require('http'),
     models = require('./models'),
-    Newsfeed = require('./features/newsfeed/Newsfeed');
+    Newsfeed = require('./features/newsfeed/Newsfeed'),
+    injector = require('./injector');
 
-models.db.connect();
+//models.db.connect();
 
 var app = express();
 
@@ -24,9 +25,9 @@ var connections = [];
 app.configure(config.dev);
 
 //Gets
-app.get('/', routes.index);
+app.get('/', injector.inject, routes.index);
 app.get('/cs_testing', routes.cs_testing);
-app.get('/ss_testing', routes.ss_testing);
+app.get('/ss_testing', injector.inject, routes.ss_testing);
 app.get('/ss_testing/profiles', routes.ss_testing_profiles);
 app.get('/event-stream/:id', sse.eventStream);
 app.get('/hello-world/:id/:to', sse.helloWorld);

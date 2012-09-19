@@ -1,0 +1,9 @@
+{
+	"/*": [
+		"jquery.js",
+		"layout_default.js"
+	],
+	"/ss_testing": [
+		"fisk.js"
+	]
+}

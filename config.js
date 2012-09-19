@@ -5,8 +5,8 @@ Description:
 This is where the server configurations are set.
 */
 
-var express = require('express'),
-    path    = require('path');
+var express     = require('express'),
+    path        = require('path');
 
 function std(app){
     app.set('port', process.env.PORT || 3000);

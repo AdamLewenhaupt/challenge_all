@@ -1,7 +1,8 @@
 extends layout
 
 block head
-    script(type="text/javascript", src="/javascripts/index_default.js")
+    - for (var n in injections)
+        script(type='text/javascript', src= injections[n] )
 
 block content
     #side-bar

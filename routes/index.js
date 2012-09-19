@@ -10,7 +10,7 @@ var cs_testing = require('./cs_testing'),
 	ss_testing = require('./ss_testing');
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+  	res.render('index', { title: 'Express', injections: req.injections });
 };
 
 //CS Testing
