@@ -72,6 +72,7 @@ a {
     position: absolute;
 }
 
+<<<<<<< HEAD
 .novelcy{
     position: absolute;
     width: 200px;
@@ -86,4 +87,12 @@ a {
 
 .novelcy:hover{
     background-color: purple;
+=======
+.button{
+    margin: 5px;
+    background-color: blue;
+    width:fill;
+    height:20%;
+    font: 30px "Lucida Grande";
+>>>>>>> 48072913d27c99658468245a2bfc51b276b1eb6f
 }
