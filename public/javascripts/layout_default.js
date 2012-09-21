@@ -72,33 +72,29 @@ $(document).ready(function(){
 
 	$("#newsfeed-frame").css("top", $sidebar.height() + $sidebar.position().top + 10)
 					.width($window.width() - 35 );
-<<<<<<< HEAD
+
 
 	$("#footer").css("top", $("#newsfeed-frame").position().top
 			+ $("#newsfeed-frame").height() + 10)
 					.width($("#newsfeed-frame").width());
 
 	sseConnect();
-=======
-	$("#footer").css("top", $("#sub-frame").position().top
-			+ $("#sub-frame").height() + 10)
-					.width($("#sub-frame").width());
 
 	$("#hot").click(function(){
 		$.ajax({
-			url: "/",
+			url: "/mainframe",
   			cache: false
 		}).done(function( html ) {
 		  $("#main-frame").html(html);
 		});
 	});		
+
 	$("#new").click(function(){
 		$.ajax({
-			url: "/",
+			url: "/mainframe",
   			cache: false
 		}).done(function( html ) {
 		  $("#main-frame").html(html);
 		});
-	});		
->>>>>>> 48072913d27c99658468245a2bfc51b276b1eb6f
+	});
 });
