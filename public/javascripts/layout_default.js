@@ -1,5 +1,5 @@
 /*
-Author: Adam Lewenhaupt
+Author: Adam Lewenhaupt, Simon Ciesluk
 Keywords: Layout, Jquery
 Description:
 Std functions on load of every webpage.
