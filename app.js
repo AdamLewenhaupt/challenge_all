@@ -32,6 +32,7 @@ app.get('/event-stream/:id', sse.eventStream);
 app.get('/hello-world/:id/:to', sse.helloWorld);
 app.get('/hello-world/:id', sse.helloWorld);
 app.get('/sse', routes.sse_testing);
+app.get('/mainframe', routes.mainframe_index);
 
 //Posts
 app.post('/ss_testing/profiles', routes.ss_testing_create_profile);
