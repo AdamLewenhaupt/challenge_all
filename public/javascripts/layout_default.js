@@ -80,7 +80,7 @@ $(document).ready(function(){
 
 	sseConnect();
 
-	$("#hot").click(function(){
+	$("#profile").click(function(){
 		$.ajax({
 			url: "/mainframe",
   			cache: false
@@ -89,7 +89,7 @@ $(document).ready(function(){
 		});
 	});		
 
-	$("#new").click(function(){
+	$("#challenges").click(function(){
 		$.ajax({
 			url: "/mainframe",
   			cache: false

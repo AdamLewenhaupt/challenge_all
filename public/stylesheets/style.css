@@ -92,6 +92,7 @@ a {
     margin: 5px;
     background-color: blue;
     width:fill;
-    height:20%;
+    height:15%;
     font: 30px "Lucida Grande";
+    text-align: center;
 }
