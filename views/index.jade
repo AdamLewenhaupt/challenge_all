@@ -1,2 +1,15 @@
-h1= title
-p Welcome to #{title}
+section#todoapp
+    header#header
+        hl todos
+        input#new-todo(placeholder='What needs to be done?', autofocus)
+
+    section#main
+        input#toggle-all(type="checkbox")
+        label(for="toggle-all") Mark all as complete
+        ul#todo-list
+
+    footer#footer
+#info
+    p Double-click to edit a todo
+    p Written by me
+    p Part of baws.
