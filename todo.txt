@@ -1,1 +1,0 @@
-The next thing im gonna do is make the ajax interface support backbone.js
