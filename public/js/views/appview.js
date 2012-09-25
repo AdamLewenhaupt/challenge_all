@@ -1,51 +1,52 @@
-app.AppView = Backbone.View.extend({
-	el: '#todoapp',
+define(["underscore", "backbone", "jquery", "collections/items", "views/item", "form2json"], function(_, Backbone, $, Items, ItemView, form2JSON){
 
-	statsTemplate: _.template($("#stats-template").html()),
+    var AppView = Backbone.View.extend({
+        el: $("#app"),
 
-	// At initialization we bind to the relevant events on the `Todos`
-    // collection, when items are added or changed. Kick things off by
-    // loading any preexisting todos that might be saved in *localStorage*.
-    initialize: function(){
-    	this.input = this.$('#new-todo');
-    	this.allCheckBox = this.$('#toggle-all')[0];
-    	this.$footer = this.$("#footer");
-    	this.$main = this.$("#main");
+        cash: 5000,
 
-    	window.app.Todos.on('add', this.addOne, this);
-    	window.app.Todos.on('reset', this.addAll, this);
-    	window.app.Todos.on('all', this.render, this);
+        events: {
+            "click #adder": "createNew"
+        },
 
-    	app.Todos.fetch();
-    },
+        initialize: function(){
+            this.delegateEvents();
 
-    render: function(){
-    	var completed = app.Todos.completed().length;
-    	var remaining = app.Todos.remaining().length;
+            this.$content = $("#content");
+            this.$cash = $("#cash");
 
-    	if(app.Todos.length){
-    		this.$main.show();
-    		this.$footer.show();
+            this.render();
 
-    		this.$footer.html(this.statsTemplate({
-    			completed: completed,
-    			remaining: remaining
-    		}));
-    	} else {
-    		this.$main.hide();
-        	this.$footer.hide();
-    	}
+            Items.on('add', this.addOne, this);
+            Items.on('sell', this.buy, this);
 
-    	this.allCheckBox.checked = !remaining;
-    },
+            Items.create({
+                price: 100
+            });
+        },
 
-    addOne: function(todo){
-    	var view = new app.TodoView({ model: todo });
-    	$("#todo-list").append(view.render().el);
-    },
+        createNew: function(){
+            Items.create(form2JSON("#input"));
+        },
 
-    addAll: function(){
-    	this.$("#todo-list").html('');
-    	app.Todos.each(this.addOne, this);
-    }
+        addOne: function(item){
+            $("input").val("");
+            var view = new ItemView({model: item});
+            this.$content.append(view.render().el);
+        },
+
+        render: function(){
+            if(this.cash > 0)
+                this.$cash.html(this.cash);
+            else
+                this.$cash.html("No cash flow");
+        },
+
+        buy: function(item){
+            this.cash = item.sell(this.cash);
+            this.render();
+        }
+    });
+
+    return AppView;
 });

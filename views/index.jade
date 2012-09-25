@@ -1,15 +1,19 @@
-section#todoapp
-    header#header
-        hl todos
-        input#new-todo(placeholder='What needs to be done?', autofocus)
+#app
+    | Cash: 
+    #cash
+    br
+    #content
+    form#input
+        | Name: 
+        input(type='text', name='name')
+        br
+        | Type: 
+        input(type='text', name='type')
+        br
+        | Description: 
+        input(type='text', name='description')
+        br
+        | Price: 
+        input(type='text', name='price')
 
-    section#main
-        input#toggle-all(type="checkbox")
-        label(for="toggle-all") Mark all as complete
-        ul#todo-list
-
-    footer#footer
-#info
-    p Double-click to edit a todo
-    p Written by me
-    p Part of baws.
+    button#adder Add new item

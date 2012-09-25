@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+.item{
+    border: 2px solid black;
+    display: inline-block;
+    margin: 5px;
+}
+
+#cash{
+    display: inline-block;
+}
+
+#content{
+    border: 2px solid blue;
+    display: inline-block;
+}
