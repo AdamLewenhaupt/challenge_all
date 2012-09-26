@@ -62,6 +62,10 @@ function sseConnect(){
 	}
 }
 
+<script id="template" type="text/html">
+	Tjo
+</script>
+
 $(document).ready(function(){
 
 	var $window 	= $(window),
@@ -82,7 +86,7 @@ $(document).ready(function(){
 
 	$("#profile").click(function(){
 		$.ajax({
-			url: "/mainframe",
+			url: "/",
   			cache: false
 		}).done(function( html ) {
 		  $("#main-frame").html(html);
@@ -97,4 +101,7 @@ $(document).ready(function(){
 		  $("#main-frame").html(html);
 		});
 	});
+
+
 });
+

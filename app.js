@@ -13,7 +13,7 @@ var express = require('express'),
     models = require('./models'),
     Newsfeed = require('./features/newsfeed/Newsfeed');
 
-models.db.connect();
+//models.db.connect();
 
 var app = express();
 
