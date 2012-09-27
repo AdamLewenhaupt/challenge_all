@@ -24,12 +24,7 @@ app.configure(config.dev);
 
 //Gets
 app.get('/', routes.index);
-app.get('/cs_testing', routes.cs_testing);
-app.get('/ss_testing', routes.ss_testing);
-app.get('/ss_testing/profiles', routes.ss_testing_profiles);
 app.get('/event-stream/:id', sse.eventStream);
-app.get('/hello-world/:id/:to', sse.helloWorld);
-app.get('/hello-world/:id', sse.helloWorld);
 app.get('/sse', routes.sse_testing);
 
 //Posts
