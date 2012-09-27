@@ -62,9 +62,9 @@ function sseConnect(){
 	}
 }
 
-<script id="template" type="text/html">
-	Tjo
-</script>
+function showStuff(id){
+	document.getElementById(id).style.display = 'block';
+}
 
 $(document).ready(function(){
 
@@ -85,12 +85,7 @@ $(document).ready(function(){
 	sseConnect();
 
 	$("#profile").click(function(){
-		$.ajax({
-			url: "/",
-  			cache: false
-		}).done(function( html ) {
-		  $("#main-frame").html(html);
-		});
+		showStuff("profilesite");
 	});		
 
 	$("#challenges").click(function(){
