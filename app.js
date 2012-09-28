@@ -18,20 +18,12 @@ var app = express();
 
 config.app = app;
 
-var connections = [];
-
 app.configure(config.dev);
 
 //Gets
 app.get('/', routes.index);
 app.get('/event-stream/:id', sse.eventStream);
 app.get('/sse', routes.sse_testing);
-
-//Posts
-app.post('/ss_testing/profiles', routes.ss_testing_create_profile);
-
-//Deletes
-app.del('/ss_testing/profiles/:tag', routes.ss_testing_delete_profile);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server up and running on port: " + app.get('port'));
