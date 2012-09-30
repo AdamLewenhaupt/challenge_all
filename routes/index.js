@@ -7,5 +7,5 @@ and provides access to all routes.
 */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Express', user: req.user });
 };
