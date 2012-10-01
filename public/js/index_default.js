@@ -8,4 +8,5 @@ $(document).ready(function(){
 	$("#templates").hide();
 
 	$("#main-frame").html($("#profile-template").clone());
+
 });
