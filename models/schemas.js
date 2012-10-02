@@ -12,5 +12,7 @@ exports.User = mongoose.model('User',new Schema({
     fname: {type: String, required: true, lowercase: true, trim: true},
     lname: {type: String, required: true, lowercase: true, trim: true},
     tag: {type: String, required: true, unique: true, lowercase: true, trim: true},
-    age: {type: Number, required: true}
+    age: {type: Number, required: true},
+    email: {type: String, required: true, lowercase: true, trim: true, unique: true},
+    password: {type: String, required: true}
 }));
