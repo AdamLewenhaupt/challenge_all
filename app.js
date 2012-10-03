@@ -24,6 +24,10 @@ app.configure(config.dev);
 app.get('/', routes.index);
 app.get('/event-stream/:id', sse.eventStream);
 app.get('/sse', routes.sse_testing);
+app.get('/ajax/login', routes.ajax.login);
+
+//Posts
+app.post('/ajax/create', routes.ajax.create);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server up and running on port: " + app.get('port'));

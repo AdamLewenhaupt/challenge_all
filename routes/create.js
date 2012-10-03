@@ -5,7 +5,7 @@ Description:
 This module provides the create user route.
 */
 
-var models = require('models'),
+var models = require('../models'),
     User = models.schemas.User;
 
 exports.route = function(req, res){

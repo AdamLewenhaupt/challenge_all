@@ -11,7 +11,7 @@ var ajax_login = require('./login'),
 
 exports.index = function(req, res){
     res.render('index', { title: 'Express', user: req.user, ssv: res.ssv });
-};
+}
 
 exports.ajax = {
     login: ajax_login.route,

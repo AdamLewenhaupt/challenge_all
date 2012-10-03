@@ -5,10 +5,14 @@ Description:
 Provies login support; ment to be used as ajax request.
 */
 
-var models = require('models'),
+var models = require('../models'),
     User = models.schemas.User;
 
 exports.route = function(req, res){
+    
+    if(req.params.length() == 0){
+        res.send("No params");
+    }
     
     User.findOne({ mail: req.params.mail, password: req.params.pass }, function(err, user){
         if(!err){
