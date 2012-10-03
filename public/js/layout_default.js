@@ -14,7 +14,7 @@ function login(email, password){
         type: "get",
         url: "/ajax/login",
         data: {
-            name: name,
+            email: email,
             password: password
         },
         

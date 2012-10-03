@@ -9,11 +9,18 @@ var models = require('../models'),
     User = models.schemas.User;
 
 exports.route = function(req, res){
-    User.create(req.params, function(err, user){
-        if(err){
-            console.log(err);
-        }else{
-            console.log("Created user: " + user.fname);
-        }
+
+    var user = new User(req.body);
+
+    user.save(function(err){
+    	if(!err){
+    		res.send("success");
+    		console.log("Created user: " + user.tag);
+    	}else{
+    		console.log("Error creating user: " + err);
+    		res.send("err");
+    	}
     });
+
+    res.send("error");
 }

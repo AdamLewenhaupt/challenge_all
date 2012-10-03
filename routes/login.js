@@ -10,11 +10,7 @@ var models = require('../models'),
 
 exports.route = function(req, res){
     
-    if(req.params.length() == 0){
-        res.send("No params");
-    }
-    
-    User.findOne({ mail: req.params.mail, password: req.params.pass }, function(err, user){
+    User.findOne({ email: req.query.email, password: req.query.pass }, function(err, user){
         if(!err){
             res.cookie('e8701ad48ba05a91604e480dd60899a3', user._id, { maxAge: 60*60*24, httpOnly: true });
             res.send('success');
@@ -22,4 +18,6 @@ exports.route = function(req, res){
             res.send(err);
         }
     });
+
+    res.send("error");
 }
