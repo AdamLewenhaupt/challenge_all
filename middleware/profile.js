@@ -17,19 +17,23 @@ exports.func = function profile(req, res, next){
 	var id = req.cookies["e8701ad48ba05a91604e480dd60899a3"];
 
     if(id){
-    	User.findOne({_id: id }, function(profile){
-    		console.log(profile);
+    	User.findOne({_id: id }, function(err, profile){
+            if(!err && profile){
+                req.user = profile;
+                next();
+            }else{
+                next();
+            }
     	});
     }
 	else{
 	    res.ssv = "req_login";
 	    req.user = {
-	    	fname: "Adam",
-	    	tag: "Spinno",
-	    	lname: "Lewenhaupt",
+	    	fname: "null",
+	    	tag: "null",
+	    	lname: "null",
 	    	age: 17
 	    };
+        next();
 	}
-
-    next();
 }

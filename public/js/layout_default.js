@@ -130,8 +130,9 @@ $(document).ready(function(){
             submit: "Login",
             success: function(e){
                 console.log(e.data);
+                login(e.data.email, e.data.pass);
             }
 
         });
-	} 
+	}
 });
