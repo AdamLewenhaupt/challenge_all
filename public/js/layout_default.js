@@ -66,6 +66,39 @@ function popup(options){
     $(document.body).append($popup);
 }
 
+function login(email, password){
+    $.ajax({
+        type: "get",
+        url: "/ajax/login",
+        data: {
+            email: email,
+            password: password
+        },
+        
+        success: function(data){
+            alert(data);
+        }
+    })
+}
+
+function create(fname, tag, lname, age, email, password){
+    $.ajax({
+       type: "post",
+       url: "/ajax/create",
+       data: {
+           fname: fname,
+           lname: lname,
+           tag: tag,
+           age: age,
+           email: email,
+           password: password
+       },
+       
+       success: function(data){
+           alert(data);
+       }
+    });
+}
 
 $(document).ready(function(){
 

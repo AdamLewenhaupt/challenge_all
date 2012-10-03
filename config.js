@@ -21,7 +21,7 @@ function std(app){
     app.use(app.router);
     app.use(express.static(path.join(__dirname, 'public')));
 
-    app.all('/*', middleware.profile);
+    app.get('/', middleware.profile);
 }
 
 function dev(){
