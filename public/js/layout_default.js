@@ -25,16 +25,20 @@ function hasSSV(query){
 	return _ssv.indexOf(query) != -1;
 }
 
+function saturateMainframe(id){
+    $("#main-frame").html($(id).clone());
+}
+
 function popup(options){
-    var width = 400,
-        height = 600,
+    var width = 200,
+        height = 60 + options.inputs.length * 30,
         bounds = { width: $(document).width(), height: $(document).height() },
         $focuser = $("<div/>").addClass("focuser"),
         $popup = $("<div/>").addClass("popup"),
         $form = $("<form/>"),
         $submit = $("<button/>").addClass("submit"),
         $cancel = $("<button/>").addClass("cancel"),
-        template = _.template("<%= value %>: <input name='<%= name %>' type='<%= type %>'/>");
+        template = _.template("<%= value %><br/> <input name='<%= name %>' type='<%= type %>'/>");
 
     $form.html(_.map(options.inputs, function(input){
         return template(input);
@@ -122,20 +126,7 @@ function create(fname, tag, lname, age, email, password){
 
 $(document).ready(function(){
 
-	var $window 	= $(window),
-		$sidebar 	= $("#side-bar"),
-		width 		= $window.width() - ($sidebar.width() + 40);
-
  	$("#ssv").hide();
-
-	$("#main-frame").width(width).css("left", $sidebar.width() + 15);
-
-	$("#sub-frame").css("top", $sidebar.height() + $sidebar.position().top + 10)
-					.width($window.width() - 35 );
-
-	$("#footer").css("top", $("#sub-frame").position().top
-			+ $("#sub-frame").height() + 10)
-					.width($("#sub-frame").width());
 
 	 if(hasSSV("req_login")){
         popup({
