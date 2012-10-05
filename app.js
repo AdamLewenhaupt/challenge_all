@@ -12,7 +12,7 @@ var express = require('express'),
     http = require('http'),
     models = require('./models');
 
-models.db.connect();
+//models.db.connect();
 
 var app = express();
 

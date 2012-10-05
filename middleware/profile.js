@@ -10,30 +10,43 @@ If there is we load it otherwise we prompt for login.
 */
 
 var models = require('../models'),
-	User = models.schemas.User;
+	User = models.schemas.User,
+	debug = true;
 
 exports.func = function profile(req, res, next){
 
-	var id = req.cookies["e8701ad48ba05a91604e480dd60899a3"];
-
-    if(id){
-    	User.findOne({_id: id }, function(err, profile){
-            if(!err && profile){
-                req.user = profile;
-                next();
-            }else{
-                next();
-            }
-    	});
-    }
-	else{
-	    res.ssv = "req_login";
-	    req.user = {
-	    	fname: "null",
-	    	tag: "null",
-	    	lname: "null",
-	    	age: 17
-	    };
-        next();
+	if(!debug){
+		var id = req.cookies["e8701ad48ba05a91604e480dd60899a3"];
+	
+	    if(id){
+	    	User.findOne({_id: id }, function(err, profile){
+	            if(!err && profile){
+	                req.user = profile;
+	                next();
+	            }else{
+	                next();
+	            }
+	    	});
+	    }
+		else{
+		    res.ssv = "req_login";
+		    req.user = {
+		    	fname: "null",
+		    	tag: "null",
+		    	lname: "null",
+		    	age: 17
+		    };
+	        next();
+		}
+	}else{
+		req.user = {
+			fname: "adam",
+			tag: "spinno",
+			lname: "lewenhaupt",
+			age: 17,
+			email: "adam.lewenhauptt@gmail.com",
+			password: "pass"
+		};
+		next();
 	}
 }
