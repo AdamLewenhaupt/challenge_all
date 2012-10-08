@@ -11,7 +11,7 @@ require.config({
 	}
 });
 
-require(["jquery", "./popup", "./mainframe", "./ssv", "./persistent"], function($, popup, Mainframe, SSV, Persistent){
+require(["jquery", "./mainframe", "./ssv", "./prompts"], function($, Mainframe, SSV, Prompts){
 
 	$(document).ready(function(){
 		SSV.init();
@@ -35,21 +35,7 @@ require(["jquery", "./popup", "./mainframe", "./ssv", "./persistent"], function(
 	$("#ssv").hide();
 
 	if(SSV.has("req_login")){
-	    popup({
-	        title: "Login",
-	        canCancel: false,
-
-	        inputs: [
-	            { name: "email", type: "text", value: "Username" },
-	            { name: "pass", type: "password", value: "Password"}
-	        ],
-
-	        submit: "Login",
-	        success: function(e){
-	            Persistent.login(e.email, e.pass);
-	        }
-
-	    });
+	    Prompts.login();
 	}
 
 	});
