@@ -11,7 +11,7 @@ If there is we load it otherwise we prompt for login.
 
 var models = require('../models'),
 	User = models.schemas.User,
-	debug = true;
+	debug = false;
 
 exports.func = function profile(req, res, next){
 
