@@ -31,9 +31,9 @@ exports.func = function profile(req, res, next){
 		else{
 		    res.ssv = "req_login";
 		    req.user = {
-		    	fname: "null",
-		    	tag: "null",
-		    	lname: "null",
+		    	fname: "@fname",
+		    	tag: "@tag",
+		    	lname: "@lname",
 		    	age: 17
 		    };
 	        next();
