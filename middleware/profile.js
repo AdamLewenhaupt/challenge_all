@@ -11,7 +11,7 @@ If there is we load it otherwise we prompt for login.
 
 var models = require('../models'),
 	User = models.schemas.User,
-	debug = false;
+	debug = true;
 
 exports.func = function profile(req, res, next){
 
@@ -31,9 +31,9 @@ exports.func = function profile(req, res, next){
 		else{
 		    res.ssv = "req_login";
 		    req.user = {
-		    	fname: "null",
-		    	tag: "null",
-		    	lname: "null",
+		    	fname: "@fname",
+		    	tag: "@tag",
+		    	lname: "@lname",
 		    	age: 17
 		    };
 	        next();

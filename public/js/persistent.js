@@ -23,6 +23,10 @@ define(["jquery"], function($){
 		           age: age,
 		           email: email,
 		           password: password
+		       },
+
+		       success: function(data){
+		    		
 		       }
 		    });
 		}
