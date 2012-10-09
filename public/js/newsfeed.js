@@ -20,6 +20,10 @@ define(["jquery"], function($){
 		}, 5000, function() {
 	    // Animation complete.
 	  });
+
+	function queuePush(name,element){
+
+	}
 }
 
 showcase("Hello");
