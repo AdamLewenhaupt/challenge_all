@@ -15,11 +15,11 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], 
 
 	$(document).ready(function(){
 		SSV.init();
-		SSE.init();
+		/*SSE.init();*/
 
-		SSE.listen("hello", function(e){
+		/*SSE.listen("hello", function(e){
 			document.write(e.data);
-		});
+		});*/
 
 		var $window     = $(window),
 		    $sidebar    = $("#side-bar"),

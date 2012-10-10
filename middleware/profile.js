@@ -9,9 +9,10 @@ This function intercepts every request and checks if there is user information t
 If there is we load it otherwise we prompt for login.
 */
 
-var models = require('../models'),
+var ssv = require('../ssv'),
+	models = require('../models'),
 	User = models.schemas.User,
-	debug = true;
+	debug = false;
 
 exports.func = function profile(req, res, next){
 
@@ -22,6 +23,7 @@ exports.func = function profile(req, res, next){
 	    	User.findOne({_id: id }, function(err, profile){
 	            if(!err && profile){
 	                req.user = profile;
+	                ssv.add("user", JSON.stringify(profile));
 	                next();
 	            }else{
 	                next();
@@ -29,7 +31,7 @@ exports.func = function profile(req, res, next){
 	    	});
 	    }
 		else{
-		    res.ssv = "req_login";
+		    ssv.add("req_login", "");
 		    req.user = {
 		    	fname: "@fname",
 		    	tag: "@tag",
@@ -47,6 +49,9 @@ exports.func = function profile(req, res, next){
 			email: "adam.lewenhauptt@gmail.com",
 			password: "pass"
 		};
+
+		ssv.add("user", JSON.stringify(req.user));
+
 		next();
 	}
 }
