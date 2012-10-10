@@ -14,12 +14,9 @@ require.config({
 require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], function($, Mainframe, SSV, newsfeed, Prompts, SSE){
 
 	$(document).ready(function(){
-		SSV.init();
-		/*SSE.init();*/
+		var user;
 
-		/*SSE.listen("hello", function(e){
-			document.write(e.data);
-		});*/
+		SSV.init();
 
 		var $window     = $(window),
 		    $sidebar    = $("#side-bar"),
@@ -39,9 +36,19 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], 
 
 	$("#ssv").hide();
 
+
 	if(SSV.has("req_login")){
 	    Prompts.login();
+	}else{
+		var user = SSV.get("user");
+		window._user = $.parseJSON(user);
 	}
+
+	SSE.init();
+
+	SSE.listen("hello", function(e){
+		document.write(e.data);
+	});
 
 	});
 });

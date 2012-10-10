@@ -5,5 +5,7 @@ exports.add = function(name, value){
 }
 
 exports.fetch = function(){
-	return ssv;
+	var retval = ssv;
+	ssv = [];
+	return retval;
 }

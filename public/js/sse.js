@@ -1,9 +1,8 @@
 define(function(){
 	return {
-		init: function(user){
-			if(window.EventSource && !window._esource){
-				window._esource = new EventSource("/event-stream/" + user.tag);
-			}
+		init: function(){
+			console.log(window._user);
+			window._esource = new EventSource("/event-stream/" + window._user.tag);
 		},
 
 		listen: function(event, delegate){

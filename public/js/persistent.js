@@ -8,6 +8,10 @@ define(["jquery"], function($){
 		        data: {
 		            email: email,
 		            password: password
+		        },
+
+		        success: function(data){
+		        	window._user = data;
 		        }
 		    });
 		},

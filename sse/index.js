@@ -64,12 +64,3 @@ function broadcast(event, data, id){
 
     return true;
 }
-
-exports.helloWorld = function(req, res){
-    if(broadcast("hello", "<script type='text/javascript'>alert('hello from "+req.params.id+"')</script>", req.params.to)){
-        res.write("Sent a message to: " +  req.params.to);
-    }else{
-        res.send(400);
-    }
-    res.end();
-}
