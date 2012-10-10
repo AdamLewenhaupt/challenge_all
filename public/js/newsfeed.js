@@ -11,7 +11,7 @@ define(["jquery"], function($){
 	function showcase(text){
 		newsfeedQueue.push(text);
 		$new = $("<div style='position: relative; display: inline-block' />");
-		$newsfeed.append($new.html(newsfeedQueue[0]));
+		$newsfeed.append($new.html(text));
 		$new.css({
 				font: '80px"Lucida Grande",Helvetica,Arial,sans-serif',
 				"line-height": '150px',
@@ -22,11 +22,11 @@ define(["jquery"], function($){
 			left: '+='+($newsfeed.width() +$new.width())
 		}, 5000, function() {
 	    // Animation complete.
-	    if(newsfeedQueue.length < 5){
-	    	
+	    	if(newsfeedQueue.length >= 5){
+	    		newsfeedQueue.shift();
 	    	}
-	    	//check if there is a more news or if repeat
-	    }
+	    	//check if there is more news or if repeat
+
 	  });
 }
 	showcase("Hello");

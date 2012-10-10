@@ -11,7 +11,7 @@ require.config({
 	}
 });
 
-require(["jquery", "./popup", "./mainframe", "./ssv", "./persistent", "./newsfeed"], function($, popup, Mainframe, SSV, Persistent, newsfeed){
+require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function($, Mainframe, SSV, newsfeed, Prompts){
 
 	$(document).ready(function(){
 		SSV.init();
