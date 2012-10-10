@@ -23,7 +23,6 @@ app.configure(config.dev);
 //Gets
 app.get('/', routes.index);
 app.get('/event-stream/:id', sse.eventStream);
-app.get('/sse', routes.sse_testing);
 app.get('/ajax/login', routes.ajax.login);
 
 //Posts
