@@ -24,6 +24,7 @@ app.configure(config.dev);
 app.get('/', routes.index);
 app.get('/event-stream/:id', sse.eventStream);
 app.get('/ajax/login', routes.ajax.login);
+app.get('/send', sse.helloWorld);
 
 //Posts
 app.post('/ajax/create', routes.ajax.create);
