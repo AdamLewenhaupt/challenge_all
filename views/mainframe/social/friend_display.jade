@@ -1,5 +1,7 @@
 #mainframe-friend-display
-	ul.friend-display
-		- user.friends.forEach(function(e){
-			li= e
-		- })
+    ul.friend-display
+        - user.friends.forEach(function(friend){
+            li
+                img(src="/images/simon.png")
+                | #{friend}
+        - })
