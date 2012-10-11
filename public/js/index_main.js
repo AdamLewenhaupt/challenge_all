@@ -14,6 +14,7 @@ require.config({
 require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], function($, Mainframe, SSV, newsfeed, Prompts, SSE){
 
 	$(document).ready(function(){
+
 		var user;
 
 		SSV.init();
@@ -33,8 +34,6 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], 
 	    $("#btn-social").click(function(){
 	        Mainframe.saturate("#social-template");
 	    });
-
-		$("#ssv").hide();
 
 
 		if(SSV.has("req_login")){

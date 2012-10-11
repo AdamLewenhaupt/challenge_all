@@ -1,6 +1,5 @@
 *{
     margin: 0;
-    padding: 0;
 }
 
 body {
@@ -90,4 +89,26 @@ a {
 
 .button:active{
     background-color: #4DB8DB;
+}
+
+#social-template div{
+    float: left;
+    display: inline-block;
+}
+
+#mainframe-friend-display{
+    position: absolute;
+    text-align: center;
+    right: 0px;
+    width: 40%;
+    height: 99%;
+    border: 2px solid white;
+}
+
+#social-template div *{
+    margin: 5px;
+}
+
+#templates{
+    display: none;
 }

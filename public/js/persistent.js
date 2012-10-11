@@ -1,5 +1,5 @@
 define(["jquery"], function($){
-
+	
 	return {
 		login: function(email, password){
 		    $.ajax({
