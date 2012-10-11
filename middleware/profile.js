@@ -36,7 +36,8 @@ exports.func = function profile(req, res, next){
 		    	fname: "@fname",
 		    	tag: "@tag",
 		    	lname: "@lname",
-		    	age: "@age"
+		    	age: "@age",
+		    	friends: []
 		    };
 	        next();
 		}

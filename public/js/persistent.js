@@ -16,7 +16,7 @@ define(["jquery"], function($){
 		    });
 		},
 
-		create: function(fname, tag, lname, age, email, password){
+		createUser: function(fname, tag, lname, age, email, password){
 		    $.ajax({
 		       type: "post",
 		       url: "/ajax/create",
@@ -26,13 +26,25 @@ define(["jquery"], function($){
 		           tag: tag,
 		           age: age,
 		           email: email,
-		           password: password
+		           password: password,
+		           friends: []
 		       },
 
 		       success: function(data){
 		    		
 		       }
 		    });
+		},
+
+		makeFriends: function(tag1, tag2){
+			$.ajax({
+				type: "post",
+				url: "/ajax/make-friends",
+				data: {
+					tag1: tag1,
+					tag2: tag2 
+				}
+			});
 		}
 	};
 

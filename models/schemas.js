@@ -14,5 +14,6 @@ exports.User = mongoose.model('User', new Schema({
     tag: {type: String, required: true, unique: true, lowercase: true, trim: true},
     age: {type: Number, required: true},
     email: {type: String, required: true, lowercase: true, trim: true, unique: true},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    friends: [this]
 }));
