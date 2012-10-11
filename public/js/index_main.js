@@ -26,29 +26,29 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], 
 
 	    $("#main-frame").css({
 	        width: width,
-	        height: $window.height() - 150,
+	        height: $window.height() - 100,
 	        left: $sidebar.width()
 	    });
 
 	    $("#btn-social").click(function(){
-	        Mainframe.saturate("#profile-template");
+	        Mainframe.saturate("#social-template");
 	    });
 
-	$("#ssv").hide();
+		$("#ssv").hide();
 
 
-	if(SSV.has("req_login")){
-	    Prompts.login();
-	}else{
-		var user = SSV.get("user");
-		window._user = $.parseJSON(user);
-	}
+		if(SSV.has("req_login")){
+		    Prompts.login();
+		}else{
+			var user = SSV.get("user");
+			window._user = $.parseJSON(user);
+		}
 
-	SSE.init();
+		SSE.init();
 
-	SSE.listen("hello", function(e){
-		document.write(e.data);
-	});
+		SSE.listen("hello", function(e){
+			document.write(e.data);
+		});
 
 	});
 });

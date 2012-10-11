@@ -11,7 +11,7 @@ define(["jquery"], function($){
 		$newsfeed.append($new.html(text));
 		$new.css({
 				font: '80px"Lucida Grande",Helvetica,Arial,sans-serif',
-				"line-height": '150px',
+				"line-height": '100px',
 				color: 'white'
 			});
 		$new.css({left: -$new.width()});

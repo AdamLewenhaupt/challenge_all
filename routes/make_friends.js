@@ -1,0 +1,23 @@
+var models = require('../models'),
+    User = models.schemas.User;
+
+exports.route = function(req, res){
+	var tag1 = req.body.tag1,
+		tag2 = req.body.tag2;
+
+	User.find().where("tag").in([tag1, tag2]).exec(function(err, doc){
+		var doc1 = doc[0],
+			doc2 = doc[1];
+
+		if(doc1.friends.indexOf(doc2) != -1) {
+			res.send("allready friends");
+			return;
+		}
+
+		doc1.friends.push(doc2);
+
+		doc1.save();
+
+		res.send("success");
+	});
+}
