@@ -14,7 +14,11 @@ exports.ajax_send = function(req, res){
         data = req.body.data,
         subscribers = JSON.parse(req.body.subscribers);
 
-        
+    subscribers.forEach(function(sub){
+        broadcast(event, data, sub);
+    });
+
+    res.send("success");
 }
 
 exports.eventStream =  function(req, res){

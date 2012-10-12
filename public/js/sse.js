@@ -12,7 +12,10 @@ define(["jquery"], function($){
 			window._esource.addEventListener(event, delegate, false);
 		},
 
-		send: function(event, data, subscribers=[]){
+		send: function(event, data, subscribers){
+
+			subscribers = subscribers || [];
+
 			$.ajax({
 				type: "post",
 				url: "/ajax/sse-send",

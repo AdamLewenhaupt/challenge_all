@@ -173,3 +173,10 @@ a {
 #templates{
     display: none;
 }
+
+.novelty{
+    font: 100px "Lucida Grande",Helvetica,Arial,sans-serif;
+    line-height: 100px;
+    color: white;
+
+}
