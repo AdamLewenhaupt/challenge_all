@@ -11,7 +11,7 @@ require.config({
 	}
 });
 
-require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function($, Mainframe, SSV, newsfeed, Prompts){
+require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function($, Mainframe, SSV, Newsfeed, Prompts){
 
 	$(document).ready(function(){
 		SSV.init();
@@ -37,6 +37,8 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function(
 	if(SSV.has("req_login")){
 	    Prompts.login();
 	}
+
+	Newsfeed.showcase("Welcome");
 
 	});
 });
