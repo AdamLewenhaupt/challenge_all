@@ -1,7 +1,6 @@
 #mainframe-friend-display
     ul.friend-display
-        - user.friends.forEach(function(friend){
+        - each friend in user.c_friends
             li
                 img(src="/images/simon.png")
-                | #{friend}
-        - })
+                != friend.tag

@@ -159,6 +159,7 @@ a {
 }
 
 #mainframe-friend-display ul li img{
+    border: 1px solid black;
     float: left;
     margin: 5px;
     width: 90px;

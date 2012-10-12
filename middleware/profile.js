@@ -11,20 +11,27 @@ If there is we load it otherwise we prompt for login.
 
 var ssv = require('../ssv'),
 	models = require('../models'),
-	User = models.schemas.User,
-	debug = false;
+	User = models.schemas.User;
 
 exports.func = function profile(req, res, next){
 
-	if(!debug){
 		var id = req.cookies["e8701ad48ba05a91604e480dd60899a3"];
 	
 	    if(id){
 	    	User.findOne({_id: id }, function(err, profile){
 	            if(!err && profile){
 	                req.user = profile;
+
 	                ssv.add("user", JSON.stringify(profile));
-	                next();
+
+	                User.find().where('_id').in(req.user.friends).exec(function(err, doc){
+	                	if(!err){
+	                		req.user.c_friends = doc;
+			                next();
+	      				}else{
+	      					next();
+	      				}
+                	});
 	            }else{
 	                next();
 	            }
@@ -41,18 +48,4 @@ exports.func = function profile(req, res, next){
 		    };
 	        next();
 		}
-	}else{
-		req.user = {
-			fname: "adam",
-			tag: "spinno",
-			lname: "lewenhaupt",
-			age: 17,
-			email: "adam.lewenhauptt@gmail.com",
-			password: "pass"
-		};
-
-		ssv.add("user", JSON.stringify(req.user));
-
-		next();
-	}
 }
