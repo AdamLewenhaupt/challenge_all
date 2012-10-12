@@ -11,8 +11,8 @@ require.config({
 	}
 });
 
-require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], function($, Mainframe, SSV, newsfeed, Prompts, SSE){
-
+require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function($, Mainframe, SSV, Newsfeed, Prompts){
+	
 	$(document).ready(function(){
 
 		var user;
@@ -48,6 +48,8 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], 
 		SSE.listen("hello", function(e){
 			document.write(e.data);
 		});
+
+	Newsfeed.showcase("Welcome");
 
 	});
 });
