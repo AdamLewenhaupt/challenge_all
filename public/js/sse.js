@@ -1,12 +1,17 @@
-define(["jquery"], function($){
-	return {
-		init: function(func){
-			console.log(window._user);
-			window._esource = new EventSource("/event-stream/" + window._user._id);
-			this.send("login", window._user.tag + " has logged in!", window._user.friends);
+define(["jquery", "./user"], function($, User){
 
+	window._sseInits = [];
+
+	User.onInit(function(){
+		window._esource = new EventSource("/event-stream/" + User.get._id);
+		this.send("login", window._user.tag + " has logged in!", User.get.friends);
+
+		window._sseInits.forEach(function(func){
 			func();
-		},
+		});
+	});
+
+	return {
 
 		listen: function(event, delegate){
 			window._esource.addEventListener(event, delegate, false);
@@ -25,6 +30,10 @@ define(["jquery"], function($){
 					subscribers: JSON.stringify(subscribers)
 				}
 			});
+		},
+
+		onInit: function(func){
+			window._sseInits.push(func);
 		}
 	}
 });
