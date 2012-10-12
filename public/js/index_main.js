@@ -12,7 +12,7 @@ require.config({
 });
 
 require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function($, Mainframe, SSV, Newsfeed, Prompts){
-	
+
 	$(document).ready(function(){
 
 		var user;
@@ -42,12 +42,6 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function(
 			var user = SSV.get("user");
 			window._user = $.parseJSON(user);
 		}
-
-		SSE.init();
-
-		SSE.listen("hello", function(e){
-			document.write(e.data);
-		});
 
 	Newsfeed.showcase("Welcome");
 

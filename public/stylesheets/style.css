@@ -107,7 +107,6 @@ a {
     background-color: #4DB8DB;
 }
 
-<<<<<<< HEAD
 #social-template div{
     float: left;
     display: inline-block;
@@ -173,10 +172,11 @@ a {
 
 #templates{
     display: none;
-=======
+}
+
 .novelty{
     font: 100px "Lucida Grande",Helvetica,Arial,sans-serif;
-    line-height: 150px;
+    line-height: 100px;
     color: white;
->>>>>>> newsfeedqueue
+
 }
