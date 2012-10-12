@@ -14,6 +14,8 @@ require.config({
 require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user"], 
 	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User){
 
+	User.onInit(function(){ Newsfeed.showcase("Welcome"); });
+
 	$(document).ready(function(){
 
 		SSV.init();
@@ -38,16 +40,18 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 		if(SSV.has("req_login")){
 		    Prompts.login();
 		}else{
+
 			User.init();
 
 			SSE.onInit(function(){
+				console.log("sten");
+
 				SSE.listen("login", function(e){
 					document.write("<script>alert('"+e.data+"')</script>");
 				});
 			});
-		}
 
-	Newsfeed.showcase("Welcome");
+		}
 
 	});
 });

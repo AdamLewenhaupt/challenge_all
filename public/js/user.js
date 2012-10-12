@@ -12,13 +12,18 @@ define(["./ssv"], function(SSV){
             window._userInits.forEach(function(func){
                 func();
             });
+
+            console.log("hello");
         },
 
         onInit: function(func){
-            window._userInits.push(func);
+            if(!this.online())
+                window._userInits.push(func);
+            else
+                func();
         },
 
-        online: window._online,
-        get: window._user
+        online: function(){ return window._online; },
+        get: function(){ return window._user; }
     }
 });
