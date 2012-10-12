@@ -41,13 +41,13 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse"], 
 		}else{
 			var user = SSV.get("user");
 			window._user = $.parseJSON(user);
+
+			SSE.init(function(){
+				SSE.listen("login", function(e){
+					document.write("<script>alert('"+e.data+"')</script>");
+				});
+			});
 		}
-
-		SSE.init();
-
-		SSE.listen("hello", function(e){
-			document.write(e.data);
-		});
 
 	});
 });
