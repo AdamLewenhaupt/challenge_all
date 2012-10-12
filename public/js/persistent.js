@@ -12,6 +12,12 @@ define(["jquery"], function($){
 
 		        success: function(data){
 		        	window._user = data;
+
+		        	SSE.init(function(){
+						SSE.listen("login", function(e){
+							document.write("<script>alert('"+e.data+"')</script>");
+						});
+					});
 		        }
 		    });
 		},

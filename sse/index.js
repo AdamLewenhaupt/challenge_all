@@ -9,6 +9,16 @@ a api to the websites sse utilities.
 var connections = [];
 var connectionIds = {};
 
+exports.ajax_send = function(req, res){
+    var event = req.body.event,
+        data = req.body.data,
+        subscribers = JSON.parse(req.body.subscribers);
+
+    console.log(subscribers);
+
+    res.send("success");
+}
+
 exports.eventStream =  function(req, res){
     
     if(req.headers.accept == "text/event-stream"){

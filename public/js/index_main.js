@@ -11,11 +11,9 @@ require.config({
 	}
 });
 
-require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function($, Mainframe, SSV, Newsfeed, Prompts){
+require(["jquery", "./mainframe", "./ssv", "./sse", "./newsfeed", "./prompts"], function($, Mainframe, SSV, SSE, Newsfeed, Prompts){
 
 	$(document).ready(function(){
-
-		var user;
 
 		SSV.init();
 
@@ -41,9 +39,17 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts"], function(
 		}else{
 			var user = SSV.get("user");
 			window._user = $.parseJSON(user);
+
+			console.log(SSE);
+
+			SSE.init(function(){
+				SSE.listen("login", function(e){
+					document.write("<script>alert('"+e.data+"')</script>");
+				});
+			});
 		}
 
-	Newsfeed.showcase("Welcome");
+		Newsfeed.showcase("Welcome");
 
 	});
 });
