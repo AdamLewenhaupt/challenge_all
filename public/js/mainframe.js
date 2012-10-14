@@ -1,4 +1,4 @@
-define(["jquery"], function($){
+define(["jquery", "./templates"], function($, Templates){
 
     $(document).ready(function(){
         var $window     = $(window),
@@ -24,7 +24,7 @@ define(["jquery"], function($){
 		$el: $("#main-frame"),
 
 		saturate: function(id){
-		    this.$el.html($(id).clone());
+		    this.$el.html(Templates.clone(id));
 		}
 	};
 });

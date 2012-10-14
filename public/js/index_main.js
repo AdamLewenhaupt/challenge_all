@@ -18,10 +18,8 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 
 	$(document).ready(function(){
 
-		$("#templates").hide();
-
 	    $("#btn-social").click(function(){
-	        Mainframe.saturate("#social-template");
+	        Mainframe.saturate("social");
 	    });
 
 
