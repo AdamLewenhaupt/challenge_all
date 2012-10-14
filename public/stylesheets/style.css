@@ -125,7 +125,7 @@ a {
     position: absolute;
     right: 0px;
     width: 30%;
-    height: 99%;
+    height: 100%;
     border: 2px solid white;
 
     overflow: hidden;
@@ -166,8 +166,9 @@ a {
     height: 90px;
 }
 
-#social-template div *{
-    margin: 5px;
+#social-template{
+    color: black;
+    background-color: #FFFFF6;
 }
 
 #templates{
