@@ -11,12 +11,25 @@ require.config({
 	}
 });
 
-require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user"], 
-	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User){
+require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "underscore"], 
+	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, _){
 
 	User.onInit(function(){ Newsfeed.showcase("Welcome"); });
 
 	$(document).ready(function(){
+
+		$("li").click(function(){
+			var template = _.template('#{fname} "#{tag}" #{lname}');
+
+			console.log(User.get());
+
+			var result = template(_.find(User.get().c_friends, function(user){
+				console.log(user);
+				return user.tag === $(this).attr("tag").toLowerCase();
+			}));
+
+			$("#mainframe-profile").html(result);
+		});
 
 	    $("#btn-social").click(function(){
 	        Mainframe.saturate("social");

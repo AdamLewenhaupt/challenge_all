@@ -20,13 +20,14 @@ exports.func = function profile(req, res, next){
 	    if(id){
 	    	User.findOne({_id: id }, function(err, profile){
 	            if(!err && profile){
-	                req.user = profile;
 
-	                ssv.add("user", JSON.stringify(profile));
+	                req.user = profile;
+	                ssv.add("user", JSON.stringify(req.user));
 
 	                User.find().where('_id').in(req.user.friends).exec(function(err, doc){
 	                	if(!err){
 	                		req.user.c_friends = doc;
+	                		ssv.add("friends", JSON.stringify(doc));
 			                next();
 	      				}else{
 	      					next();

@@ -1,6 +1,6 @@
 #mainframe-friend-display
     ul.friend-display
         - each friend in user.c_friends
-            li
+            li(tag=friend.tag)
                 img(src="/images/simon.png")
                 != friend.tag

@@ -22,8 +22,6 @@ define(["jquery", "./user"], function($, User){
 		window._esource = new EventSource("/event-stream/" + User.get()._id);
 		send("login", User.get().tag + " has logged in!", User.get().friends);
 
-		console.log("peter");
-
 		window._sseInits.forEach(function(func){
 			func();
 		});
