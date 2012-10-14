@@ -24,7 +24,7 @@ exports.func = function profile(req, res, next){
 	                req.user = profile;
 	                ssv.add("user", req.user);
 
-	                User.find().where('_id').in(req.user.friends).exec(function(err, doc){
+	                User.find().where('tag').in(req.user.friends).exec(function(err, doc){
 	                	if(!err){
 	                		req.user.c_friends = doc;
 	                		ssv.add("friends", doc);

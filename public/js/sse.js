@@ -44,7 +44,7 @@ define(["jquery", "./user"], function($, User){
 	// §2
 	User.onInit(function(){
 
-		window._esource = new EventSource("/event-stream/" + User.get()._id);
+		window._esource = new EventSource("/event-stream/" + User.get().tag);
 		send("login", User.get().tag + " has logged in!", User.get().friends);
 
 		window._sseInits.forEach(function(func){
