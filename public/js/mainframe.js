@@ -1,4 +1,4 @@
-define(["jquery", "./templates"], function($, Templates){
+define(["require", "jquery", "./templates", "sat"], function(require, $, Templates, sat){
 
     $(document).ready(function(){
         var $window     = $(window),
@@ -25,6 +25,7 @@ define(["jquery", "./templates"], function($, Templates){
 
 		saturate: function(id){
 		    this.$el.html(Templates.clone(id));
+            sat[id]();
 		}
 	};
 });

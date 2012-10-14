@@ -10,7 +10,7 @@ define(["jquery"], function(){
         $el: $el,
 
         clone: function(query){
-            return $el.children("#"+query+"-template:first").clone(true);
+            return $el.children("#"+query+"-template:first").clone();
         }
     };
 });
