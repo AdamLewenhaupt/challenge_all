@@ -12,8 +12,6 @@ define(["./ssv"], function(SSV){
             window._userInits.forEach(function(func){
                 func();
             });
-
-            console.log("hello");
         },
 
         onInit: function(func){
@@ -24,6 +22,7 @@ define(["./ssv"], function(SSV){
         },
 
         online: function(){ return window._online; },
-        get: function(){ return window._user; }
+        get: function(){ return window._user; },
+        friends: function(){ return SSV.get("friends"); }
     }
 });

@@ -1,5 +1,4 @@
 define(["jquery", "underscore"], function($, _){
-	console.log();
 
     $(document).ready(function(){
         window._ssv = [];

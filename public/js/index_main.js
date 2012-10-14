@@ -18,15 +18,24 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 
 	$(document).ready(function(){
 
-		$("li").click(function(){
-			var template = _.template('#{fname} "#{tag}" #{lname}');
+		$(".friend-display li").click(function(){
+			var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>'),
+				$this = $(this),
+				found = _.find(User.friends(), function(user){
+				return user.tag === $this.attr("tag").toLowerCase();
+			});
 
-			console.log(User.get());
+			var result = compiled(found);
 
-			var result = template(_.find(User.get().c_friends, function(user){
-				console.log(user);
-				return user.tag === $(this).attr("tag").toLowerCase();
-			}));
+			$("#mainframe-profile").html(result);
+		});
+
+		
+
+		$("#side-profile-frame-image").click(function(){
+			var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>');
+
+			var result = compiled(User.get());
 
 			$("#mainframe-profile").html(result);
 		});
