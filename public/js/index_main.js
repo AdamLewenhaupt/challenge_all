@@ -19,25 +19,31 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 	$(document).ready(function(){
 
 		$(".friend-display li").click(function(){
-			var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>'),
-				$this = $(this),
-				found = _.find(User.friends(), function(user){
-				return user.tag === $this.attr("tag").toLowerCase();
-			});
+
+			var $this = $(this);
+
+			$("#mainframe-profile").animate({opacity: 0}, function(){
+				var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>'),
+					found = _.find(User.friends(), function(user){
+					return user.tag === $this.attr("tag").toLowerCase();
+				});
 
 			var result = compiled(found);
 
-			$("#mainframe-profile").html(result);
+			$("#mainframe-profile").html(result).animate({opacity: 1});
+			});
 		});
 
 		
 
 		$("#side-profile-frame-image").click(function(){
-			var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>');
 
-			var result = compiled(User.get());
-
-			$("#mainframe-profile").html(result);
+			$("#mainframe-profile").animate({opacity: 0}, function(){
+				var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>'),
+					result = compiled(User.get());
+			
+				$("#mainframe-profile").html(result).animate({opacity: 1});
+			});
 		});
 
 	    $("#btn-social").click(function(){
