@@ -18,17 +18,7 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 
 	$(document).ready(function(){
 
-		var $window     = $(window),
-		    $sidebar    = $("#side-bar"),
-		    width       = $window.width() - $sidebar.width();
-
 		$("#templates").hide();
-
-	    $("#main-frame").css({
-	        width: width,
-	        height: $window.height() - 100,
-	        left: $sidebar.width()
-	    });
 
 	    $("#btn-social").click(function(){
 	        Mainframe.saturate("#social-template");
