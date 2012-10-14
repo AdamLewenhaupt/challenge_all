@@ -1,17 +1,18 @@
 define(["jquery", "underscore"], function($, _){
 	console.log();
 
-    return {
-    	init: function(){ 
-    		window._ssv = [];
+    $(document).ready(function(){
+        window._ssv = [];
 
-    		$(".ssv").each(function(){
-    			window._ssv.push({
-    				name: $(this).attr("name"),
-    				value: $(this).html()
-    			});
-    		});
-    },
+            $(".ssv").each(function(){
+                window._ssv.push({
+                    name: $(this).attr("name"),
+                    value: $(this).html()
+                });
+            });
+    });
+
+    return {
     	has: function(query){ 
     		return _.any(window._ssv, function(e){ return e.name == query });
     	},

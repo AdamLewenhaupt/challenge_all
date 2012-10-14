@@ -18,8 +18,6 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 
 	$(document).ready(function(){
 
-		SSV.init();
-
 		var $window     = $(window),
 		    $sidebar    = $("#side-bar"),
 		    width       = $window.width() - $sidebar.width();
