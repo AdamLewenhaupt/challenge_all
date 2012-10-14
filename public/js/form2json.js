@@ -1,3 +1,10 @@
+/*
+Author: Adam Lewenhaupt
+Keywords: Function, Form2Json
+Description:
+This function takes a DOM-form and converts it into a json object.
+*/
+
 define(["jquery"], function($){
 
 	return function form2JSON(form){

@@ -1,7 +1,21 @@
+/*
+Author: Adam Lewenhaupt
+Keywords: Social, Saturator
+Description:
+This is the social saturator that does following:
+
+§1:
+Addes the ability to select friends.
+
+§2:
+Added the ability to check your own profile from the profile-image.
+*/
+
 define(["jquery", "underscore", "../user"], function($, _, User){
 
     return function(){
 
+        // §1
         $(".friend-display li").click(function(){
 
             var $this = $(this);
@@ -18,6 +32,7 @@ define(["jquery", "underscore", "../user"], function($, _, User){
             });
         });
 
+        // §2
         $("#side-profile-frame-image").click(function(){
 
             $("#mainframe-profile").animate({opacity: 0}, function(){
