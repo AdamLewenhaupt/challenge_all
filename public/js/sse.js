@@ -26,7 +26,7 @@ define(["jquery", "./user"], function($, User){
 	window._sseInits = [];
 
 	// §1
-	function send(event, data, subscribers){
+	window.send = function send(event, data, subscribers){
 
 		subscribers = subscribers || [];
 
@@ -45,7 +45,6 @@ define(["jquery", "./user"], function($, User){
 	User.onInit(function(){
 
 		window._esource = new EventSource("/event-stream/" + User.get().tag);
-		send("login", User.get().tag + " has logged in!", User.get().friends);
 
 		window._sseInits.forEach(function(func){
 			func();
@@ -59,11 +58,11 @@ define(["jquery", "./user"], function($, User){
 			window._esource.addEventListener(event, delegate, false);
 		},
 
-		send: send,
+		send: window.send,
 
 		// §4
 		onInit: function(func){
-			window._sseInits.push(func);
+            window._sseInits.push(func);
 		}
 	}
 });

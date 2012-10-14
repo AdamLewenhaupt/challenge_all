@@ -40,7 +40,17 @@ require.config({
 require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "underscore"], 
 	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, _){
 
-	User.onInit(function(){ Newsfeed.showcase("Welcome"); });
+	//User.onInit(function(){ Newsfeed.showcase("Welcome"); });
+
+	SSE.onInit(function(){
+
+		SSE.send("login", User.get().tag + " has logged in!", User.get().friends);
+
+		SSE.listen("login", function(e){
+			console.log(e.data);
+			Newsfeed.showcase(e.data);
+		});
+	});		
 
 	$(document).ready(function(){
 
@@ -54,14 +64,6 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 		    Prompts.login();
 		}else{
 			User.init();
-
-			SSE.onInit(function(){
-
-				SSE.listen("login", function(e){
-					document.write("<script>alert('"+e.data+"')</script>");
-				});
-			});
-
 		}
 
 	});
