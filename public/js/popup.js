@@ -1,3 +1,18 @@
+/*
+Author: Adam Lewenhaupt
+Keywords: Popup, IO
+Description:
+popup(options) -- options: {
+    submit: string -- The name of the submit button,
+    success: func(e) -- A function that takes a parameter for form data,
+    title: string -- Popup title,
+    canCancel: bool -- Should there be a cancel button?,
+    inputs: [{name: str, type: str, value: str}] -- The input fields, name and type is DOM and value is the intro text
+}
+
+The popup function provides a way to get input from the user.
+*/
+
 define(["jquery", "underscore", "./form2json"], function($, _, form2JSON){
 	return function popup(options){
 

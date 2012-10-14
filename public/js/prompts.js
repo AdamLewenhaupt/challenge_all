@@ -1,3 +1,15 @@
+/*
+Author: Adam Lewenhaupt
+Keywords: Prompts, API
+Description:
+The Prompts interface is the gateway between the user and the client-side.
+
+§1:
+login()
+The login function is a premade popup request that prompts the user for login and on 
+success calls the Persistent.login [./persistent.js].
+*/
+
 define(["./popup", "./persistent"], function(popup, Persistent){
 	return {
 		login: function(){	
