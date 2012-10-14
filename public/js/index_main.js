@@ -26,11 +26,9 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 		if(SSV.has("req_login")){
 		    Prompts.login();
 		}else{
-
 			User.init();
 
 			SSE.onInit(function(){
-				console.log("sten");
 
 				SSE.listen("login", function(e){
 					document.write("<script>alert('"+e.data+"')</script>");
