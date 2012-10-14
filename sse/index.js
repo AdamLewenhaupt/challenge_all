@@ -18,6 +18,7 @@ exports.ajax_send = function(req, res){
         broadcast(event, data, sub);
     });
 
+    console.log("event: " + event +  ", data: " + data + ", subscribers: " + JSON.stringify(subscribers));
     res.send("success");
 }
 

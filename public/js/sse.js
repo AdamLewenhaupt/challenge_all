@@ -28,18 +28,18 @@ define(["jquery", "./user"], function($, User){
 	// §1
 	function send(event, data, subscribers){
 
-			subscribers = subscribers || [];
+		subscribers = subscribers || [];
 
-			$.ajax({
-				type: "post",
-				url: "/ajax/sse-send",
-				data: {
-					event: event,
-					data: data,
-					subscribers: JSON.stringify(subscribers)
-				}
-			});
-		}
+		$.ajax({
+			type: "post",
+			url: "/ajax/sse-send",
+			data: {
+				event: event,
+				data: data,
+				subscribers: JSON.stringify(subscribers)
+			}
+		});
+	}
 
 	// §2
 	User.onInit(function(){
