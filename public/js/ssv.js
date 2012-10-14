@@ -5,10 +5,17 @@ define(["jquery", "underscore"], function($, _){
         window._ssv = [];
 
             $(".ssv").each(function(){
-                window._ssv.push({
-                    name: $(this).attr("name"),
-                    value: $(this).html()
-                });
+                if($(this).is(".json")){
+                    window._ssv.push({
+                        name: $(this).attr("name"),
+                        value: $.parseJSON($(this).html())
+                    });
+                }else{
+                    window._ssv.push({
+                        name: $(this).attr("name"),
+                        value: $(this).html()
+                    });
+                }
             });
     });
 

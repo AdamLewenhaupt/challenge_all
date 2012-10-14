@@ -6,7 +6,7 @@ define(["./ssv"], function(SSV){
     return {
         init: function(){
 
-            window._user = $.parseJSON(SSV.get("user"));
+            window._user = SSV.get("user");
             window._online = !window._online;
 
             window._userInits.forEach(function(func){

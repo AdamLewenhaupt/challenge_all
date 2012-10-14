@@ -9,5 +9,8 @@ html
         block content
     #ssv 
         - ssv.forEach(function(ssv){
-            .ssv(name= ssv.name)= ssv.value
+            - if(ssv.json)
+                .ssv.json(name= ssv.name)= ssv.value
+            - else
+                .ssv(name= ssv.name)= ssv.value
         - })

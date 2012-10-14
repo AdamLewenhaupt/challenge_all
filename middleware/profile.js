@@ -22,12 +22,12 @@ exports.func = function profile(req, res, next){
 	            if(!err && profile){
 
 	                req.user = profile;
-	                ssv.add("user", JSON.stringify(req.user));
+	                ssv.add("user", req.user);
 
 	                User.find().where('_id').in(req.user.friends).exec(function(err, doc){
 	                	if(!err){
 	                		req.user.c_friends = doc;
-	                		ssv.add("friends", JSON.stringify(doc));
+	                		ssv.add("friends", doc);
 			                next();
 	      				}else{
 	      					next();
