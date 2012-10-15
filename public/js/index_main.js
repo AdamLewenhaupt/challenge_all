@@ -61,6 +61,8 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 
 	$(document).ready(function(){
 
+		$(".button").button();
+
 		// §3
 	    $("#btn-social").click(function(){
 	        Mainframe.saturate("social");
