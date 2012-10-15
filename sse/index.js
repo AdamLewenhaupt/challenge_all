@@ -12,6 +12,19 @@ var EventEmitter = require('events').EventEmitter,
 
 exports.Events = new EventEmitter();
 
+exports.ajax_send = function(req, res){
+    var event = req.body.event,
+        data = req.body.data,
+        subscribers = JSON.parse(req.body.subscribers);
+
+    subscribers.forEach(function(sub){
+        broadcast(event, data, sub);
+    });
+
+    console.log("event: " + event +  ", data: " + data + ", subscribers: " + JSON.stringify(subscribers));
+    res.send("success");
+}
+
 exports.eventStream =  function(req, res){
     
     if(req.headers.accept == "text/event-stream"){
@@ -68,14 +81,3 @@ function broadcast(event, data, id){
 
     return true;
 }
-
-exports.helloWorld = function(req, res){
-    if(broadcast("hello", "<script type='text/javascript'>alert('hello from "+req.params.id+"')</script>", req.params.to)){
-        res.write("Sent a message to: " +  req.params.to);
-    }else{
-        res.send(400);
-    }
-    res.end();
-}
-
-exports.broadcast = broadcast;

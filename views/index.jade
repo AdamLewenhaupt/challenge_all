@@ -1,11 +1,17 @@
 extends layout
 
 block head
-    script(type="text/javascript", src="/javascripts/index_default.js")
-
+    script(type="text/javascript", src="/js/require/require.js", data-main="/js/index_main")
 block content
     #side-bar
         #side-profile-frame
-        #side-nav
+            img#side-profile-frame-image(src="/images/jag.png")
+        .button.hl#btn-challenges Challenges
+        .button.hl#btn-social Social
+        .button.hl#btn-achivements Achievements
+        .button.hl#btn-find-challenge Find Challenge
+        .button.hl#btn-create-challenge Create Challenge
     #main-frame
-    #newsfeed-frame
+    #newsfeed
+    #templates
+        include mainframe/social

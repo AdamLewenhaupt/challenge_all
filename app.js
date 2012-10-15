@@ -19,25 +19,17 @@ var app = express();
 
 config.app = app;
 
-var connections = [];
-
 app.configure(config.dev);
 
 //Gets
 app.get('/', routes.index);
-app.get('/cs_testing', routes.cs_testing);
-app.get('/ss_testing', routes.ss_testing);
-app.get('/ss_testing/profiles', routes.ss_testing_profiles);
 app.get('/event-stream/:id', sse.eventStream);
-app.get('/hello-world/:id/:to', sse.helloWorld);
-app.get('/hello-world/:id', sse.helloWorld);
-app.get('/sse', routes.sse_testing);
+app.get('/ajax/login', routes.ajax.login);
 
 //Posts
-app.post('/ss_testing/profiles', routes.ss_testing_create_profile);
-
-//Deletes
-app.del('/ss_testing/profiles/:tag', routes.ss_testing_delete_profile);
+app.post('/ajax/create', routes.ajax.create);
+app.post("/ajax/make-friends", routes.ajax.make_friends);
+app.post("/ajax/sse-send", sse.ajax_send);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server up and running on port: " + app.get('port'));
