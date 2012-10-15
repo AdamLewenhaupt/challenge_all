@@ -13,14 +13,15 @@ popup(options) -- options: {
 The popup function provides a way to get input from the user.
 */
 
-define(["jquery", "underscore", "./form2json"], function($, _, form2JSON){
+define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _, form2JSON){
 	return function popup(options){
 
     var width = 200,
-        height = 60 + options.inputs.length * 30,
+        height = 105 + options.inputs.length * 30,
         bounds = { width: $(document).width(), height: $(document).height() },
         $focuser = $("<div/>").addClass("focuser"),
         $popup = $("<div/>").addClass("popup"),
+        $header = $("<div/>").addClass("header"),
         $form = $("<form/>"),
         $submit = $("<button/>").addClass("submit"),
         $cancel = $("<button/>").addClass("cancel"),
@@ -29,13 +30,24 @@ define(["jquery", "underscore", "./form2json"], function($, _, form2JSON){
     $form.html(_.map(options.inputs, function(input){
         return template(input);
     }).join('<br/>')).css({
-        margin: 10
+        margin: 10,
+        "text-align": "center"
+    });
+
+    $header.html("<h4>"+options.title+"</h4>").css({
+        width: width,
+        height: 30,
+        "line-height": "30px",
+        "background-color": "white",
+        "text-align": "center"
     });
 
     $submit.html(options.submit).click(function(){
         if(options.success) options.success(form2JSON($form));
         $popup.remove();
         $focuser.remove();
+    }).button().css({
+        "margin-left": 10
     });
 
     $cancel.click(false, function(){
@@ -57,7 +69,6 @@ define(["jquery", "underscore", "./form2json"], function($, _, form2JSON){
         width: 0,
         height: height,
         "background-color": "gray",
-        "text-align": "center",
         left: bounds.width / 2,
         top: (bounds.height - height) / 2
     });
@@ -73,7 +84,7 @@ define(["jquery", "underscore", "./form2json"], function($, _, form2JSON){
         width: width,
         left: "-="+(width/2)
     }, 500, function(){
-        $popup.append($form, $submit);
+        $popup.append($header, $form, $submit);
     });
 
     $focuser.animate({ 

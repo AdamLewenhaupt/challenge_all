@@ -27,6 +27,7 @@ require.config({
 	paths: {
 		"jquery-plugins": "libs/jquery_plugins",
 	    "jquery": "libs/jquery",
+	    "jquery-ui": "libs/jquery-ui",
 	    "underscore": "libs/underscore"	
 	},
 	shim: {
@@ -34,7 +35,8 @@ require.config({
 			exports: '_'
 		},
 
-		"jquery-plugins/imagesloaded": ["jquery"]
+		"jquery-plugins/imagesloaded": ["jquery"],
+		"jquery-ui": ["jquery"]
 
 
 	},
