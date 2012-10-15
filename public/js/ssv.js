@@ -17,22 +17,31 @@ Used to get the value of a SSV.
 
 define(["jquery", "underscore"], function($, _){
 
+    window._ssvInits = [];
+    window._ssv_online = false;
+
     $(document).ready(function(){
         window._ssv = [];
 
-            $(".ssv").each(function(){
-                if($(this).is(".json")){
-                    window._ssv.push({
-                        name: $(this).attr("name"),
-                        value: $.parseJSON($(this).html())
-                    });
-                }else{
-                    window._ssv.push({
-                        name: $(this).attr("name"),
-                        value: $(this).html()
-                    });
-                }
-            });
+        $(".ssv").each(function(){
+            if($(this).is(".json")){
+                window._ssv.push({
+                    name: $(this).attr("name"),
+                    value: $.parseJSON($(this).html())
+                });
+            }else{
+                window._ssv.push({
+                    name: $(this).attr("name"),
+                    value: $(this).html()
+                });
+            }
+        });
+
+        window._ssv_online = true;
+
+        window._ssvInits.forEach(function(func){
+            func();
+        });
     });
 
     return {
@@ -46,6 +55,12 @@ define(["jquery", "underscore"], function($, _){
     		}else{
     			return undefined;
     		}
-    	}
+    	},
+
+        onInit: function(func){
+            if(!window._ssv_online)
+                window._ssvInits.push(func);
+            else func();
+        }
     };
 });

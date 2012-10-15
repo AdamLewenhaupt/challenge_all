@@ -28,7 +28,7 @@ define(["jquery", "underscore", "../user"], function($, _, User){
 
             var result = compiled(found);
 
-            $("#mainframe-profile").html(result).animate({opacity: 1});
+            $("#mainframe-profile").html(result).animate({opacity: 1}, { duration: 500, queue: false });
             });
         });
 
@@ -39,7 +39,7 @@ define(["jquery", "underscore", "../user"], function($, _, User){
                 var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>'),
                     result = compiled(User.get());
             
-                $("#mainframe-profile").html(result).animate({opacity: 1});
+                $("#mainframe-profile").html(result).animate({opacity: 1}, { duration: 500, queue: false });
             });
         });
 

@@ -25,20 +25,25 @@ starts the SSE (Server-Side Events) Connection.
 require.config({
 	baseUrl: "js/",
 	paths: {
+		"jquery-plugins": "libs/jquery_plugins",
 	    "jquery": "libs/jquery",
 	    "underscore": "libs/underscore"	
 	},
 	shim: {
 		underscore: {
 			exports: '_'
-		}
+		},
+
+		"jquery-plugins/imagesloaded": ["jquery"]
+
+
 	},
 	packages: ["sat"]
 });
 
 // §2
-require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "underscore"], 
-	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, _){
+require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "./index_load"], 
+	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, load){
 
 	//User.onInit(function(){ Newsfeed.showcase("Welcome"); });
 
