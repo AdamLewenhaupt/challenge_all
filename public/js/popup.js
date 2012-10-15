@@ -7,7 +7,7 @@ popup(options) -- options: {
     success: func(e) -- A function that takes a parameter for form data,
     title: string -- Popup title,
     canCancel: bool -- Should there be a cancel button?,
-    inputs: [{name: str, type: str, value: str}] -- The input fields, name and type is DOM and value is the intro text
+    inputs: [{name: str, type: str, label: str, tooltip: str}] -- The self explanatory.
 }
 
 The popup function provides a way to get input from the user.
@@ -25,14 +25,17 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         $form = $("<form/>"),
         $submit = $("<button/>").addClass("submit"),
         $cancel = $("<button/>").addClass("cancel"),
-        template = _.template("<%= value %><br/> <input name='<%= name %>' type='<%= type %>'/>");
+        template = _.template("<label for='<%= name %>' ><%= label %></label><br/> <input name='<%= name %>' type='<%= type %>' title='<%= tooltip %>' />");
 
     $form.html(_.map(options.inputs, function(input){
+        input.tooltip = input.tooltip || "";
         return template(input);
     }).join('<br/>')).css({
         margin: 10,
         "text-align": "center"
     });
+
+    $(document).tooltip();
 
     $header.html("<h4>"+options.title+"</h4>").css({
         width: width,

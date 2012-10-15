@@ -30,6 +30,8 @@ define(["jquery", "underscore", "../user"], function($, _, User){
 
         var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>');
 
+        $(".friend-display li div").button();
+
         // §1
         $(".friend-display li").click(function(){
 
