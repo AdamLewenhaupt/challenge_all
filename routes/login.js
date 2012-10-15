@@ -13,9 +13,6 @@ exports.route = function(req, res){
         if(!err && user){
         	user.verify(req.query.password, function(err, match){
 
-        		console.log(err);
-        		console.log(match);
-
         		if(err) res.send(err);
 
         		if(match){ 
