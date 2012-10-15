@@ -9,7 +9,7 @@ clone(query); -- (query: the mainframe content id).
 This function is used to get a clone of the template that is linked to said id.
 */
 
-define(["jquery"], function(){
+define(["jquery"], function($){
 
     var $el = $("#templates");
 

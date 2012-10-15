@@ -28,7 +28,7 @@ require.config({
 		"jquery-plugins": "libs/jquery_plugins",
 	    "jquery": "libs/jquery",
 	    "jquery-ui": "libs/jquery-ui",
-	    "underscore": "libs/underscore"	
+	    "underscore": "libs/underscore"
 	},
 	shim: {
 		underscore: {
