@@ -104,6 +104,6 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
     }, {
         queue: false,
         duration: 500
-    })
+    });
 }
 });
