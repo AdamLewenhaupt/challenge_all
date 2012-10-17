@@ -7,7 +7,8 @@ popup(options) -- options: {
     success: func(e) -- A function that takes a parameter for form data,
     title: string -- Popup title,
     canCancel: bool -- Should there be a cancel button?,
-    inputs: [{name: str, type: str, label: str, tooltip: str}] -- The self explanatory.
+    inputs: [{name: str, type: str, label: str, tooltip: str}] -- Self explanatory,
+    custom: $DOM -- Jquery element for custom html.
 }
 
 The popup function provides a way to get input from the user.
@@ -92,6 +93,10 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         left: "-="+(width/2)
     }, 500, function(){
         $popup.append($header, $form, $submit);
+        if(options.custom){
+            $popup.append(options.custom.css({ margin: 10}));
+            $popup.height($popup.height() + options.custom.height() + 10);
+        }
     });
 
     $focuser.animate({ 
