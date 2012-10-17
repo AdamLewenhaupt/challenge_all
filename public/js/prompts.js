@@ -10,8 +10,14 @@ The login function is a premade popup request that prompts the user for login an
 success calls the Persistent.login [./persistent.js].
 */
 
-define(["./popup", "./persistent"], function(popup, Persistent){
+define(["jquery", "./popup", "./persistent"], function($, popup, Persistent){
+
+	var $custom = $("<div/>").html($("<a>Sign up!</a>").click(function(){
+		alert("TODO");
+	}));
+
 	return {
+
 		login: function(){	
 			popup({
 		        title: "Login",
@@ -23,9 +29,12 @@ define(["./popup", "./persistent"], function(popup, Persistent){
 		        ],
 
 		        submit: "Login",
+
 		        success: function(e){
 		            Persistent.login(e.email, e.pass);
-		        }
+		        },
+
+		        custom: $custom
 		    });
 		}
 	}
