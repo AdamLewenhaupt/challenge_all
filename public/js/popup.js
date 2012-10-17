@@ -33,6 +33,8 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
     }).join('<br/>')).css({
         margin: 10,
         "text-align": "center"
+    }).find(":input").css({
+        border: "2px solid #4DB8DB"
     });
 
     $(document).tooltip();
@@ -41,8 +43,9 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         width: width,
         height: 30,
         "line-height": "30px",
-        "background-color": "white",
-        "text-align": "center"
+        "background-color": "#4DB8DB",
+        "text-align": "center",
+        color: "white"
     });
 
     $submit.html(options.submit).click(function(){
@@ -71,9 +74,10 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         opacity: 0,
         width: 0,
         height: height,
-        "background-color": "gray",
+        "background-color": "white",
         left: bounds.width / 2,
-        top: (bounds.height - height) / 2
+        top: (bounds.height - height) / 2,
+        border: "2px solid black"
     });
 
     if(options.canCancel){
@@ -91,7 +95,7 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
     });
 
     $focuser.animate({ 
-        opacity: 0.7
+        opacity: 0.5
     }, {
         queue: false,
         duration: 500
