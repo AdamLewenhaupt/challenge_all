@@ -6,13 +6,15 @@ This file will contain all the schemas that are used in the database.
 */
 
 var mongoose = require('mongoose'),
-	bcrypt = require('bcrypt'),
+	PasswordHash = require('phpass').PasswordHash,
 	Schema = mongoose.Schema,
 	SALT_WORK_FACTOR = 10;
 
 function get_capitalize(str){
 	return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+var passwordHash = new PasswordHash();
 
 var userSchema = new Schema({
     fname: {type: String, required: true, get: get_capitalize, lowercase: true, trim: true},
@@ -29,22 +31,12 @@ userSchema.pre('save', function(next){
 
 	if(!user.isModified('password')) return next();
 
-	bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
-		if(err) return next(err);
+	var hash = passwordHash.hashPassword(user.password);
 
-		bcrypt.hash(user.password, salt, function(err, hash){
-
-			if(err) return next(err);
-
-			user.password = hash;
-			next();
-
-		});
-	});
 });
 
 userSchema.methods.verify = function(password, cb){
-	bcrypt.compare(password, this.password, cb);
+	return passwordHash.checkPassword(password, this.password);
 };
 
 exports.User = mongoose.model('User', userSchema);

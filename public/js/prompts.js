@@ -18,7 +18,7 @@ define(["./popup", "./persistent"], function(popup, Persistent){
 		        canCancel: false,
 
 		        inputs: [
-		            { name: "email", type: "text", label: "Username", tooltip: "Your username" },
+		            { name: "email", type: "text", label: "Email", tooltip: "Your email" },
 		            { name: "pass", type: "password", label: "Password", tooltip: "Your super secret password!"}
 		        ],
 
