@@ -25,7 +25,7 @@ define(["jquery", "./popup", "./persistent"], function($, popup, Persistent){
 				{ name: "tag", type: "text", label: "Tag", tooltip: "Your tag, Make it special!"},
 				{ name: "password", type: "password", label: "Password", tooltip: "Your super secret password!" },
 				{ name: "password2", type: "password", label: "Password verification", tooltip: "Just making sure" },
-				{ name: "email", type: "text", label: "Email", tooltip: "Pick an email you will remember"}
+				{ name: "email", type: "text", label: "Email", tooltip: "Pick an email you actually use"}
 			],
 
 			submit: "Create account",
