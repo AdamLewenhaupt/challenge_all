@@ -28,7 +28,7 @@ define(["jquery", "underscore", "../user"], function($, _, User){
 
     return function(){
 
-        var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2><h3>Age: <%= age %></h3>');
+        var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2>');
 
         $("#main-frame").find(".friend-display li div").button();
 
