@@ -200,6 +200,7 @@ a {
 
 #descriptionInput{
     height: 180px;
+    resize: none;
 }
 
 #achievementBox{
