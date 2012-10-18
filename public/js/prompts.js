@@ -21,27 +21,32 @@ define(["jquery", "./popup", "./persistent"], function($, popup, Persistent){
 
 			inputs: [
 				{ name: "fname", type: "text", label: "First name", tooltip: "Your first name" },
-				{ name: "lname", type: "text", label: "Last name" tooltip: "Your last name" },
+				{ name: "lname", type: "text", label: "Last name", tooltip: "Your last name" },
 				{ name: "tag", type: "text", label: "Tag", tooltip: "Your tag, Make it special!"},
-				{ name: "password", type: "password", label: "Password", "Your super secret password!" },
-				{ name: "password2", type: "password", label: "Password verification", "Just making sure"},
+				{ name: "password", type: "password", label: "Password", tooltip: "Your super secret password!" },
+				{ name: "password2", type: "password", label: "Password verification", tooltip: "Just making sure" },
 				{ name: "email", type: "text", label: "Email", tooltip: "Pick an email you will remember"}
 			],
 
 			submit: "Create account",
 
 			success: function(e){
-				if(e.password === e.password2){
-					Persistent.createUser(e.fname, e.tag, e.lname, e.email )
+				if(e.password == e.password2){
+					Persistent.createUser(e.fname, e.tag, e.lname, e.email, e.password);
+					prompts.login(true);
+				}else{
+					alert("Passwords doesn't match");
 				}
 			}
 		});
 	}));
 
-	return {
+	var prompts = {
 
-		login: function(){	
+		login: function(morph){	
 			popup({
+				morph: morph,
+
 		        title: "Login",
 		        canCancel: false,
 
@@ -59,5 +64,7 @@ define(["jquery", "./popup", "./persistent"], function($, popup, Persistent){
 		        custom: $custom
 		    });
 		}
-	}
+	};
+
+	return prompts;
 });

@@ -26,11 +26,14 @@ var userSchema = new Schema({
 });
 
 userSchema.pre('save', function(next){
-	var user = this;
 
-	if(!user.isModified('password')) return next();
+	if(!this.isModified('password')) return next();
 
-	var hash = passwordHash.hashPassword(user.password);
+	var hash = passwordHash.hashPassword(this.password);
+
+	this.password = hash;
+
+	next();
 
 });
 
