@@ -1,9 +1,25 @@
 #mainframe-form_layout
-	form
-		| Name:
-		input(type="text", name="name")
+	form#form
+		#challengeForm
+			#challPic
+			| Name:<br>
+			input.input(type="text", name="name")br
 
-		| Description:
-		input(type="text", name="description")
+			| Description:<br>
+			textarea.input#descriptionInput(type="text", name="description",rows="10", cols="30")br
 
-		input(type="submit", value="Create Challenge")
+			|Public:
+			input#publicCheckbox(type="checkbox", name="public", value="yes")br
+
+			#achievementBox
+				|Achievement<br>
+				| Name:
+				input#achievementName(type="text", name="achievementName")
+				| Pic:
+
+			input.invButton.hl#createButton(type="submit", value="Create Challenge")
+		#friendInvite
+			.invButton.hl Challenge All
+			#friendBox
+				.invButton.hl Spinno
+			.invButton.hl#unchallengeButton Unchallenge All
