@@ -15,18 +15,30 @@ The popup function provides a way to get input from the user.
 */
 
 define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _, form2JSON){
+
+    function onMorph(bounds){
+        var $pop = window._popup.$popup;
+        $pop.animate({
+            opacity: 0
+        }, { duration: 500, queue: false, complete: function(){
+            $pop.remove();
+        } });
+    }
+
 	return function popup(options){
 
     var width = 200,
-        height = 105 + options.inputs.length * 30,
+        height = 105 + options.inputs.length * 35,
         bounds = { width: $(document).width(), height: $(document).height() },
-        $focuser = $("<div/>").addClass("focuser"),
+        $focuser = options.morph ? window._popup.$focuser : $("<div/>").addClass("focuser"),
         $popup = $("<div/>").addClass("popup"),
         $header = $("<div/>").addClass("header"),
         $form = $("<form/>"),
         $submit = $("<button/>").addClass("submit"),
         $cancel = $("<button/>").addClass("cancel"),
         template = _.template("<label for='<%= name %>' ><%= label %></label><br/> <input name='<%= name %>' type='<%= type %>' title='<%= tooltip %>' />");
+
+    if(options.morph) onMorph(bounds);
 
     $form.html(_.map(options.inputs, function(input){
         input.tooltip = input.tooltip || "";
@@ -62,14 +74,6 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         $focuser.remove();
     })
 
-    $focuser.css({
-        position: "fixed",
-        width: bounds.width,
-        height: bounds.height, 
-        opacity: 0,
-        "background-color": "black"
-    })
-
     $popup.css({
         position: "fixed",
         opacity: 0,
@@ -97,13 +101,30 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
             $popup.append(options.custom.css({ margin: 10}));
             $popup.height($popup.height() + options.custom.height() + 10);
         }
+
+        console.log($popup);
     });
 
-    $focuser.animate({ 
-        opacity: 0.5
-    }, {
-        queue: false,
-        duration: 500
-    });
+    if(!options.morph){
+        $focuser.css({
+            position: "fixed",
+            width: bounds.width,
+            height: bounds.height, 
+            opacity: 0,
+            "background-color": "black"
+        })
+    
+        $focuser.animate({ 
+            opacity: 0.5
+        }, {
+            queue: false,
+            duration: 500
+        });
+    }
+
+    window._popup = {
+        $popup: $popup,
+        $focuser: $focuser
+    }
 }
 });

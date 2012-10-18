@@ -20,18 +20,20 @@ var userSchema = new Schema({
     fname: {type: String, required: true, get: get_capitalize, lowercase: true, trim: true},
     lname: {type: String, required: true, get: get_capitalize, lowercase: true, trim: true},
     tag: {type: String, required: true, unique: true, lowercase: true, trim: true},
-    age: {type: Number, required: true},
     email: {type: String, required: true, lowercase: true, trim: true, unique: true},
     password: {type: String, required: true},
     friends: [String]
 });
 
 userSchema.pre('save', function(next){
-	var user = this;
 
-	if(!user.isModified('password')) return next();
+	if(!this.isModified('password')) return next();
 
-	var hash = passwordHash.hashPassword(user.password);
+	var hash = passwordHash.hashPassword(this.password);
+
+	this.password = hash;
+
+	next();
 
 });
 

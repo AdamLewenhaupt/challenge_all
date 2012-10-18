@@ -38,7 +38,7 @@ define(["jquery"], function($){
 		},
 
 		// §2
-		createUser: function(fname, tag, lname, age, email, password){
+		createUser: function(fname, tag, lname, email, password){
 		    $.ajax({
 		       type: "post",
 		       url: "/ajax/create",
@@ -46,7 +46,6 @@ define(["jquery"], function($){
 		           fname: fname,
 		           lname: lname,
 		           tag: tag,
-		           age: age,
 		           email: email,
 		           password: password,
 		           friends: []
