@@ -13,7 +13,29 @@ success calls the Persistent.login [./persistent.js].
 define(["jquery", "./popup", "./persistent"], function($, popup, Persistent){
 
 	var $custom = $("<div/>").html($("<a>Sign up!</a>").click(function(){
-		alert("TODO");
+		popup({
+			morph: true,
+			canCancel: false,
+
+			title: "Create account",
+
+			inputs: [
+				{ name: "fname", type: "text", label: "First name", tooltip: "Your first name" },
+				{ name: "lname", type: "text", label: "Last name" tooltip: "Your last name" },
+				{ name: "tag", type: "text", label: "Tag", tooltip: "Your tag, Make it special!"},
+				{ name: "password", type: "password", label: "Password", "Your super secret password!" },
+				{ name: "password2", type: "password", label: "Password verification", "Just making sure"},
+				{ name: "email", type: "text", label: "Email", tooltip: "Pick an email you will remember"}
+			],
+
+			submit: "Create account",
+
+			success: function(e){
+				if(e.password === e.password2){
+					Persistent.createUser(e.fname, e.tag, e.lname, e.email )
+				}
+			}
+		});
 	}));
 
 	return {
