@@ -61,6 +61,7 @@ define(["jquery"], function($){
 		    });
 		},
 
+		// §3
 		makeFriends: function(tag1, tag2){
 			$.ajax({
 				type: "post",
@@ -73,6 +74,27 @@ define(["jquery"], function($){
 					return true;
 				}
 			});
+		},
+
+
+		getUser: function(tag){
+			$.ajax({
+				type: "get",
+				url: "/ajax/get-user",
+				data: {
+					tag: tag
+				}, 
+
+				success: function(data){
+					switch(data){
+						case "not_found":
+							return false;
+						default:
+							return JSON.parse(data);
+					}
+				}
+
+			})
 		}
 	};
 

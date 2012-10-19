@@ -11,7 +11,7 @@ Addes the ability to select friends.
 Added the ability to check your own profile from the profile-image.
 */
 
-define(["jquery", "underscore", "../user"], function($, _, User){
+define(["jquery", "underscore", "../user", "../persistent"], function($, _, User, Persistent){
 
     function cap(string)
 {
@@ -35,18 +35,22 @@ define(["jquery", "underscore", "../user"], function($, _, User){
         $mainframe.find(".friend-display li div").button();
 
         $mainframe.find(".profile-menu").each(function(){
-            $(this).css("font-size", $(this).height());
+            var $this = $(this);
 
-            $(this).click(function(){
-                if($(this).val() === "Find user"){
-                    $(this).val("");
+            $this.css("font-size", $this.height());
+
+            $this.click(function(){
+                if($this.val() === "Find user"){
+                    $this.val("");
                 }
             });
 
-            $(this).keydown(function(e){
+            $this.keydown(function(e){
                 if (e.which == 13) {
                     event.preventDefault();
-                    console.log("intercepted");
+                    if(var user = Persistent.getUser($this.val())){
+                        alert(user.email);
+                    }
                 }
             });
         });
