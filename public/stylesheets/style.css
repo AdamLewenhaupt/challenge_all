@@ -218,7 +218,7 @@ a {
 
 input.profile-menu{
     height: 100%;
-    width: 50%;
+    width: 100%;
     color: gray;
 }
 
@@ -228,6 +228,7 @@ input.profile-menu:focus{
 
 #mainframe-profile-menu .profile-form{
     height: 100%;
+    width: 50%;
 }
 
 #templates{

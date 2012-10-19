@@ -33,12 +33,13 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
                 var result = saturateRenderer(user);
             
                 $("#mainframe-profile").html(result).animate({opacity: 1}, { duration: 500, queue: false });
+                runUserRelationAnalyzis(User.get(), user);
             } });
     }
 
     function runUserRelationAnalyzis(self, target){
         var friends = User.friends().indexOf(target) !== -1;
-        $("#mainframe-profile").html("Can add friends");
+        $("#mainframe-profile").append("Can add friend");
     }
 
     return function(){
@@ -68,7 +69,6 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
                         if(user){
                             displayUser(user);
                             $this.val("");
-                            runUserRelationAnalyzis(User.get(), user);
                         }else{
                             alert("Not found");
                         }
