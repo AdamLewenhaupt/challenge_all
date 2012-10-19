@@ -218,9 +218,15 @@ a {
 
 input.profile-menu{
     height: 100%;
+    width: 50%;
+    color: gray;
 }
 
-#mainframe-profile-menu.profile-form{
+input.profile-menu:focus{
+    color: #4DB8DB;
+}
+
+#mainframe-profile-menu .profile-form{
     height: 100%;
 }
 

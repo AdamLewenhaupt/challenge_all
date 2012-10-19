@@ -34,8 +34,21 @@ define(["jquery", "underscore", "../user"], function($, _, User){
 
         $mainframe.find(".friend-display li div").button();
 
-        $mainframe.find("#mainframe-profile-menu").each(function(){
+        $mainframe.find(".profile-menu").each(function(){
             $(this).css("font-size", $(this).height());
+
+            $(this).click(function(){
+                if($(this).val() === "Find user"){
+                    $(this).val("");
+                }
+            });
+
+            $(this).keydown(function(e){
+                if (e.which == 13) {
+                    event.preventDefault();
+                    console.log("intercepted");
+                }
+            });
         });
 
         // §1
