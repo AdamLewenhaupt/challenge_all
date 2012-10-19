@@ -33,13 +33,27 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
                 var result = saturateRenderer(user);
             
                 $("#mainframe-profile").html(result).animate({opacity: 1}, { duration: 500, queue: false });
-                runUserRelationAnalyzis(User.get(), user);
             } });
     }
 
     function runUserRelationAnalyzis(self, target){
-        var friends = User.friends().indexOf(target) !== -1;
-        $("#mainframe-profile").append("Can add friend");
+        var friends = User.friends().indexOf(target) !== -1,
+            $dynamic = $("#main-frame").find("#mainframe-profile-menu .dynamic-content").html("");
+
+        if(!friends){
+            $addFriend = $("<div/>").html("Add friend").css({
+                width: "50%",
+                height: "100%",
+            }).button().click(function(){
+                alert("TODO: send friend request :)");
+            });
+
+            $dynamic.append($addFriend);
+
+            $addFriend.children("span").css({
+                "line-height": $addFriend.height()+"px"
+            })
+        }
     }
 
     return function(){
@@ -68,6 +82,7 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
                     Persistent.getUser($this.val(), function(err, user){
                         if(user){
                             displayUser(user);
+                            runUserRelationAnalyzis(User.get(), user);
                             $this.val("");
                         }else{
                             alert("Not found");

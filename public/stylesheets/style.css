@@ -229,6 +229,15 @@ input.profile-menu:focus{
 #mainframe-profile-menu .profile-form{
     height: 100%;
     width: 50%;
+    position: absolute;
+}
+
+#mainframe-profile-menu .dynamic-content{
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    right: 0px;
+
 }
 
 #templates{
