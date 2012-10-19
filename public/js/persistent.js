@@ -76,8 +76,8 @@ define(["jquery"], function($){
 			});
 		},
 
-
-		getUser: function(tag){
+		// §4
+		getUser: function(tag, cb){
 			$.ajax({
 				type: "get",
 				url: "/ajax/get-user",
@@ -86,11 +86,12 @@ define(["jquery"], function($){
 				}, 
 
 				success: function(data){
-					switch(data){
-						case "not_found":
-							return false;
-						default:
-							return JSON.parse(data);
+					if(typeof data === 'string'){
+						if(data === "not_found"){
+							cb(data, null);
+						}
+					}else{
+						cb(null, data);
 					}
 				}
 

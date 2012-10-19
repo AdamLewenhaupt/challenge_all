@@ -13,31 +13,44 @@ Added the ability to check your own profile from the profile-image.
 
 define(["jquery", "underscore", "../user", "../persistent"], function($, _, User, Persistent){
 
-    function cap(string)
-{
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+    var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2>');
 
-    function renderUser(template, user){
+    function cap(string)
+    {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function saturateRenderer(user){
         var temp = $.extend({}, user);
         temp.fname = cap(temp.fname);
         temp.tag = cap(temp.tag);
         temp.lname = cap(temp.lname);
-        return template(temp);
+        return compiled(temp);
+    }
+
+    function displayUser(user){
+        $("#mainframe-profile").animate({opacity: 0}, { duration: 500, queue: false, complete: function(){
+                var result = saturateRenderer(user);
+            
+                $("#mainframe-profile").html(result).animate({opacity: 1}, { duration: 500, queue: false });
+            } });
+    }
+
+    function runUserRelationAnalyzis(self, target){
+        var friends = User.friends().indexOf(target) !== -1;
+        $("#mainframe-profile").html("Can add friends");
     }
 
     return function(){
 
         var $mainframe = $("#main-frame");
 
-        var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2>');
-
         $mainframe.find(".friend-display li div").button();
 
         $mainframe.find(".profile-menu").each(function(){
             var $this = $(this);
 
-            $this.css("font-size", $this.height());
+            $this.css("font-size", $this.height() * 0.8);
 
             $this.click(function(){
                 if($this.val() === "Find user"){
@@ -46,11 +59,23 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
             });
 
             $this.keydown(function(e){
+
                 if (e.which == 13) {
-                    event.preventDefault();
-                    if(var user = Persistent.getUser($this.val())){
-                        alert(user.email);
-                    }
+
+                    e.preventDefault();
+
+                    Persistent.getUser($this.val(), function(err, user){
+                        if(user){
+                            displayUser(user);
+                            $this.val("");
+                            runUserRelationAnalyzis(User.get(), user);
+                        }else{
+                            alert("Not found");
+                        }
+
+                    });
+
+                    return false;
                 }
             });
         });
@@ -60,25 +85,16 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
 
             var $this = $(this);
 
-            $("#mainframe-profile").animate({opacity: 0}, { duration: 500, queue: false, complete: function(){
-                var found = _.find(User.friends(), function(user){
-                    return user.tag === $this.attr("tag");
-                });
+           var found = _.find(User.friends(), function(user){
+                return user.tag === $this.attr("tag");
+            });
 
-            var result = renderUser(compiled, found);
-
-            $("#mainframe-profile").html(result).animate({opacity: 1}, { duration: 500, queue: false });
-            } });
+            displayUser(found);
         });
 
         // §2
         $("#side-profile-frame-image").click(function(){
-
-            $("#mainframe-profile").animate({opacity: 0}, { duration: 500, queue: false, complete: function(){
-                var result = renderUser(compiled, User.get());
-            
-                $("#mainframe-profile").html(result).animate({opacity: 1}, { duration: 500, queue: false });
-            } });
+            displayUser(User.get());
         });
 
     };
