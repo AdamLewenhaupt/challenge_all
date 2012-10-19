@@ -28,9 +28,15 @@ define(["jquery", "underscore", "../user"], function($, _, User){
 
     return function(){
 
+        var $mainframe = $("#main-frame");
+
         var compiled = _.template('<h1><%= fname %> "<%= tag %>" <%= lname %></h1><h2><%= email %></h2>');
 
-        $("#main-frame").find(".friend-display li div").button();
+        $mainframe.find(".friend-display li div").button();
+
+        $mainframe.find("#mainframe-profile-menu").each(function(){
+            $(this).css("font-size", $(this).height());
+        });
 
         // §1
         $(".friend-display li").click(function(){
