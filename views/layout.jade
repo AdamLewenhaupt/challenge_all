@@ -3,11 +3,15 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/jquery-ui-1.9.0.custom.min.css')
     block head
   body
     #content
         block content
     #ssv 
         - ssv.forEach(function(ssv){
-            .ssv(name= ssv.name)= ssv.value
+            - if(ssv.json)
+                .ssv.json(name= ssv.name)= ssv.value
+            - else
+                .ssv(name= ssv.name)= ssv.value
         - })

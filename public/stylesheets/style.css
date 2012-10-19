@@ -4,8 +4,23 @@
 }
 
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: black;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: black;
+}
+
+#background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #45484d; /* Old browsers */
+    background: -moz-radial-gradient(center, ellipse cover,  #45484d 0%, #000000 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center,  #45484d 0%,#000000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 
 a {
@@ -24,15 +39,17 @@ a {
 }
 
 #side-bar{
-    background-color: green;
+    position: relative;
+    left: -300px;
+    background-color: white;
     position: fixed;
-    width: 150px;
+    width: 170px;
     height: 300px;
 }
 
 #side-profile-frame{
     width: fill;
-    height: 140px;
+    height: 170px;
     background-color: blue;
 }
 
@@ -70,8 +87,13 @@ a {
 #main-frame{
     position: absolute;
     height: 400;
-    background-color: gray;
+    background-color: rgb(235, 235, 235);
     color: white;
+    opacity: 0;
+
+    /* IE */
+    zoom: 1;
+    filter: alpha(opacity = 0); 
 }
 
 #footer{
@@ -83,7 +105,7 @@ a {
 }
 
 .button{
-    width: fill;
+    width: 100%;
     height: 36px;
     background-color: white;
     border-top: 2px solid #B8BDC0;
@@ -125,7 +147,7 @@ a {
     position: absolute;
     right: 0px;
     width: 30%;
-    height: 99%;
+    height: 100%;
     border: 2px solid white;
 
     overflow: hidden;
@@ -137,24 +159,32 @@ a {
 
 #mainframe-friend-display ul li{
     position: relative;
-    height: 100px;
+    height: 120px;
     background-color: white;
-    border-bottom: 2px solid black;
-    color: black;
+    border: 1px solid #4DB8DB;
     line-height: 100px;
     font-size: 24px;
     text-align: center;
+    width: 100%;
 
-    background: #f2f6f8; /* Old browsers */
-    background: -moz-linear-gradient(top,  #f2f6f8 0%, #d8e1e7 50%, #b5c6d0 51%, #e0eff9 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f6f8), color-stop(50%,#d8e1e7), color-stop(51%,#b5c6d0), color-stop(100%,#e0eff9)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9',GradientType=0 ); /* IE6-9 */
+}
 
+#mainframe-friend-display ul li div{
+    width: 100%;
+    height: 100%;
+    position: relative;
 
+}
+
+#mainframe-friend-display ul li div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+#mainframe-friend-display ul li div span{
+    line-height: 100px;
 
 }
 
@@ -166,11 +196,39 @@ a {
     height: 90px;
 }
 
-#social-template div *{
-    margin: 5px;
+#social-template{
+    color: black;
+    background-color: rgb(235, 235, 235);
+}
+
+#mainframe-profile{
+    position: absolute;
+    background-color: rgb(215, 215, 215);
+    width: 70%;
+    height: 85%;
+    border-bottom: 1px solid #4DB8DB;
+}
+
+#mainframe-profile-menu{
+    position: absolute;
+    width: 70%;
+    height: 15%;
+    bottom: 0px;
+}
+
+input.profile-menu{
+    height: 100%;
+}
+
+#mainframe-profile-menu.profile-form{
+    height: 100%;
 }
 
 #templates{
+    display: none;
+}
+
+#ssv{
     display: none;
 }
 
@@ -178,5 +236,5 @@ a {
     font: 100px "Lucida Grande",Helvetica,Arial,sans-serif;
     line-height: 100px;
     color: white;
-
+    white-space: nowrap;
 }

@@ -1,17 +1,50 @@
+/*
+Author: Adam Lewenhaupt
+Keywords: SSV, API, Server-Sent-Variables
+Description:
+The SSV API provides a interface to the server-sent-variables
+which is a way to provide information from the server without
+using ajax or get.
+
+§1:
+has(query); -- (query: the name of the ssv).
+Used to check if a SSV exists.
+
+§2:
+get(query); -- (query: the name of the ssv).
+Used to get the value of a SSV.
+*/
+
 define(["jquery", "underscore"], function($, _){
-	console.log();
+
+    window._ssvInits = [];
+    window._ssv_online = false;
+
+    $(document).ready(function(){
+        window._ssv = [];
+
+        $(".ssv").each(function(){
+            if($(this).is(".json")){
+                window._ssv.push({
+                    name: $(this).attr("name"),
+                    value: $.parseJSON($(this).html())
+                });
+            }else{
+                window._ssv.push({
+                    name: $(this).attr("name"),
+                    value: $(this).html()
+                });
+            }
+        });
+
+        window._ssv_online = true;
+
+        window._ssvInits.forEach(function(func){
+            func();
+        });
+    });
 
     return {
-    	init: function(){ 
-    		window._ssv = [];
-
-    		$(".ssv").each(function(){
-    			window._ssv.push({
-    				name: $(this).attr("name"),
-    				value: $(this).html()
-    			});
-    		});
-    },
     	has: function(query){ 
     		return _.any(window._ssv, function(e){ return e.name == query });
     	},
@@ -22,6 +55,12 @@ define(["jquery", "underscore"], function($, _){
     		}else{
     			return undefined;
     		}
-    	}
+    	},
+
+        onInit: function(func){
+            if(!window._ssv_online)
+                window._ssvInits.push(func);
+            else func();
+        }
     };
 });

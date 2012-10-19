@@ -10,5 +10,9 @@
     "jade": "*",
     "mongoose": "*",
     "underscore": "*"
+  },
+  "engines": {
+    "node": "0.8.12",
+    "npm": "1.1.49"
   }
 }

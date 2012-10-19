@@ -19,7 +19,7 @@ define(["jquery"], function($){
 			$newsfeed.append($new.html(text).addClass("novelty"));
 			$new.css({right: -$new.width()});
 			$new.animate({
-				right: '+='+($newsfeed.width() +$new.width())
+				right: '+='+($newsfeed.width() + $new.width())
 			}, 5000, function() {
 		    // Animation complete.
 		   		spawnNews = true;

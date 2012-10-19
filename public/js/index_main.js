@@ -1,55 +1,79 @@
+/*
+Author: Adam Lewenhaupt
+Keywords: Index, Main
+Description:
+This is the main file for the index page, it's basicaly a virtual entry point to
+the client side and does the following.
+
+§1:
+Initialize the require settings.
+
+§2:
+Make the main require call, equivilent to a main() function in c/c++.
+
+§3:
+Makes the social button saturate the mainframe with the social content.
+
+§4:
+Checks if the 'req_login' SSV (Server-Sent-Variable) is declared, meaning that we need to login.
+If it is required we prompt for login. Else we initialize the user [./user.js] and 
+starts the SSE (Server-Side Events) Connection.
+
+*/
+
+// §1
 require.config({
 	baseUrl: "js/",
 	paths: {
+		"jquery-plugins": "libs/jquery_plugins",
 	    "jquery": "libs/jquery",
-	    "underscore": "libs/underscore"	
+	    "jquery-ui": "libs/jquery-ui",
+	    "underscore": "libs/underscore"
 	},
 	shim: {
 		underscore: {
 			exports: '_'
-		}
-	}
+		},
+
+		"jquery-plugins/imagesloaded": ["jquery"],
+		"jquery-ui": ["jquery"]
+
+
+	},
+	packages: ["sat"]
 });
 
-require(["jquery", "./mainframe", "./ssv", "./sse", "./newsfeed", "./prompts"], function($, Mainframe, SSV, SSE, Newsfeed, Prompts){
+// §2
+require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "./index_load"], 
+	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, load){
+
+	//User.onInit(function(){ Newsfeed.showcase("Welcome"); });
+
+	SSE.onInit(function(){
+
+		SSE.send("login", User.get().tag + " has logged in!", User.get().friends);
+
+		SSE.listen("login", function(e){
+			console.log(e.data);
+			Newsfeed.showcase(e.data);
+		});
+	});		
 
 	$(document).ready(function(){
 
-		SSV.init();
+		$(".button").button();
 
-		var $window     = $(window),
-		    $sidebar    = $("#side-bar"),
-		    width       = $window.width() - $sidebar.width();
-
-		$("#templates").hide();
-
-	    $("#main-frame").css({
-	        width: width,
-	        height: $window.height() - 100,
-	        left: $sidebar.width()
-	    });
-
+		// §3
 	    $("#btn-social").click(function(){
-	        Mainframe.saturate("#social-template");
+	        Mainframe.saturate("social");
 	    });
 
-
+	    // §4
 		if(SSV.has("req_login")){
 		    Prompts.login();
 		}else{
-			var user = SSV.get("user");
-			window._user = $.parseJSON(user);
-
-			console.log(SSE);
-
-			SSE.init(function(){
-				SSE.listen("login", function(e){
-					document.write("<script>alert('"+e.data+"')</script>");
-				});
-			});
+			User.init();
 		}
-
-		Newsfeed.showcase("Welcome");
 
 	});
 });
