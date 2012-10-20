@@ -10,6 +10,7 @@ var ajax_login = require('./login'),
     ajax_create = require('./create'),
     ajax_make_friends = require('./make_friends'),
     ajax_get_user = require("./get_user"),
+    ajax_send_friend_request = require("./send_friend_request"),
     ssv = require('../ssv');
 
 exports.index = function(req, res){
@@ -20,5 +21,6 @@ exports.ajax = {
 	get_user: ajax_get_user.route,
     login: ajax_login.route,
     create: ajax_create.route,
-    make_friends: ajax_make_friends.route
+    make_friends: ajax_make_friends.route,
+    send_friend_request: ajax_send_friend_request.route
 };

@@ -55,3 +55,12 @@ userSchema.methods.getPublic = function(){
 }
 
 exports.User = mongoose.model('User', userSchema);
+
+
+var eventSchema = new Schema({
+	name: String,
+	user: String,
+	data: [String]
+});
+
+exports.Event = mongoose.model('Event', eventSchema);

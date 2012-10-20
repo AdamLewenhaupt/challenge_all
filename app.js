@@ -30,6 +30,7 @@ app.get("/ajax/get-user", routes.ajax.get_user);
 app.post('/ajax/create', routes.ajax.create);
 app.post("/ajax/make-friends", routes.ajax.make_friends);
 app.post("/ajax/sse-send", sse.ajax_send);
+app.post("/ajax/send-friend-request", routes.ajax.send_friend_request);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server up and running on port: " + app.get('port'));
