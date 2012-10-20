@@ -41,12 +41,16 @@ userSchema.methods.verify = function(password, cb){
 	return passwordHash.checkPassword(password, this.password);
 };
 
-userScheme.methods.getPublic = function(){
+userSchema.methods.getPublic = function(){
+	var self = this;
+
 	return {
-		fname: this.fname,
-		tag: this.tag,
-		lname: this.lname,
-		email: this.email
+		_id: self._id,
+		fname: self.fname,
+		tag: self.tag,
+		lname: self.lname,
+		email: self.email,
+		friends: self.friends
 	}
 }
 

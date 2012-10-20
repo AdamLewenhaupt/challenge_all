@@ -21,7 +21,7 @@ exports.func = function profile(req, res, next){
 	    	User.findOne({_id: id }, function(err, profile){
 	            if(!err && profile){
 
-	                req.user = profile;
+	                req.user = profile.getPublic();
 	                ssv.add("user", req.user);
 
 	                User.find().where('tag').in(req.user.friends).exec(function(err, doc){
@@ -44,7 +44,6 @@ exports.func = function profile(req, res, next){
 		    	fname: "@fname",
 		    	tag: "@tag",
 		    	lname: "@lname",
-		    	age: "@age",
 		    	friends: [],
 		    	c_friends: []
 		    };
