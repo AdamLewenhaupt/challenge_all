@@ -45,7 +45,10 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
                 width: "50%",
                 height: "100%",
             }).button().click(function(){
-                alert("TODO: send friend request :)");
+                Persistent.sendFriendRequest(User.get().tag, target.tag, function(err){
+                    if(err) alert(err);
+                    else alert("Sent friend request");
+                });
             });
 
             $dynamic.append($addFriend);

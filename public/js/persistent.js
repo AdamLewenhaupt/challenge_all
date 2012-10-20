@@ -96,6 +96,28 @@ define(["jquery"], function($){
 				}
 
 			})
+		},
+
+		sendFriendRequest: function(sender, target, cb){
+			$.ajax({
+				type: "post",
+				url: "/ajax/send-friend-request",
+				data: {
+					sender: sender,
+					target: target
+				},
+				success: function(data){
+					if(!cb) return;
+					switch(data){
+						case "sent":
+							cb(null);
+							return;
+						default:
+							cb(data);
+							return;
+					}
+				}
+			});
 		}
 	};
 
