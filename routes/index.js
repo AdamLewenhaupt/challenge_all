@@ -20,7 +20,7 @@ exports.index = function(req, res){
 exports.ajax = {
 	get_user: ajax_get_user.route,
     login: ajax_login.route,
-    create: ajax_create_user.route,
+    create_user: ajax_create_user.route,
     make_friends: ajax_make_friends.route,
     send_friend_request: ajax_send_friend_request.route
 };

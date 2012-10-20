@@ -27,7 +27,7 @@ app.get('/ajax/login', routes.ajax.login);
 app.get("/ajax/get-user", routes.ajax.get_user);
 
 //Posts
-app.post('/ajax/create-user', routes.ajax.create_user);
+app.post("/ajax/create-user", routes.ajax.create_user);
 app.post("/ajax/make-friends", routes.ajax.make_friends);
 app.post("/ajax/sse-send", sse.ajax_send);
 app.post("/ajax/send-friend-request", routes.ajax.send_friend_request);

@@ -1,5 +1,6 @@
 var models = require('../models'),
-    User = models.schemas.User;
+    User = models.schemas.User,
+    Event = models.schemas.Event;
 
 exports.route = function(req, res){
 	var tag1 = req.body.tag1,
@@ -22,5 +23,8 @@ exports.route = function(req, res){
 		doc2.save();
 
 		res.send("success");
+	});
+
+	Event.remove({user: tag1, name: "friend-request"}, function(err){
 	});
 }

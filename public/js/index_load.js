@@ -12,7 +12,7 @@ logged in and the profile image is loaded.
 Fade in the mainframe.
 */
 
-define(["jquery", "./ssv", "jquery-plugins/imagesloaded"], function($, SSV, il){
+define(["jquery", "./ssv", "jquery-plugins/imagesloaded", "underscore", "./persistent"], function($, SSV, il, _, Persistent){
 
 	SSV.onInit(function(){
 		if(!SSV.has("req_login")){
@@ -27,6 +27,19 @@ define(["jquery", "./ssv", "jquery-plugins/imagesloaded"], function($, SSV, il){
 			});
 			
 		}
+
+		console.log("ohoy");
+		var events = SSV.get("events");
+
+		_.map(events, function(event){
+
+			if(event.name === "friend-request"){
+				var result = prompt("Accept friend request from " + event.user + " ? (y/n)");
+				if(result){
+					Persistent.makeFriends(event.user, event.data[0]);
+				}
+			}
+		});
 
 	});
 });
