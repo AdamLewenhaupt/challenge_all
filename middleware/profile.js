@@ -11,7 +11,8 @@ If there is we load it otherwise we prompt for login.
 
 var ssv = require('../ssv'),
 	models = require('../models'),
-	User = models.schemas.User;
+	User = models.schemas.User,
+	Event = models.schemas.Event;
 
 exports.func = function profile(req, res, next){
 
@@ -33,6 +34,7 @@ exports.func = function profile(req, res, next){
 	      					next();
 	      				}
                 	});
+
 	            }else{
 	                next();
 	            }

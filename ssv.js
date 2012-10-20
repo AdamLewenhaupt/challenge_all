@@ -6,12 +6,11 @@ exports.add = function(name, value){
     }else{
         ssv.push({name: name, value: JSON.stringify(value), json: true});
     }
-
-	ssv.push({name: name, value: value});
 }
 
 exports.fetch = function(){
 	var retval = ssv;
 	ssv = [];
+	console.log(retval);
 	return retval;
 }

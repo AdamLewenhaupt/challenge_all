@@ -8,3 +8,4 @@ Interface to modules:
 */
 
 exports.profile = require('./profile').func;
+exports.events = require('./events').func;
