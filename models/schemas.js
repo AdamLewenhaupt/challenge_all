@@ -41,4 +41,13 @@ userSchema.methods.verify = function(password, cb){
 	return passwordHash.checkPassword(password, this.password);
 };
 
+userScheme.methods.getPublic = function(){
+	return {
+		fname: this.fname,
+		tag: this.tag,
+		lname: this.lname,
+		email: this.email
+	}
+}
+
 exports.User = mongoose.model('User', userSchema);
