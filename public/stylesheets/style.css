@@ -262,7 +262,7 @@ input.profile-menu:focus{
     color: black;
 }
 
-#form{
+#mainframe-form_layout form{
     margin-left: 10px;
 }
 
@@ -277,6 +277,10 @@ input.profile-menu:focus{
     height: 50px;
     margin-bottom: 5px;
     float: left;
+}
+
+#achievementBox input{
+    width: 60%;
 }
 
 #dateBox{
@@ -312,6 +316,7 @@ input.profile-menu:focus{
 
 .invButton{
     background-color: white;
+    position: relative;
     width:100%;
     height: 50px;
     line-height: 50px;
@@ -335,6 +340,16 @@ input.profile-menu:focus{
     background-color: lightgrey;
     width:100%;
     height: 420px;
+    list-style-type: none;
+}
+
+#friendBox .ui-selecting{
+    background: #BFE5F2;
+}
+
+#friendBox .ui-selected{
+    background: #4DB8DB; 
+    color: white;
 }
 
 #createButton{
