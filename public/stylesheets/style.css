@@ -240,9 +240,18 @@ a {
 
 #achievementBox{
     border: 1px solid grey;
-    width: 100%;
+    width: 49.5%;
     height: 50px;
     margin-bottom: 5px;
+    float: left;
+}
+
+#dateBox{
+    border: 1px solid grey;
+    width: 49.5%;
+    height: 50px;
+    margin-bottom: 5px;
+    float: right;
 }
 
 #friendInvite{
@@ -277,12 +286,12 @@ a {
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
     margin-top: 5px;
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: default;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   cursor: default;
 }
 
 .invButton:active{
@@ -296,6 +305,6 @@ a {
 }
 
 #createButton{
-    font: 30px "Lucida Grande",Helvetica,Arial,sans-serif;
+    font-size: 30px;
     border: 1px solid grey;
 }
