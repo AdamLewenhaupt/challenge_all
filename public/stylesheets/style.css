@@ -255,3 +255,89 @@ input.profile-menu:focus{
     color: white;
     white-space: nowrap;
 }
+
+#mainframe-form_layout{
+    background-color: rgb(235, 235, 235);
+    font: 18px "Lucida Grande",Helvetica,Arial,sans-serif;
+    color: black;
+}
+
+#form{
+    margin-left: 10px;
+}
+
+#descriptionInput{
+    height: 180px;
+    resize: none;
+}
+
+#achievementBox{
+    border: 1px solid grey;
+    width: 49.5%;
+    height: 50px;
+    margin-bottom: 5px;
+    float: left;
+}
+
+#dateBox{
+    border: 1px solid grey;
+    width: 49.5%;
+    height: 50px;
+    margin-bottom: 5px;
+    float: right;
+}
+
+#friendInvite{
+    background-color: lightgrey;
+    width: 30%;
+    height: 550px;
+    float: right;
+}
+
+#challengeForm{
+    width:69%;
+    float: left;
+}
+
+#challPic{
+    background-color: black;
+    width: 100%;
+    height: 150px;
+    margin-top: 10px;
+}
+
+.input{
+    width: 100%;
+}
+
+.invButton{
+    background-color: white;
+    width:100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    margin-top: 5px;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   cursor: default;
+}
+
+.invButton:active{
+    background-color: #4DB8DB;
+}
+
+#friendBox{
+    background-color: lightgrey;
+    width:100%;
+    height: 420px;
+}
+
+#createButton{
+    font-size: 30px;
+    border: 1px solid grey;
+}
