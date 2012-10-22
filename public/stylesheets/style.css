@@ -256,22 +256,23 @@ input.profile-menu:focus{
     white-space: nowrap;
 }
 
-#mainframe-form_layout{
+#mainframe-form-layout{
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-color: rgb(235, 235, 235);
     font: 18px "Lucida Grande",Helvetica,Arial,sans-serif;
     color: black;
 }
 
-#mainframe-form_layout form{
-    margin-left: 10px;
-}
-
 #descriptionInput{
-    height: 180px;
+    position: relative;
+    height: 50%;
     resize: none;
 }
 
 #achievementBox{
+    position: relative;
     border: 1px solid grey;
     width: 49.5%;
     height: 50px;
@@ -284,23 +285,27 @@ input.profile-menu:focus{
 }
 
 #dateBox{
+    position: absolute;
     border: 1px solid grey;
     width: 49.5%;
     height: 50px;
     margin-bottom: 5px;
-    float: right;
+    left: 50%;
 }
 
 #friendInvite{
+    position: absolute;
     background-color: lightgrey;
     width: 30%;
-    height: 550px;
-    float: right;
+    height: 100%;
+    left: 70%;
 }
 
 #challengeForm{
+    position: absolute;
     width:69%;
     float: left;
+    margin-left: 5px;
 }
 
 #challPic{
@@ -337,9 +342,10 @@ input.profile-menu:focus{
 }
 
 #friendBox{
+    position: relative;
     background-color: lightgrey;
     width:100%;
-    height: 420px;
+    height: 83%;
     list-style-type: none;
 }
 
