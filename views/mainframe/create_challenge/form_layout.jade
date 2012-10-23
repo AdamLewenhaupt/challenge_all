@@ -1,28 +1,28 @@
 #mainframe-form-layout
     form
         #challengeForm
-            #challPic
+            #challengePicture
             | Name:<br>
-            input.input(type="text", name="name")br
+            input.inputFont#nameInput(type="text", name="name")br
 
             | Description:<br>
-            textarea.input#descriptionInput(type="text", name="description",rows="10", cols="30")br
+            textarea.inputFont#descriptionInput(type="text", name="description",rows="10", cols="30")br
 
-            | Public: 
-            input#publicCheckbox(type="checkbox", name="public", value="yes")br
+            | Private: 
+            input(type="checkbox", name="private", value="yes")br
 
             #achievementBox
-                |Achievement<br>
+                | Achievement<br>
                 | Name:
-                input(type="text", name="achievementName")
+                input.inputFont(type="text", name="achievementName")
                 | Pic:
 
             #dateBox
-                |Date(Optional)<br>
-                |From 
-                input#from(type="text", name="from")
-                |To 
-                input#to(type="text", name="to")
+                | Date(Optional)<br>
+                | From 
+                input#from.inputFont.dateInput(type="text", name="from")
+                | To 
+                input#to.inputFont.dateInput(type="text", name="to")
 
             input.invButton.hl#createButton(type="submit", value="Create Challenge")
         #friendInvite
