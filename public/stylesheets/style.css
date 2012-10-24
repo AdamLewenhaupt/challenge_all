@@ -256,7 +256,7 @@ input.profile-menu:focus{
     white-space: nowrap;
 }
 
-#mainframe-form-layout{
+#mainframe-create-challenge{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -265,7 +265,7 @@ input.profile-menu:focus{
     color: black;
 }
 
-.inputFont{
+#mainframe-create-challenge .inputFont{
     font: 25px "Lucida Grande",Helvetica,Arial,sans-serif;
 }
 
