@@ -269,55 +269,6 @@ input.profile-menu:focus{
     font: 25px "Lucida Grande",Helvetica,Arial,sans-serif;
 }
 
-#nameInput{
-    position: relative;
-    width: 100%;
-}
-
-#descriptionInput{
-    position: relative;
-    height: 35%;
-    resize: none;
-    width: 100%;
-    margin-bottom: 5%;
-}
-
-#achievementBox{
-    position: relative;
-    border: 1px solid grey;
-    width: 49.9%;
-    height: 8%;
-    margin-bottom: 5px;
-    float: left;
-    text-align: center;
-}
-
-#achievementBox input{
-    width: 40%;
-}
-
-#dateBox{
-    position: absolute;
-    border: 1px solid grey;
-    width: 49.9%;
-    height: 8%;
-    margin-bottom: 5px;
-    left:50%;
-    text-align: center;
-}
-
-.dateInput{
-    width: 30%;
-}
-
-#friendInvite{
-    position: absolute;
-    background-color: lightgrey;
-    width: 30%;
-    height: 100%;
-    left: 70%;
-}
-
 #challengeForm{
     position: absolute;
     height: 100%;
@@ -332,6 +283,54 @@ input.profile-menu:focus{
     width: 100%;
     height: 150px;
     margin-top: 10px;
+}
+
+#nameInput{
+    position: relative;
+    width: 100%;
+}
+
+#descriptionInput{
+    position: relative;
+    height: 35%;
+    resize: none;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.bottomForm{
+    border: 1px solid grey;
+    width: 49.9%;
+    height: 8%;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#achievementBox{
+    position: relative;
+    float: left;
+
+}
+
+#achievementBox input{
+    width: 40%;
+}
+
+#dateBox{
+    position: absolute;
+    left:50%;
+}
+
+.dateInput{
+    width: 30%;
+}
+
+#friendInvite{
+    position: absolute;
+    background-color: lightgrey;
+    width: 30%;
+    height: 100%;
+    left: 70%;
 }
 
 .invButton{
