@@ -24,3 +24,5 @@ exports.ajax = {
     make_friends: ajax_make_friends.route,
     send_friend_request: ajax_send_friend_request.route
 };
+
+exports.file = require("./file");

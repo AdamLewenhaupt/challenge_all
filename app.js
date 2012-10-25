@@ -25,6 +25,7 @@ app.get('/', routes.index);
 app.get('/event-stream/:id', sse.eventStream);
 app.get('/ajax/login', routes.ajax.login);
 app.get("/ajax/get-user", routes.ajax.get_user);
+app.get("/file/:file", routes.file.get);
 
 //Posts
 app.post("/ajax/create-user", routes.ajax.create_user);

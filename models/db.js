@@ -9,7 +9,10 @@ var mongoose = require('mongoose');
 
 exports.connect = function(){
     console.log("Connecting to database.");
-    return mongoose.connect('mongodb://admin:access@alex.mongohq.com:10032/challengeall');
+    return mongoose.connect('mongodb://admin:access@alex.mongohq.com:10032/challengeall', function(err){
+    	if(err) console.log(error);
+
+    });
 }
 
 exports.disconnect = function(){
