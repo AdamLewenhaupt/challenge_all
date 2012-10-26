@@ -1,35 +1,39 @@
 #mainframe-create-challenge
     form
-        #challengeForm
-            #challengePicture
+        #challenge-form
             | Name:<br>
-            input.inputFont#nameInput(type="text", name="name")br
+            input.input-font#name-input(type="text", name="name")br
 
             | Description:<br>
-            textarea.inputFont#descriptionInput(type="text", name="description",rows="10", cols="30")br
+            textarea.input-font#description-input(type="text", name="description",rows="10", cols="30")br
 
-            | Private: 
-            input(type="checkbox", name="private", value="yes")br
+            | Rules:<br>
+            #rule-box
+                input.input-font(type="text", name="rules")
+                #add-rule-button
 
-            #achievementBox.bottomForm
+            | Public: 
+            input(type="checkbox", name="public", value="yes")br
+
+            #achievement-box.bottom-form
                 | Achievement<br>
                 | Name:
-                input.inputFont(type="text", name="achievementName")
+                input.input-font(type="text", name="achievementName")
                 | Pic:
 
-            #dateBox.bottomForm
+            #date-box.bottom-form
                 | Date(Optional)<br>
                 | From 
-                input#from.inputFont.dateInput(type="text", name="from")
+                input#from.input-font.date-input(type="text", name="from")
                 | To 
-                input#to.inputFont.dateInput(type="text", name="to")
+                input#to.input-font.date-input(type="text", name="to")
 
-            input.invButton.hl#createButton(type="submit", value="Create Challenge")
-        #friendInvite
-            .invButton.hl Challenge All
-            ol#friendBox
+            input.inv-button.hl#create-button(type="submit", value="Create Challenge")
+        #friend-invite
+            .inv-button.hl Challenge All
+            ol#friend-box
                 - each friend in user.c_friends
-                    li(tag=friend.tag).invButton.hl
+                    li(tag=friend.tag).inv-button.hl
                         != friend.tag
 
-            .invButton.hl#unchallengeButton Unchallenge All
+            .inv-button.hl#unchallenge-button Unchallenge All

@@ -265,11 +265,11 @@ input.profile-menu:focus{
     color: black;
 }
 
-#mainframe-create-challenge .inputFont{
+#mainframe-create-challenge .input-font{
     font: 25px "Lucida Grande",Helvetica,Arial,sans-serif;
 }
 
-#challengeForm{
+#challenge-form{
     position: absolute;
     height: 100%;
     width:69%;
@@ -277,7 +277,7 @@ input.profile-menu:focus{
     margin-left: 5px;
 }
 
-#challengePicture{
+#challenge-picture{
     position: relative;
     background-color: black;
     width: 100%;
@@ -285,20 +285,31 @@ input.profile-menu:focus{
     margin-top: 10px;
 }
 
-#nameInput{
+#name-input{
     position: relative;
     width: 100%;
 }
 
-#descriptionInput{
+#description-input{
     position: relative;
-    height: 35%;
+    height: 15%;
     resize: none;
     width: 100%;
-    margin-bottom: 5%;
 }
 
-.bottomForm{
+#rule-box{
+    position: relative;
+    height: 12%;
+}
+
+#add-rule-button{
+    position: relative;
+    width: 50px;
+    height: 30px;
+    background-color: white;
+}
+
+.bottom-form{
     border: 1px solid grey;
     width: 49.9%;
     height: 8%;
@@ -306,26 +317,26 @@ input.profile-menu:focus{
     text-align: center;
 }
 
-#achievementBox{
+#achievement-box{
     position: relative;
     float: left;
 
 }
 
-#achievementBox input{
+#achievement-box input{
     width: 40%;
 }
 
-#dateBox{
+#date-box{
     position: absolute;
     left:50%;
 }
 
-.dateInput{
+.date-input{
     width: 30%;
 }
 
-#friendInvite{
+#friend-invite{
     position: absolute;
     background-color: lightgrey;
     width: 30%;
@@ -333,7 +344,7 @@ input.profile-menu:focus{
     left: 70%;
 }
 
-.invButton{
+.inv-button{
     background-color: white;
     position: relative;
     width:100%;
@@ -351,28 +362,28 @@ input.profile-menu:focus{
    cursor: default;
 }
 
-.invButton:active{
+.inv-button:active{
     color: white;
     background-color: #4DB8DB;
 }
 
-#friendBox{
+#friend-box{
     position: relative;
     width:100%;
     height: 74%;
     list-style-type: none;
 }
 
-#friendBox .ui-selecting{
+#friend-box .ui-selecting{
     background: #BFE5F2;
 }
 
-#friendBox .ui-selected{
+#friend-box .ui-selected{
     background: #4DB8DB; 
     color: white;
 }
 
-#createButton{
+#create-button{
     height: 15%;
     font-size: 50px;
     border: 1px solid grey;
