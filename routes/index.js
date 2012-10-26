@@ -6,11 +6,11 @@ This is the index file of the routes module
 and provides access to all routes.
 */
 
-var ajax_login = require('./login'),
-    ajax_create_user = require('./create_user'),
-    ajax_make_friends = require('./make_friends'),
-    ajax_get_user = require("./get_user"),
-    ajax_send_friend_request = require("./send_friend_request"),
+var ajax_login = require('./social/login'),
+    ajax_create_user = require('./social/create_user'),
+    ajax_make_friends = require('./social/make_friends'),
+    ajax_get_user = require("./social/get_user"),
+    ajax_send_friend_request = require("./social/send_friend_request"),
     ssv = require('../ssv');
 
 exports.index = function(req, res){

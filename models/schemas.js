@@ -86,9 +86,9 @@ var ChallengeSchema = new Schema({
 	description: String,
 	rules: [String],
 	users: [{ type: String, required: true, unique: true, lowercase: true, trim: true }],
-	public: Bool,
+	public: Boolean,
 	date: String,
-	achivement: achievementSchema
+	achivements: [achievementSchema]
 });
 
 exports.Challenge = mongoose.model('Challenge', ChallengeSchema);
