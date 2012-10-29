@@ -19,7 +19,7 @@ exports.read = function(path, cb){
 
 exports.write = function(path, file, cb){
 	this.gs = new GridStore(mongoose.connection.db, path, "w", {
-		"chunk_size": 1024*4
+		"chunk_size": 1024*256
 	});
 	this.gs.writeFile(file, cb);
 }
