@@ -1,0 +1,15 @@
+########## API ##############
+
+1) Challenges
+
+url: /ajax/create-challenge
+type: post
+data: {
+	name: String,
+	description: String,
+	rules: [String],
+	users: [{ type: String, required: true, unique: true, lowercase: true, trim: true }],
+	public: Boolean,
+	date: String,
+	achivements: [{ name: String }]
+}
