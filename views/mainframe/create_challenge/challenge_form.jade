@@ -2,31 +2,32 @@
     form
         #challenge-form
             | Name:<br>
-            input.input-font#name-input(type="text", name="name")br
+            input.input-font#name-input(type="text", name="name",autocomplete="off")br
 
             | Description:<br>
             textarea.input-font#description-input(type="text", name="description",rows="10", cols="30")br
 
             | Rules:<br>
+            input.input-font#rule-input(type="text", name="rules", autocomplete="off")
+            #add-rule-button.inv-button.hl ADD
+            #remove-rule-button.inv-button.hl REMOVE
             #rule-box
-                input.input-font(type="text", name="rules")
-                #add-rule-button
 
             | Public: 
-            input(type="checkbox", name="public", value="yes")br
+            input(type="checkbox", name="public", value="true")br
 
             #achievement-box.bottom-form
                 | Achievement<br>
                 | Name:
-                input.input-font(type="text", name="achievementName")
+                input.input-font(type="text", name="achievement", autocomplete="off")
                 | Pic:
 
             #date-box.bottom-form
                 | Date(Optional)<br>
                 | From 
-                input#from.input-font.date-input(type="text", name="from")
+                input#from.input-font.date-input(type="text", name="from", autocomplete="off")
                 | To 
-                input#to.input-font.date-input(type="text", name="to")
+                input#to.input-font.date-input(type="text", name="to", autocomplete="off")
 
             input.inv-button.hl#create-button(type="submit", value="Create Challenge")
         #friend-invite
