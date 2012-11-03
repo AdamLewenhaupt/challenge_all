@@ -1,0 +1,11 @@
+#decision-bar
+	.decision#friend-decision
+		- if(decisions.friends.length == 0)
+			| No new decisions
+		- else
+			| #{decisions.friends.length} new requests
+	.decision#challenge-decision
+		- if(decisions.challenges.length == 0)
+			| No new decisions
+		- else
+			| #{decisions.challenges.length} new requests

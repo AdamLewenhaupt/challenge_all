@@ -15,7 +15,15 @@ var ajax_login = require('./social/login'),
     ssv = require('../ssv');
 
 exports.index = function(req, res){
-    res.render('index', { title: 'Challenge All', user: req.user, ssv: ssv.fetch() });
+    res.render('index', { 
+        title: 'Challenge All', 
+        user: req.user, 
+        ssv: ssv.fetch(), 
+        decisions: { 
+            friends: [],
+            challenges: []
+        } 
+    });
 }
 
 exports.ajax = {

@@ -7,7 +7,6 @@ exports.upload = function(req, res){
 };
 
 exports.get = function(req, res){
-
 	grid.read(req.params.file, function(err, data){
 		if(err) res.send(404, "File not found");
 		else res.send(data);
