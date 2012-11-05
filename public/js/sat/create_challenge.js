@@ -1,5 +1,6 @@
-define(function(){
-        var rules = [];
+define(["jquery"], function($){
+        var rules = [],
+            counter = 0;
 
 	return function(){
 		$( "#from" ).datepicker({
@@ -21,18 +22,17 @@ define(function(){
         $( "#friend-box" ).selectable();
 
         $("#add-rule-button").click(function(){
-            var rule = $("#rule-input").val();
+            var rule = $("#rule-input").val(); 
+            $("#rule-input").val("");
             rules.push(rule);
-            $new = $("<div style='position: relative' />");
-            $("#rule-box").append($new.html('<li>' + rule));
-        });
-
-        $("#remove-rule-button").click(function(){
-            $("#rule-box").html("");
-            rules.pop();
-            for(var i=0;i<rules.length;i++){
-                $("#rule-box").append('<li>' + rules[i]);
-            }
+            counter++;
+            $new = $("<div style='position: relative'/>");
+            $button = $("<button/>").click(function(e){
+                e.preventDefault();
+                $new.remove();
+            }).html("remove");
+            $li = $("<li/>").append(rule, $button);
+            $("#rule-box").append($new.html($li));
         });
 
         //Disable the enter key.
