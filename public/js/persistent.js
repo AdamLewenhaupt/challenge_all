@@ -22,12 +22,12 @@ define(["jquery"], function($){
 	
 	return {
 		// §1
-		login: function(email, password){
+		login: function(tag, password){
 		    $.ajax({
 		        type: "get",
 		        url: "/ajax/login",
 		        data: {
-		            email: email,
+		            tag: tag,
 		            password: password
 		        },
 

@@ -101,8 +101,6 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
             $popup.append(options.custom.css({ margin: 10}));
             $popup.height($popup.height() + options.custom.height() + 10);
         }
-
-        console.log($popup);
     });
 
     if(!options.morph){

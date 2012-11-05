@@ -12,7 +12,7 @@ success calls the Persistent.login [./persistent.js].
 
 define(["jquery", "./popup", "./persistent"], function($, popup, Persistent){
 
-	var $custom = $("<div/>").html($("<a>Sign up!</a>").click(function(){
+	var $custom = $("<div/>").html($("<a title='Join the fun' >Sign up!</a>").click(function(){
 		popup({
 			morph: true,
 			canCancel: false,
@@ -31,7 +31,7 @@ define(["jquery", "./popup", "./persistent"], function($, popup, Persistent){
 			submit: "Create account",
 
 			success: function(e){
-				if(e.password == e.password2){
+				if(e.password === e.password2){
 					Persistent.createUser(e.fname, e.tag, e.lname, e.email, e.password);
 					prompts.login(true);
 				}else{
@@ -51,14 +51,14 @@ define(["jquery", "./popup", "./persistent"], function($, popup, Persistent){
 		        canCancel: false,
 
 		        inputs: [
-		            { name: "email", type: "text", label: "Email", tooltip: "Your email" },
+		            { name: "tag", type: "text", label: "Tag", tooltip: "Your very special tag" },
 		            { name: "pass", type: "password", label: "Password", tooltip: "Your super secret password!"}
 		        ],
 
 		        submit: "Login",
 
 		        success: function(e){
-		            Persistent.login(e.email, e.pass);
+		            Persistent.login(e.tag, e.pass);
 		        },
 
 		        custom: $custom
