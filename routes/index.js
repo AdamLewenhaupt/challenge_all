@@ -18,11 +18,7 @@ exports.index = function(req, res){
     res.render('index', { 
         title: 'Challenge All', 
         user: req.user, 
-        ssv: ssv.fetch(), 
-        decisions: { 
-            friends: [],
-            challenges: []
-        } 
+        ssv: ssv.fetch() 
     });
 }
 

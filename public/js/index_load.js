@@ -9,10 +9,11 @@ Rolls the side-bar into the screen if the user is
 logged in and the profile image is loaded.
 
 §2:
-Fade in the mainframe.
+Fade in the mainframe and decisions.
 */
 
-define(["jquery", "./ssv", "jquery-plugins/imagesloaded", "underscore", "./persistent", "jquery-ui"], function($, SSV, il, _, Persistent, $ui){
+define(["jquery", "./ssv", "jquery-plugins/imagesloaded", "underscore", "./persistent", "jquery-ui", "./decisions"], 
+	function($, SSV, il, _, Persistent, $ui, Decisions){
 
 	SSV.onInit(function(){
 		if(!SSV.has("req_login")){
@@ -21,28 +22,13 @@ define(["jquery", "./ssv", "jquery-plugins/imagesloaded", "underscore", "./persi
 			$("#side-bar").imagesLoaded(function(){
 				$(this).animate({left: "+="+300}, { duration: 500, queue: false,
 				complete: function(){
-						// §2
-						$('#main-frame').animate({opacity: 1}, { duration: 500, queue: false });
+					// §2
+					$('#main-frame').animate({opacity: 1}, { duration: 500, queue: false });
+					Decisions.$el.animate({opacity: 1}, { duration: 500, queue: false });
 				} });
 			});
 			
 		}
-
-		var events = SSV.get("events");
-
-		_.map(events, function(event){
-
-			if(event.name === "friend-request"){
-				var result = prompt("Accept friend request from " + event.user + " ? (y/n)");
-				if(result){
-					Persistent.makeFriends(event.user, event.data[0]);
-				}
-			}
-		});
-
-		$(".decision").button().children("span").css({
-			"line-height": "170px"
-		});
 
 	});
 });
