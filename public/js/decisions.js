@@ -5,8 +5,8 @@ description:
 
 */
 
-define(["jquery", "./ssv", "jquery-ui", "./persistent"], 
-	function($, SSV, $ui, Persistent){
+define(["jquery", "./ssv", "jquery-ui", "./persistent", "./buttons"], 
+	function($, SSV, $ui, Persistent, Buttons){
 
 	var decisionable = ["friend-request"],
 		$el = $("#decisions");
@@ -23,6 +23,10 @@ define(["jquery", "./ssv", "jquery-ui", "./persistent"],
 				.attr("title", "Request from: " + event.data[0]);
 				break;
 		}
+
+		$new.append(Buttons.ok().css({
+			"float": "left"
+		}));
 
 		$el.append($new.button());
 	}
