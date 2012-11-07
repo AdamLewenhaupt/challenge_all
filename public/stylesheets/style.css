@@ -269,6 +269,11 @@ input.profile-menu:focus{
 }
 
 .decision{
+    font-weight: bold;
+    text-align: center;
+    background-color: #BFE5F2;
+    height: 38px;
+    line-height: 38px;
     width: 170px;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
