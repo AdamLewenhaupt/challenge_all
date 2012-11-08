@@ -1,6 +1,7 @@
 define(["jquery"], function($){
         var rules = [],
-            counter = 0;
+            counter = 0,
+            buttons = [];
 
 	return function(){
 		$( "#from" ).datepicker({
@@ -22,18 +23,29 @@ define(["jquery"], function($){
         $( "#friend-box" ).selectable();
 
         $("#add-rule-button").click(function(){
-            var rule = $("#rule-input").val(); 
+            var rule = $("#rule-input").val();
             $("#rule-input").val("");
             rules.push(rule);
-            counter++;
             $new = $("<div style='position: relative'/>");
-            $button = $("<button/>").click(function(e){
-                e.preventDefault();
-                $new.remove();
-            }).html("remove");
+            $button = $('<button class="removerule"/>').html("remove").attr("arr-id",counter);
+            buttons.push($button);
             $li = $("<li/>").append(rule, $button);
             $("#rule-box").append($new.html($li));
+            counter++;
+            //alert("Array: "+rules+"Counter:"+counter+"ButtonAttr: " + $button.attr("arr-id"));
         });
+
+        $('#rule-box button.removerule').live('click', function(){
+                $(this).parent().remove();
+                $id = $(this).attr("arr-id");
+                rules.splice($id,1);
+                buttons.splice($id,1);
+                /*for(var i=0; i<buttons.length -$id;i++){     <---------------GET THIS SHIT WORKING(Changing the arr-id of the buttons)
+                    alert(buttons[i].attr("arr-id"));
+                }*/
+                counter--;
+                alert("ID: "+$(this).attr('arr-id')+"Counter: "+counter);
+            });
 
         //Disable the enter key.
         $('input').keypress(function (e) {
