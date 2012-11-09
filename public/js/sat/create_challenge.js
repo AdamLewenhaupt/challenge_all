@@ -1,7 +1,6 @@
-define(["jquery"], function($){
-        var rules = [],
-            counter = 0,
-            buttons = [];
+define(["jquery", "../user"], function($, User){
+        var rules = {},
+            counter = 0;
 
 	return function(){
 		$( "#from" ).datepicker({
@@ -20,31 +19,34 @@ define(["jquery"], function($){
                 $( "#from" ).datepicker( "option", "maxDate", selectedDate );
             }
         });
-        $( "#friend-box" ).selectable();
+        $( "#friend-box" ).selectable({
+            stop:function() {
+                var result = $( "#unchallengeall-button" ).empty();
+                $( ".ui-selected", this ).each(function(){
+                    var index = $( "#friend-box li" ).index( this );
+                    result.append( " #" + ( index + 1 ) );
+
+                });
+            }
+        });
 
         $("#add-rule-button").click(function(){
             var rule = $("#rule-input").val();
             $("#rule-input").val("");
-            rules.push(rule);
+            rules[counter] = rule;
             $new = $("<div style='position: relative'/>");
             $button = $('<button class="removerule"/>').html("remove").attr("arr-id",counter);
-            buttons.push($button);
             $li = $("<li/>").append(rule, $button);
             $("#rule-box").append($new.html($li));
             counter++;
-            //alert("Array: "+rules+"Counter:"+counter+"ButtonAttr: " + $button.attr("arr-id"));
         });
 
         $('#rule-box button.removerule').live('click', function(){
                 $(this).parent().remove();
-                $id = $(this).attr("arr-id");
-                rules.splice($id,1);
-                buttons.splice($id,1);
-                /*for(var i=0; i<buttons.length -$id;i++){     <---------------GET THIS SHIT WORKING(Changing the arr-id of the buttons)
-                    alert(buttons[i].attr("arr-id"));
-                }*/
+                var id = $(this).attr("arr-id");
+                rules[id] = null;
                 counter--;
-                alert("ID: "+$(this).attr('arr-id')+"Counter: "+counter);
+                console.log(rules);
             });
 
         //Disable the enter key.
