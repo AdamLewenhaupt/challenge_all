@@ -1,4 +1,4 @@
-var models = require('../../models'),
+var models = require('../models'),
     User = models.schemas.User,
     Event = models.schemas.Event;
 
