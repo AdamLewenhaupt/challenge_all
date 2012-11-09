@@ -13,3 +13,12 @@ data: {
 	date: String,
 	achivements: [{ name: String }]
 }
+
+2) Events
+
+url: /ajax/remove-event
+type: post
+data: {
+	tag: String,
+	name: String
+}
