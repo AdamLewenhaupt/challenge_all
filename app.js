@@ -33,6 +33,7 @@ app.post("/ajax/make-friends", routes.ajax.make_friends);
 app.post("/ajax/sse-send", sse.ajax_send);
 app.post("/ajax/send-friend-request", routes.ajax.send_friend_request);
 app.post("/ajax/create-challenge", routes.ajax.create_challenge);
+app.post("/ajax/remove-event", routes.ajax.remove_event)
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server up and running on port: " + app.get('port'));
