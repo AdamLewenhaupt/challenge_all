@@ -3,6 +3,7 @@ Author: Adam Lewenhaupt
 Keywords: Popup, IO
 Description:
 popup(options) -- options: {
+    width: int -- The width of the window,
     submit: string -- The name of the submit button,
     success: func(e) -- A function that takes a parameter for form data,
     title: string -- Popup title,
@@ -27,7 +28,7 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
 
 	return function popup(options){
 
-    var width = 200,
+    var width = options.width || 200,
         height = 105 + options.inputs.length * 35,
         bounds = { width: $(document).width(), height: $(document).height() },
         $focuser = options.morph ? window._popup.$focuser : $("<div/>").addClass("focuser"),
