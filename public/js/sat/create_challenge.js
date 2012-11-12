@@ -1,6 +1,7 @@
 define(["jquery", "../user"], function($, User){
         var rules = {},
-            counter = 0;
+            counter = 0,
+            friends = [];
 
 	return function(){
 		$( "#from" ).datepicker({
@@ -21,11 +22,11 @@ define(["jquery", "../user"], function($, User){
         });
         $( "#friend-box" ).selectable({
             stop:function() {
-                var result = $( "#unchallengeall-button" ).empty();
-                $( ".ui-selected", this ).each(function(){
-                    var index = $( "#friend-box li" ).index( this );
-                    result.append( " #" + ( index + 1 ) );
+                
+                friends = [];
 
+                $( ".ui-selected", this ).each(function(){
+                    friends.push($(this).attr("tag"));
                 });
             }
         });
