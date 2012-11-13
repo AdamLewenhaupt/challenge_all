@@ -277,3 +277,141 @@ input.profile-menu:focus{
     user-select: none;
     cursor: default;
 }
+
+#mainframe-create-challenge{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(235, 235, 235);
+    font: 25px "Lucida Grande",Helvetica,Arial,sans-serif;
+    color: black;
+}
+
+#mainframe-create-challenge .input-font{
+    font: 25px "Lucida Grande",Helvetica,Arial,sans-serif;
+}
+
+#challenge-form{
+    position: absolute;
+    height: 85%;
+    width:69%;
+    margin-left: 5px;
+}
+
+#name-input{
+    position: relative;
+    width: 100%;
+}
+
+#description-input{
+    position: relative;
+    height: 15%;
+    resize: none;
+    width: 100%;
+}
+
+#rule-box{
+    position: relative;
+    height: 48%;
+    width: 100%;
+    overflow: auto;
+}
+
+#rule-input{
+    position: absolute;
+    width: 50%;
+}
+
+#add-rule-button,#remove-rule-button{
+    position: relative;
+    left: 50%;
+    width: 200px;
+    height: 31px;
+    line-height: 30px;
+    border: 1px solid grey;
+    bottom: 5px;
+}
+
+.bottom-form{
+    position: absolute;
+    border: 1px solid grey;
+    width: 50%;
+    height: 70px;
+    text-align: center;
+    bottom: 0px;
+}
+
+#achievement-box{
+    left: 0px;
+
+}
+
+#achievement-box input{
+    width: 40%;
+}
+
+#date-box{
+    right: 0px;
+}
+
+.date-input{
+    width: 30%;
+}
+
+#friend-invite{
+    position: absolute;
+    background-color: lightgrey;
+    width: 30%;
+    height: 100%;
+    right: 0px;
+}
+
+.inv-button{
+    background-color: white;
+    position: relative;
+    width:100%;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    margin-top: 5px;
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   cursor: pointer;
+}
+
+.inv-button:active{
+    color: white;
+    background-color: #4DB8DB;
+}
+
+#friend-box{
+    position: relative;
+    width:100%;
+    height: 70%;
+    list-style-type: none;
+    overflow: auto;
+}
+
+#friend-box .ui-selecting{
+    background: #BFE5F2;
+}
+
+#friend-box .ui-selected{
+    background: #4DB8DB; 
+    color: white;
+}
+
+#create-button{
+    position: absolute;
+    width: 69%;
+    height: 15%;
+    font-size: 50px;
+    border: 1px solid grey;
+    margin: 5px;
+    bottom: 0px;
+}
