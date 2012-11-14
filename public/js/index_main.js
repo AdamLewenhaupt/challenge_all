@@ -68,6 +68,10 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 	        Mainframe.saturate("social");
 	    });
 
+	    $("#btn-create-challenge").click(function(){
+	        Mainframe.saturate("create_challenge");
+	    });
+
 	    // §4
 		if(SSV.has("req_login")){
 		    Prompts.login();
