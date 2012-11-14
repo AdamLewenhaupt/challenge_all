@@ -125,20 +125,22 @@ define(["jquery"], function($){
 		       type: "post",
 		       url: "/ajax/create-challenge",
 		       data: {
-		            name: String,
-				    description: String,
-					rules: [String],
-					users: [{ type: String, required: true, unique: true, lowercase: true, trim: true }],
-					public: Boolean,
-					date: String,
-					achievements: [{ name: String }]
+		            name: name,
+				    description: description,
+					rules: rules,
+					users: users,
+					public: public,
+					date: date,
+					achievements: achievements
 		       },
 
 		       success: function(data){
+		       	console.log(data);
 		    		return true;
 		       },
 
-		       error: function(){
+		       error: function(err){
+		       		console.log(err);
 		       		return false;
 		       }
 		    });

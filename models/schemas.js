@@ -76,7 +76,7 @@ var eventSchema = new Schema({
 exports.Event = mongoose.model('Event', eventSchema);
 
 // §3
-var achievementSchema = new Schema({
+var AchievementSchema = new Schema({
 	name: String
 });
 
@@ -88,7 +88,8 @@ var ChallengeSchema = new Schema({
 	users: [{ type: String, required: true, unique: true, lowercase: true, trim: true }],
 	public: Boolean,
 	date: String,
-	achivements: [achievementSchema]
+	achievements: [AchievementSchema]
 });
 
+exports.Achievement = mongoose.model('Achievement', AchievementSchema);
 exports.Challenge = mongoose.model('Challenge', ChallengeSchema);
