@@ -1,5 +1,5 @@
-define(["jquery", "../user"], function($, User){
-        var rules = {},
+define(["jquery", "../user","../persistent"], function($, User, Persistent){
+        var ruleslist = {},
             counter = 0,
             friends = [];
 
@@ -34,7 +34,7 @@ define(["jquery", "../user"], function($, User){
         $("#add-rule-button").click(function(){
             var rule = $("#rule-input").val();
             $("#rule-input").val("");
-            rules[counter] = rule;
+            ruleslist[counter] = rule;
             $new = $("<div style='position: relative'/>");
             $button = $('<button class="removerule"/>').html("remove").attr("arr-id",counter);
             $li = $("<li/>").append(rule, $button);
@@ -45,10 +45,28 @@ define(["jquery", "../user"], function($, User){
         $('#rule-box button.removerule').live('click', function(){
                 $(this).parent().remove();
                 var id = $(this).attr("arr-id");
-                rules[id] = null;
+                ruleslist[id] = null;
                 counter--;
                 console.log(rules);
             });
+
+        $("#create-button").click(function(){
+            var public = false;
+            if($('#public-input').is(":checked")){ public = true; }
+            var name = $("#name-input").val();
+            var description = $("#description-input").val();
+            var arrRules = [];
+            for(var x in ruleslist){
+                arrRules.push(ruleslist[x]);
+            }
+            var rules = arrRules;
+            var users = friends;
+            var public = $("#public-input").val();
+            var date = $("#from").val()+" - " +$("#to").val();
+            var achievements = $("#achievement-input").val();
+            Persistent.createChallenge(name,description,rules,users,public,date,achievements);
+            return false;
+        });
 
         //Disable the enter key.
         $('input').keypress(function (e) {
