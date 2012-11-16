@@ -51,8 +51,6 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
             });
 
         $("#create-button").click(function(){
-            var public = false;
-            if($('#public-input').is(":checked")){ public = true; }
             var name = $("#name-input").val();
             var description = $("#description-input").val();
             var arrRules = [];
@@ -61,7 +59,8 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
             }
             var rules = arrRules;
             var users = friends;
-            var public = $("#public-input").val();
+            var public = false;
+            if($('#public-input').is(":checked")){ public = true; }
             var date = $("#from").val()+" - " +$("#to").val();
             var achievements = $("#achievement-input").val();
             Persistent.createChallenge(name,description,rules,users,public,date,achievements);
