@@ -9,7 +9,7 @@ define(["jquery"], function($){
 
 	return function form2JSON(form){
 	    var retval = {},
-	        vals = form.children("input")
+	        vals = form.children(":input")
 		        .map(function(){ 
 		            	return [$(this).attr("name"), $(this).val()];
 		             });
