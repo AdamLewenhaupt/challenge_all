@@ -19,4 +19,4 @@ define(["jquery"], function($){
 	    }
 	    return retval;
 	}
-});
+});  

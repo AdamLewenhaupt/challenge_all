@@ -12,15 +12,15 @@ can create an achivement.
 
 */
 
-define(["jquery", "./popup"], function($, popup){
+define(["jquery", "./popup", "jquery-plugins/colorpicker"], function($, popup, cp){
 
-	var options = ["pimp", "cow", "chicken"],
+	var options = [{ name: "proto", image: "/images/achivproto.png"}],
 		index = 0;
 
 	function setImage($display){
 		var val = options[index];
-		$("#popup-field-image").val(val);
-		$display.html(val);
+		$("#popup-field-image").val(val.name);
+		$display.attr("src", val.image);
 	}
 
 	function createChallengeStep1(fn){
@@ -41,9 +41,10 @@ define(["jquery", "./popup"], function($, popup){
 
 	function createChallengeStep2(fn){
 
-		var $display = $("<div/>"),
+		var $display = $("<img />"),
 			$left = $("<div/>"),
-			$right = $("<div/>");
+			$right = $("<div/>"),
+			$colorSelector = $("<div/>");
 
 		index = 0;
 
@@ -57,11 +58,40 @@ define(["jquery", "./popup"], function($, popup){
 			setImage($display);
 		});
 
-		var $imagePicker = $("<div/>").append($display, $left.button(), $right.button());
+		$display.css({
+			"background-color": "blue",
+			width: 120,
+			height: 120
+		});
+
+		$colorSelector.html("Select color").button().ColorPicker({
+			color: '#0000ff',
+
+			onShow: function (colpkr) {
+				$(colpkr).fadeIn(500);
+				return false;
+			},
+
+			onHide: function (colpkr) {
+				$(colpkr).fadeOut(500);
+				return false;
+			},
+
+			onChange: function (hsb, hex, rgb) {
+				$display.css('background-color', '#' + hex);
+			}
+		});
+
+		var $imagePicker = $("<div/>").append($display, $colorSelector, $left.button(), $right.button());
 
 		setImage($display);
 
 		return function(data){
+			if(!data) {
+				fn(false);
+				return;
+			}
+
 			popup({
 				width: 350,
 				morph: true,
@@ -72,7 +102,7 @@ define(["jquery", "./popup"], function($, popup){
 				],
 				success: function(e){
 					if(!e) data = false;
-					for (var attrname in e) { data[attrname] = e[attrname]; }
+					else for (var attrname in e) { data[attrname] = e[attrname]; }
 					fn(data);
 				},
 
