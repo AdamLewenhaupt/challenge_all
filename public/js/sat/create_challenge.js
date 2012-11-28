@@ -50,6 +50,8 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
                 console.log(rules);
             });
 
+        $("#achievement-box").button();
+
         $("#create-button").click(function(){
             var name = $("#name-input").val();
             var description = $("#description-input").val();
@@ -75,3 +77,12 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
         });
 	};
 });
+
+/* Achvievement
+{
+    name: string,
+    description: string,
+    image: string,
+    color: string
+}
+*/
