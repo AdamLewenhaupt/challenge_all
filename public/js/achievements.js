@@ -23,7 +23,7 @@ define(["jquery", "./popup", "jquery-plugins/colorpicker"], function($, popup, c
 		$display.attr("src", val.image);
 	}
 
-	function createChallengeStep1(fn){
+	function createAchievementStep1(fn){
 		popup({
 				width: 350,
 				submit: "Next",
@@ -32,14 +32,14 @@ define(["jquery", "./popup", "jquery-plugins/colorpicker"], function($, popup, c
 					{ name: "name", type: "text", label: "Name", tooltip: "The name of the achivement" },
 					{ name: "description", type: "textarea", label: "Description", height: 100 }
 				],
-				success: createChallengeStep2(fn),
+				success: createAchievementStep2(fn),
 
 				canCancel: true,
 				cancel: "Cancel"
 		});
 	}
 
-	function createChallengeStep2(fn){
+	function createAchievementStep2(fn){
 
 		var $display = $("<img />"),
 			$left = $("<div/>"),
@@ -79,6 +79,7 @@ define(["jquery", "./popup", "jquery-plugins/colorpicker"], function($, popup, c
 
 			onChange: function (hsb, hex, rgb) {
 				$display.css('background-color', '#' + hex);
+				$("#popup-field-color").val('#' + hex);
 			}
 		});
 
@@ -98,7 +99,8 @@ define(["jquery", "./popup", "jquery-plugins/colorpicker"], function($, popup, c
 				submit: "Create Achievement",
 				title: "Achievement Creator, Step 2",
 				inputs: [
-					{name: "image", type: "hidden", label:""}
+					{name: "image", type: "hidden", label:"", def: options[index].image },
+					{name: "color", type: "hidden", label:"", def: "blue" }
 				],
 				success: function(e){
 					if(!e) data = false;
@@ -118,8 +120,8 @@ define(["jquery", "./popup", "jquery-plugins/colorpicker"], function($, popup, c
 	var achievements = {
 
 		// §1
-		createChallenge: function(fn){
-			createChallengeStep1(fn);
+		createAchievement: function(fn){
+			createAchievementStep1(fn);
 		}
  
 	}

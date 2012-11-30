@@ -8,7 +8,7 @@ popup(options) -- options: {
     success: func(e) -- A function that takes a parameter for form data,
     title: string -- Popup title,
     canCancel: bool -- Should there be a cancel button?,
-    inputs: [{name: str, type: str, label: str, tooltip: str}] -- Self explanatory,
+    inputs: [{name: str, type: str, label: str, tooltip: str, def: str?}] -- Self explanatory,
     custom: $DOM -- Jquery element for custom html.
 }
 
@@ -36,13 +36,14 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         $form = $("<form/>"),
         $submit = $("<button/>").addClass("submit"),
         $cancel = $("<button/>").addClass("cancel"),
-        stdTemplate = _.template("<label for='<%= name %>' ><%= label %></label><br/> <input id='popup-field-<%= name %>' style='width: 100%' name='<%= name %>' type='<%= type %>' title='<%= tooltip %>' />"),
+        stdTemplate = _.template("<label for='<%= name %>' ><%= label %></label><br/> <input id='popup-field-<%= name %>' style='width: 100%' name='<%= name %>' type='<%= type %>' title='<%= tooltip %>' value='<%= def %>' />"),
         txtTemplate = _.template("<label for='<%= name %>' ><%= label %></label><br/> <textarea id='popup-field-<%= name %>' name='<%= name %>' style='height: <%= height %>px !important; width: 100% !important; resize: none;' ></textarea>");
 
     if(options.morph) onMorph(bounds);
 
     $form.html(_.map(options.inputs, function(input){
         input.tooltip = input.tooltip || "";
+        input.def = input.def || "";
         if(input.type === "textarea"){
             height += input.height + 15;
             return txtTemplate(input)
