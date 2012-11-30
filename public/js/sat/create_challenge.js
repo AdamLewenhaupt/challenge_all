@@ -1,7 +1,8 @@
-define(["jquery", "../user","../persistent"], function($, User, Persistent){
+define(["jquery", "../user","../persistent","../achievements"], function($, User, Persistent, Achievements){
         var ruleslist = {},
             counter = 0,
-            friends = [];
+            friends = [],
+            achievements = [];
 
 	return function(){
 		$( "#from" ).datepicker({
@@ -50,7 +51,11 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
                 console.log(rules);
             });
 
-        $("#achievement-box").button();
+        $("#achievement-box").click(function(){
+            Achievements.createAchievement(function(e){
+                achievements.push(e);
+            });
+        }).button();
 
         $("#create-button").click(function(){
             var name = $("#name-input").val();
@@ -64,7 +69,6 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
             var public = false;
             if($('#public-input').is(":checked")){ public = true; }
             var date = $("#from").val()+" - " +$("#to").val();
-            var achievements = [{name:$("#achievement-input").val()}];
             Persistent.createChallenge(name,description,rules,users,public,date,achievements);
             return false;
         });
