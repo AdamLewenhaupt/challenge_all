@@ -5,6 +5,20 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             achievements = [];
 
 	return function(){
+
+        var $mainframe = $("#main-frame");
+        $mainframe.find(".friend-display").selectable({
+            stop: function() {
+                
+                friends = [];
+
+                $( "li.ui-selected", this ).each(function(){
+                    friends.push($(this).attr("tag"));
+                    $(this).children().addClass("ui-selected")
+                });
+            }
+        });
+
 		$( "#from" ).datepicker({
             defaultDate: "+1w",
             changeMonth: true,
@@ -19,16 +33,6 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             numberOfMonths: 1,
             onSelect: function( selectedDate ) {
                 $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-            }
-        });
-        $( "#friend-box" ).selectable({
-            stop:function() {
-                
-                friends = [];
-
-                $( ".ui-selected", this ).each(function(){
-                    friends.push($(this).attr("tag"));
-                });
             }
         });
 
