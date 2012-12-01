@@ -40,6 +40,9 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
         var friends = User.friends().indexOf(target) !== -1,
             $dynamic = $("#main-frame").find("#mainframe-profile-menu .dynamic-content").html("");
 
+        console.log(target);
+        console.log(friends);
+
         if(!friends){
             $addFriend = $("<div/>").html("Add friend").css({
                 width: "50%",

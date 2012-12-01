@@ -3,11 +3,12 @@ Author: Adam Lewenhaupt
 Keywords: Popup, IO
 Description:
 popup(options) -- options: {
+    width: int -- The width of the window,
     submit: string -- The name of the submit button,
     success: func(e) -- A function that takes a parameter for form data,
     title: string -- Popup title,
     canCancel: bool -- Should there be a cancel button?,
-    inputs: [{name: str, type: str, label: str, tooltip: str}] -- Self explanatory,
+    inputs: [{name: str, type: str, label: str, tooltip: str, def: str?}] -- Self explanatory,
     custom: $DOM -- Jquery element for custom html.
 }
 
@@ -15,7 +16,6 @@ The popup function provides a way to get input from the user.
 */
 
 define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _, form2JSON){
-
     function onMorph(bounds){
         var $pop = window._popup.$popup;
         $pop.animate({
@@ -27,8 +27,8 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
 
 	return function popup(options){
 
-    var width = 200,
-        height = 105 + options.inputs.length * 35,
+    var width = options.width || 200,
+        height = 105,
         bounds = { width: $(document).width(), height: $(document).height() },
         $focuser = options.morph ? window._popup.$focuser : $("<div/>").addClass("focuser"),
         $popup = $("<div/>").addClass("popup"),
@@ -36,13 +36,21 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         $form = $("<form/>"),
         $submit = $("<button/>").addClass("submit"),
         $cancel = $("<button/>").addClass("cancel"),
-        template = _.template("<label for='<%= name %>' ><%= label %></label><br/> <input name='<%= name %>' type='<%= type %>' title='<%= tooltip %>' />");
+        stdTemplate = _.template("<label for='<%= name %>' ><%= label %></label><br/> <input id='popup-field-<%= name %>' style='width: 100%' name='<%= name %>' type='<%= type %>' title='<%= tooltip %>' value='<%= def %>' />"),
+        txtTemplate = _.template("<label for='<%= name %>' ><%= label %></label><br/> <textarea id='popup-field-<%= name %>' name='<%= name %>' style='height: <%= height %>px !important; width: 100% !important; resize: none;' ></textarea>");
 
     if(options.morph) onMorph(bounds);
 
     $form.html(_.map(options.inputs, function(input){
         input.tooltip = input.tooltip || "";
-        return template(input);
+        input.def = input.def || "";
+        if(input.type === "textarea"){
+            height += input.height + 15;
+            return txtTemplate(input)
+        } else {
+            height += 35;
+            return stdTemplate(input);
+        }
     }).join('<br/>')).css({
         margin: 10,
         "text-align": "center"
@@ -69,10 +77,13 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         "margin-left": 10
     });
 
-    $cancel.click(false, function(){
+    $cancel.html(options.cancel).click(false, function(){
+        if(options.success) options.success(false);
         $popup.remove();
         $focuser.remove();
-    })
+    }).button().css({
+        "margin-left": 10
+    });
 
     $popup.css({
         position: "fixed",
@@ -85,10 +96,6 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         border: "2px solid black"
     });
 
-    if(options.canCancel){
-        $popup.append($cancel);
-    }
-
     $(document.body).append($focuser, $popup);
 
     $popup.animate({
@@ -96,10 +103,25 @@ define(["jquery", "jquery-ui", "underscore", "./form2json"], function($, $ui, _,
         width: width,
         left: "-="+(width/2)
     }, 500, function(){
-        $popup.append($header, $form, $submit);
+        $popup.append($header, $form);
+
+        if(!options.customAbove){
+            $popup.append($submit);
+            if(options.canCancel){
+                $popup.append($cancel);
+            }
+        }
+
         if(options.custom){
             $popup.append(options.custom.css({ margin: 10}));
             $popup.height($popup.height() + options.custom.height() + 10);
+        }
+
+        if(options.customAbove){
+            $popup.append($submit);
+            if(options.canCancel){
+                $popup.append($cancel);
+            }   
         }
     });
 

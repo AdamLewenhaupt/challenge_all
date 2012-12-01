@@ -1,4 +1,4 @@
-exports.middleware = function(req, res, next){
+exports.func = function(req, res, next){
 	res.ssv = [];
 	res.ssv.add = function(name, value){
     if(typeof(value) === "string"){
@@ -7,4 +7,6 @@ exports.middleware = function(req, res, next){
 	        this.push({name: name, value: JSON.stringify(value), json: true});
 	    }
 	}
+
+	next();
 }

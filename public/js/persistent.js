@@ -118,6 +118,32 @@ define(["jquery"], function($){
 					}
 				}
 			});
+		},
+
+		createChallenge:function(name,description,rules,users,public,date,achievements){
+		    $.ajax({
+		       type: "post",
+		       url: "/ajax/create-challenge",
+		       data: {
+		            name: name,
+				    description: description,
+					rules: rules,
+					users: users,
+					public: public,
+					date: date,
+					achievements: achievements
+		       },
+
+		       success: function(data){
+		       	console.log(data);
+		    		return true;
+		       },
+
+		       error: function(err){
+		       		console.log(err);
+		       		return false;
+		       }
+		    });
 		}
 	};
 

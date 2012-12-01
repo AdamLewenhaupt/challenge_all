@@ -12,13 +12,13 @@ var ajax_login = require('./social/login'),
     ajax_get_user = require("./social/get_user"),
     ajax_send_friend_request = require("./social/send_friend_request"),
     ajax_create_challenge = require('./challenges/create'),
-    ssv = require('../ssv');
+    events = require("./events");
 
 exports.index = function(req, res){
     res.render('index', { 
         title: 'Challenge All', 
         user: req.user, 
-        ssv: ssv.fetch() 
+        ssv: res.ssv
     });
 }
 
@@ -28,7 +28,8 @@ exports.ajax = {
     create_user: ajax_create_user.route,
     make_friends: ajax_make_friends.route,
     send_friend_request: ajax_send_friend_request.route,
-    create_challenge: ajax_create_challenge.route
+    create_challenge: ajax_create_challenge.route,
+    remove_event: events.remove
 };
 
 exports.file = require("./file");

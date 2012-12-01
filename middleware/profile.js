@@ -9,8 +9,7 @@ This function intercepts every request and checks if there is user information t
 If there is we load it otherwise we prompt for login.
 */
 
-var ssv = require('../ssv'),
-	models = require('../models'),
+var models = require('../models'),
 	User = models.schemas.User,
 	Event = models.schemas.Event;
 
@@ -23,12 +22,12 @@ exports.func = function profile(req, res, next){
 	            if(!err && profile){
 
 	                req.user = profile.getPublic();
-	                ssv.add("user", req.user);
+	                res.ssv.add("user", req.user);
 
 	                User.find().where('tag').in(req.user.friends).exec(function(err, doc){
 	                	if(!err){
 	                		req.user.c_friends = doc;
-	                		ssv.add("friends", doc);
+	                		res.ssv.add("friends", doc);
 			                next();
 	      				}else{
 	      					next();
@@ -41,7 +40,7 @@ exports.func = function profile(req, res, next){
 	    	});
 	    }
 		else{
-		    ssv.add("req_login", "");
+		    res.ssv.add("req_login", "");
 		    req.user = {
 		    	fname: "@fname",
 		    	tag: "@tag",
