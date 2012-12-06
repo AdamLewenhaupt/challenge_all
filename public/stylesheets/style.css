@@ -314,7 +314,7 @@ input.profile-menu:focus{
 
 #rule-box{
     position: relative;
-    height: 48%;
+    height: 20%;
     width: 100%;
     overflow: auto;
 }
@@ -324,7 +324,7 @@ input.profile-menu:focus{
     width: 50%;
 }
 
-#add-rule-button,#remove-rule-button{
+#add-rule-button{
     position: relative;
     left: 50%;
     width: 200px;
@@ -332,6 +332,10 @@ input.profile-menu:focus{
     line-height: 30px;
     border: 1px solid grey;
     bottom: 5px;
+}
+
+#public-input{
+    position: relative;
 }
 
 .bottom-form{
@@ -345,7 +349,6 @@ input.profile-menu:focus{
 
 #achievement-box{
     left: 0px;
-
 }
 
 #achievement-box input{
@@ -394,7 +397,7 @@ input.profile-menu:focus{
 #friend-box{
     position: relative;
     width:100%;
-    height: 70%;
+    height: 100%;
     list-style-type: none;
     overflow: auto;
 }

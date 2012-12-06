@@ -19,7 +19,7 @@
                 | Add Achievement
 
             #date-box.bottom-form
-                | Date(Optional)<br>
+                | Date<br>
                 | From 
                 input#from.input-font.date-input(type="text", name="from", autocomplete="off")
                 | To 
@@ -27,7 +27,6 @@
 
         input.inv-button.hl#create-button(type="submit", value="Create Challenge")
         #friend-invite
-            .inv-button.hl#challengeall-button Challenge All
             ol#friend-box
                 - each friend in user.c_friends
                     li(tag=friend.tag).inv-button.hl
