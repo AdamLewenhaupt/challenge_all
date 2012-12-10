@@ -96,3 +96,10 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
     color: string
 }
 */
+/*
+What to do:
+Rework rules
+Change size of font
+fix buttons
+move public box
+*/
