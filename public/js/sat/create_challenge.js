@@ -7,14 +7,16 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
 	return function(){
 
         var $mainframe = $("#main-frame");
+        $mainframe.find(".friend-display li div").button();
         $mainframe.find(".friend-display").selectable({
             stop: function() {
                 
                 friends = [];
+                $(this).children().removeClass("ui-selected");
 
                 $( "li.ui-selected", this ).each(function(){
                     friends.push($(this).attr("tag"));
-                    $(this).children().addClass("ui-selected")
+                    $(this).children().addClass("ui-selected");
                 });
             }
         });
