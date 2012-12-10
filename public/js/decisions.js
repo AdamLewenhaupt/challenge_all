@@ -9,28 +9,30 @@ define(["jquery", "./ssv", "jquery-ui", "./persistent", "./buttons"],
 	function($, SSV, $ui, Persistent, Buttons){
 
 	var decisionable = ["friend-request"],
-		$el = $("#decisions"),
-		$ok = Buttons.ok(function(){
-					$new.remove();
-					Persistent.makeFriends(event.user, event.data[0]);
-				}).css({
-					float: "right",
-					margin: "2px"
-				}),
-
-		$cancel = Buttons.cancel(function(){
-					$new.remove();
-				}).css({
-					float: "right",
-					margin: "2px"
-				});
+		$el = $("#decisions");
 
 	function add($el, event){
 		$new = $("<div class='decision'/>");
 
 		switch(event.name){
 			case "friend-request":
-				$new.append("Friend", $cancel, $ok);
+				$new.attr("title", "Friend request from: " + event.data[0]);
+				$new.append("Friend", 
+
+				Buttons.cancel(function(){
+						$new.remove();
+					}).css({
+						float: "right",
+						margin: "2px"
+					}), 
+
+				Buttons.ok(function(){
+						$new.remove();
+						Persistent.makeFriends(event.user, event.data[0]);
+					}).css({
+						float: "right",
+						margin: "2px"
+				}));
 				break;
 		}
 
