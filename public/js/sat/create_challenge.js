@@ -5,6 +5,22 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             achievements = [];
 
 	return function(){
+
+        var $mainframe = $("#main-frame");
+        $mainframe.find(".friend-display li div").button();
+        $mainframe.find(".friend-display").selectable({
+            stop: function() {
+                
+                friends = [];
+                $(this).children().removeClass("ui-selected");
+
+                $( "li.ui-selected", this ).each(function(){
+                    friends.push($(this).attr("tag"));
+                    $(this).children().addClass("ui-selected");
+                });
+            }
+        });
+
 		$( "#from" ).datepicker({
             defaultDate: "+1w",
             changeMonth: true,
@@ -19,16 +35,6 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             numberOfMonths: 1,
             onSelect: function( selectedDate ) {
                 $( "#from" ).datepicker( "option", "maxDate", selectedDate );
-            }
-        });
-        $( "#friend-box" ).selectable({
-            stop:function() {
-                
-                friends = [];
-
-                $( ".ui-selected", this ).each(function(){
-                    friends.push($(this).attr("tag"));
-                });
             }
         });
 
@@ -89,4 +95,11 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
     image: string,
     color: string
 }
+*/
+/*
+What to do:
+Rework rules
+Change size of font
+fix buttons
+move public box
 */
