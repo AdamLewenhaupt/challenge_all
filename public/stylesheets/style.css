@@ -304,32 +304,35 @@ input.profile-menu:focus{
 
 #name-input{
     position: relative;
-    width: 100%;
+    width: 50%;
 }
 
 #description-input{
+    float: left;
     position: relative;
-    height: 15%;
+    height: 40%;
     resize: none;
-    width: 100%;
+    width: 50%;
 }
 
 #rule-box{
+    float: right;
     position: relative;
     height: 48%;
-    width: 100%;
+    width: 40%;
     overflow: auto;
 }
 
 #rule-input{
-    position: absolute;
-    width: 50%;
+    float:right;
+    position: relative;
+    width: 40%;
 }
 
-#add-rule-button,#remove-rule-button{
+#add-rule-button{
+    float: right;
     position: relative;
-    left: 50%;
-    width: 200px;
+    width: 40%;
     height: 31px;
     line-height: 30px;
     border: 1px solid grey;

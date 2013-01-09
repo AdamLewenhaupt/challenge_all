@@ -1,19 +1,19 @@
 #mainframe-create-challenge
     form
         #challenge-form
-            | Name:<br>
-            input.input-font#name-input(type="text", name="name",autocomplete="off")br
+            | Name:
+            input.input-font#name-input(type="text", name="name",autocomplete="off")
 
-            | Description:<br>
-            textarea.input-font#description-input(type="text", name="description",rows="10", cols="30")br
-
-            | Rules:<br>
+            #add-rule-button.inv-button.hl ADD RULE<br>
             input.input-font#rule-input(type="text", name="rules", autocomplete="off")
-            #add-rule-button.inv-button.hl ADD
-            #rule-box
+
+            | Description:
+            textarea.input-font#description-input(type="text", name="description",rows="10", cols="30")
+            #rule-box 
+            
 
             | Public: 
-            input#public-input(type="checkbox", name="public")br
+            input#public-input(type="checkbox", name="public")
 
             #achievement-box.bottom-form
                 | Add Achievement
