@@ -12,14 +12,21 @@ var ajax_login = require('./social/login'),
     ajax_get_user = require("./social/get_user"),
     ajax_send_friend_request = require("./social/send_friend_request"),
     ajax_create_challenge = require('./challenges/create'),
-    events = require("./events");
+    events = require("./events"),
+    fs = require("fs"),
+    _ = require("underscore");
 
 exports.index = function(req, res){
-    res.render('index', { 
-        title: 'Challenge All', 
-        user: req.user, 
-        ssv: res.ssv
-    });
+
+    fs.readdir("public/images/achievements", function(err, files){
+        res.ssv.add("achievement-images", _.initial(files));
+
+        res.render('index', { 
+            title: 'Challenge All', 
+            user: req.user, 
+            ssv: res.ssv
+        });
+    }); 
 }
 
 exports.ajax = {
