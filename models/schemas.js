@@ -26,13 +26,20 @@ function get_capitalize(str){
 var passwordHash = new PasswordHash();
 
 // §1
+var AchievementSchema = new Schema({
+	name: String
+});
+
+
+// §2
 var userSchema = new Schema({
     fname: {type: String, required: true, get: get_capitalize, lowercase: true, trim: true},
     lname: {type: String, required: true, get: get_capitalize, lowercase: true, trim: true},
     tag: {type: String, required: true, unique: true, lowercase: true, trim: true},
     email: {type: String, required: true, lowercase: true, trim: true, unique: true},
     password: {type: String, required: true},
-    friends: [String]
+    friends: [String],
+    achievements: [AchievementSchema]
 });
 
 userSchema.pre('save', function(next){
@@ -66,7 +73,7 @@ userSchema.methods.getPublic = function(){
 
 exports.User = mongoose.model('User', userSchema);
 
-// §2
+// §3
 var eventSchema = new Schema({
 	name: String,
 	user: String,
@@ -74,11 +81,6 @@ var eventSchema = new Schema({
 });
 
 exports.Event = mongoose.model('Event', eventSchema);
-
-// §3
-var AchievementSchema = new Schema({
-	name: String
-});
 
 // §4
 var ChallengeSchema = new Schema({

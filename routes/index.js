@@ -11,6 +11,7 @@ var ajax_login = require('./social/login'),
     ajax_make_friends = require('./social/make_friends'),
     ajax_get_user = require("./social/get_user"),
     ajax_send_friend_request = require("./social/send_friend_request"),
+    ajax_give_achievement = require("./challenges/giveAchievement"),
     ajax_create_challenge = require('./challenges/create'),
     events = require("./events"),
     fs = require("fs"),
@@ -36,7 +37,8 @@ exports.ajax = {
     make_friends: ajax_make_friends.route,
     send_friend_request: ajax_send_friend_request.route,
     create_challenge: ajax_create_challenge.route,
-    remove_event: events.remove
+    remove_event: events.remove,
+    give_achievement: ajax_give_achievement
 };
 
 exports.file = require("./file");
