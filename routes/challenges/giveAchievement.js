@@ -19,4 +19,4 @@ function post(req, res){
  	});
 }
 
-export.route = post;
+exports.route = post;
