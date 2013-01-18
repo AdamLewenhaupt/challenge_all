@@ -27,7 +27,10 @@ var passwordHash = new PasswordHash();
 
 // §1
 var AchievementSchema = new Schema({
-	name: String
+	name: String,
+	image: String,
+	color: String,
+	description: String
 });
 
 
@@ -67,7 +70,8 @@ userSchema.methods.getPublic = function(){
 		tag: self.tag,
 		lname: self.lname,
 		email: self.email,
-		friends: self.friends
+		friends: self.friends,
+		achievements: self.achievements
 	}
 }
 

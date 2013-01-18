@@ -38,7 +38,7 @@ exports.ajax = {
     send_friend_request: ajax_send_friend_request.route,
     create_challenge: ajax_create_challenge.route,
     remove_event: events.remove,
-    give_achievement: ajax_give_achievement
+    give_achievement: ajax_give_achievement.route
 };
 
 exports.file = require("./file");

@@ -8,7 +8,8 @@ function post(req, res){
 	User.findOne({tag: tag }, function(err, user){
 		if(err) res.send(err);
 		else{
-			user.achievement.push(achievement);
+			if(!user.achievements) user.achievements = [];
+			user.achievements.push(achievement);
 			user.save(function(err){
 				if(err) res.send(err);
 				else{

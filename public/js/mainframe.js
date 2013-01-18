@@ -49,7 +49,7 @@ define(["require", "jquery", "./templates", "sat"], function(require, $, Templat
     		    this.$el.html(Templates.clone(id));
                 sat[id]();
             }catch(e){
-                console.log("Invalid saturation id.");
+                console.log("Error when saturating mainframe: " + e);
             }
 		}
 	};
