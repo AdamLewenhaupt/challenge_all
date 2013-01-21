@@ -415,3 +415,13 @@ input.profile-menu:focus{
     margin: 5px;
     bottom: 0px;
 }
+
+#
+
+#challenges-info{
+    height: 80%;
+}
+#challenges-scrollbar{
+    height: 20%;
+    background-color: grey;
+}
