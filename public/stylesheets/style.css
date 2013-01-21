@@ -416,12 +416,17 @@ input.profile-menu:focus{
     bottom: 0px;
 }
 
-#
+#mainframe-challenges{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 
 #challenges-info{
     height: 80%;
 }
 #challenges-scrollbar{
     height: 20%;
-    background-color: grey;
+    width: 100%;
+    background-color: blue;
 }
