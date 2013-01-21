@@ -19,8 +19,12 @@ define(["../user", "../ssv", "../mainframe", "underscore", "../persistent"], fun
 			margin: 5
 		});
 
+		$el.children("img").css({
+			border: "11px solid gray"
+		});
+
 		$container.css({
-			border: "5px solid black",
+			border: "5px solid #4DB8DB",
 			display: "inline-block",
 			margin: 5
 		})
