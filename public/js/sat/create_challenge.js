@@ -2,7 +2,8 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
         var ruleslist = {},
             counter = 0,
             friends = [],
-            achievements = [];
+            achievements = [],
+            public = false;
 
 	return function(){
 
@@ -47,7 +48,7 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             $li = $("<li/>").append(rule, $button);
             $("#rule-box").append($new.html($li));
             counter++;
-        });
+        }).button();
 
         $('#rule-box button.removerule').live('click', function(){
                 $(this).parent().remove();
@@ -63,6 +64,18 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             });
         }).button();
 
+        $("#public-box").click(function(){
+            if(public == true){
+                public = false;
+                $("#public-box").css("background", "white");
+            }
+            else if(public == false){
+                public = true;
+                $("#public-box").css("background", "#4DB8DB");
+            }
+            alert(public);
+        }).button();
+
         $("#create-button").click(function(){
             var name = $("#name-input").val();
             var description = $("#description-input").val();
@@ -72,12 +85,10 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             }
             var rules = arrRules;
             var users = friends;
-            var public = false;
-            if($('#public-input').is(":checked")){ public = true; }
             var date = $("#from").val()+" - " +$("#to").val();
             Persistent.createChallenge(name,description,rules,users,public,date,achievements);
             return false;
-        });
+        }).button();
 
         //Disable the enter key.
         $('input').keypress(function (e) {
@@ -85,6 +96,19 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             code = (e.keyCode ? e.keyCode : e.which);
             return (code == 13) ? false : true;
         });
+
+        $mainframe.find(".form-input").each(function(){
+            var $this = $(this);
+
+            $this.css("font-size", $this.height() * 0.8);
+
+            $this.click(function(){
+                if($this.val() === "Enter Name" || "Enter Rule"){
+                    $this.val("");
+                }
+            });
+        });
+        $mainframe.find("#description-input").css("font-size", ($("#description-input").height()/2.5) * 0.8);
 	};
 });
 

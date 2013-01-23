@@ -1,29 +1,23 @@
 #mainframe-create-challenge
     form
         #challenge-form
-            | Name:
-            input.input-font#name-input(type="text", name="name",autocomplete="off")
+            #name-form
+                input.form-input#name-input(type="text", name="name", value="Enter Name", autocomplete="off")
+            #description-form
+                textarea.form-input#description-input(type="text", name="description", rows="10", cols="30") Enter Description
 
-            #add-rule-button.inv-button.hl ADD RULE<br>
-            input.input-font#rule-input(type="text", name="rules", autocomplete="off")
-
-            | Description:
-            textarea.input-font#description-input(type="text", name="description",rows="10", cols="30")
+            input.form-input#rule-input(type="text", name="rules", value="Enter Rule", autocomplete="off")
+            #add-rule-button Add Rule
             #rule-box 
-            
 
-            | Public: 
-            input#public-input(type="checkbox", name="public")
+            #bottom-form
+                #achievement-box.bottom-form
+                    | Add Achievement
+                #date-box.bottom-form
+                    input#from.date-input.form-input(type="text", name="from", value="From", autocomplete="off")
+                    input#to.date-input.form-input(type="text", name="to", value="To", autocomplete="off")
+                #public-box.bottom-form Public
+                    
 
-            #achievement-box.bottom-form
-                | Add Achievement
-
-            #date-box.bottom-form
-                | Date(Optional)<br>
-                | From 
-                input#from.input-font.date-input(type="text", name="from", autocomplete="off")
-                | To 
-                input#to.input-font.date-input(type="text", name="to", autocomplete="off")
-
-        input.inv-button.hl#create-button(type="submit", value="Create Challenge")
+        input#create-button(type="submit", value="Create Challenge")
     include ../social/friend_display
