@@ -36,6 +36,7 @@ require.config({
 		},
 
 		"jquery-plugins/imagesloaded": ["jquery"],
+		"jquery-plugins/colorpicker": ["jquery"],
 		"jquery-ui": ["jquery"]
 
 
@@ -46,8 +47,6 @@ require.config({
 // §2
 require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "./index_load"], 
 	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, load){
-
-	//User.onInit(function(){ Newsfeed.showcase("Welcome"); });
 
 	SSE.onInit(function(){
 
