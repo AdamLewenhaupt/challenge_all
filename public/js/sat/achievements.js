@@ -53,7 +53,7 @@ define(["../user", "../ssv", "../mainframe", "underscore", "../persistent"], fun
             });
 
            $("#mainframe-profile").html("");
-            found.forEach(function(a){
+            found.achievements.forEach(function(a){
             	displayAchievement(a);
             });
         });
