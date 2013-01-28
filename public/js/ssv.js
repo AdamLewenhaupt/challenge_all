@@ -38,7 +38,6 @@ define(["jquery", "underscore"], function($, _){
         });
 
         window._ssv_online = true;
-
         window._ssvInits.forEach(function(func){
             func();
         });

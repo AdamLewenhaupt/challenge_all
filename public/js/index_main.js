@@ -45,8 +45,8 @@ require.config({
 });
 
 // §2
-require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "./index_load"], 
-	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, load){
+require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "./index_load", "./compability"], 
+	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, load, compability){
 
 	SSE.onInit(function(){
 
