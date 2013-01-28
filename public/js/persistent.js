@@ -130,7 +130,7 @@ define(["jquery"], function($){
 				    description: description,
 					rules: rules,
 					users: users,
-					public: isPublic,
+					isPublic: isPublic,
 					date: date,
 					achievements: achievements,
 					hosts: hosts

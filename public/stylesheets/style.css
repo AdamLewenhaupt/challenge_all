@@ -350,7 +350,7 @@ input.profile-menu:focus{
 }
 
 #add-rule-button{
-    position: relative;
+    position: absolute;
     width: 29%;
     height: 10%;
     border: 1px solid grey;
@@ -384,9 +384,8 @@ input.profile-menu:focus{
 }
 
 #public-box{
-    width: 10%;
+    width: 11%;
     border: 1px solid grey;
-    margin-left: 5px;
     text-align: center;
     font-size: 20px;
 }

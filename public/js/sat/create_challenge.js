@@ -73,7 +73,6 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
                 isPublic = true;
                 $("#public-box").css("background", "#4DB8DB");
             }
-            alert(isPublic);
         }).button();
 
         $("#create-button").click(function(){

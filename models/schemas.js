@@ -93,7 +93,7 @@ var ChallengeSchema = new Schema({
 	rules: [String],
 	users: [{ type: String, required: true, unique: true, lowercase: true, trim: true }],
 	hosts: [{ type: String, required: true, unique: true, lowercase: true, trim: true }],
-	public: Boolean,
+	isPublic: Boolean,
 	date: String,
 	achievements: [AchievementSchema]
 });
