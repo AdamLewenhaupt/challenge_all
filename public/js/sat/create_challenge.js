@@ -86,7 +86,7 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             var rules = arrRules;
             var users = friends;
             var date = $("#from").val()+" - " +$("#to").val();
-            Persistent.createChallenge(name,description,rules,users,public,date,achievements);
+            Persistent.createChallenge(name,description,rules,users,public,date,achievements, [User.get().tag]);
             return false;
         }).button();
 

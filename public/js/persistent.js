@@ -71,6 +71,7 @@ define(["jquery"], function($){
 					tag2: tag2 
 				},
 				success: function(data){
+					console.log(data);	
 					return true;
 				}
 			});

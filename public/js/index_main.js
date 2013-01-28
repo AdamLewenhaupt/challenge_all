@@ -75,6 +75,11 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 	    	Mainframe.saturate("challenges");
 	    });
 
+	    $("#btn-achievements").click(function(){
+	    	Mainframe.saturate("achievements");
+
+	    });
+
 	    // §4
 		if(SSV.has("req_login")){
 		    Prompts.login();
