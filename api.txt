@@ -2,6 +2,7 @@
 
 1) Challenges
 
+Create a challenge.
 url: /ajax/create-challenge
 type: post
 data: {
@@ -9,10 +10,24 @@ data: {
 	description: String,
 	rules: [String],
 	users: [{ type: String, required: true, unique: true, lowercase: true, trim: true }],
+	hosts: [{ type: String, required: true, unique: true, lowercase: true, trim: true }],
 	public: Boolean,
 	date: String,
-	achivements: [{ name: String }]
+	achivements: [Achievement]
 }
+
+Gives an achievement to the entered user.
+url: /ajax/give-achievement
+type: post
+data: {
+	tag: String,
+	achievement: Achievement
+}
+
+Fetch a challenge.
+url: /ajax/get-challenge/:id
+type: get
+data: {}
 
 2) Events
 

@@ -13,6 +13,7 @@ var ajax_login = require('./social/login'),
     ajax_send_friend_request = require("./social/send_friend_request"),
     ajax_give_achievement = require("./challenges/giveAchievement"),
     ajax_create_challenge = require('./challenges/create'),
+    ajax_get_challenge = require('./challenges/get'),
     events = require("./events"),
     fs = require("fs"),
     _ = require("underscore");
@@ -32,6 +33,7 @@ exports.index = function(req, res){
 
 exports.ajax = {
 	get_user: ajax_get_user.route,
+    get_challenge: ajax_get_challenge.route,
     login: ajax_login.route,
     create_user: ajax_create_user.route,
     make_friends: ajax_make_friends.route,
