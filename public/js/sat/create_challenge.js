@@ -3,7 +3,7 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             counter = 0,
             friends = [],
             achievements = [],
-            public = false;
+            isPublic = false;
 
 	return function(){
 
@@ -65,15 +65,15 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
         }).button();
 
         $("#public-box").click(function(){
-            if(public == true){
-                public = false;
+            if(isPublic){
+                isPublic = false;
                 $("#public-box").css("background", "white");
             }
-            else if(public == false){
-                public = true;
+            else if(!isPublic){
+                isPublic = true;
                 $("#public-box").css("background", "#4DB8DB");
             }
-            alert(public);
+            alert(isPublic);
         }).button();
 
         $("#create-button").click(function(){
@@ -86,7 +86,7 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
             var rules = arrRules;
             var users = friends;
             var date = $("#from").val()+" - " +$("#to").val();
-            Persistent.createChallenge(name,description,rules,users,public,date,achievements, [User.get().tag]);
+            Persistent.createChallenge(name,description,rules,users,isPublic,date,achievements, [User.get().tag]);
             return false;
         }).button();
 
