@@ -359,7 +359,8 @@ input.profile-menu:focus{
 #bottom-form{
     position: absolute;
     width: 100%;
-    height: 10%; 
+    height: 10%;
+    bottom: 0px;
 }
 
 .bottom-form{
