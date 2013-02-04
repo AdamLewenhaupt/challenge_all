@@ -16,19 +16,27 @@ define(["jquery", "./ssv", "jquery-ui", "./persistent", "./buttons"],
 
 		switch(event.name){
 			case "friend-request":
-				$new.click(function(){
-					$new.remove();
-					Persistent.makeFriends(event.user, event.data[0]);
-				}).html("Friend request")
-				.attr("title", "Request from: " + event.data[0]);
+				$new.attr("title", "Friend request from: " + event.data[0]);
+				$new.append("Friend", 
+
+				Buttons.cancel(function(){
+						$new.remove();
+					}).css({
+						float: "right",
+						margin: "2px"
+					}), 
+
+				Buttons.ok(function(){
+						$new.remove();
+						Persistent.makeFriends(event.user, event.data[0]);
+					}).css({
+						float: "right",
+						margin: "2px"
+				}));
 				break;
 		}
 
-		$new.append(Buttons.ok().css({
-			"float": "left"
-		}));
-
-		$el.append($new.button());
+		$el.append($new);
 	}
 
 	SSV.onInit(function(){

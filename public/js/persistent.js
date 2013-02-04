@@ -71,6 +71,7 @@ define(["jquery"], function($){
 					tag2: tag2 
 				},
 				success: function(data){
+					console.log(data);	
 					return true;
 				}
 			});
@@ -120,7 +121,7 @@ define(["jquery"], function($){
 			});
 		},
 
-		createChallenge:function(name,description,rules,users,public,date,achievements){
+		createChallenge:function(name, description, rules, users, isPublic, date, achievements, hosts){
 		    $.ajax({
 		       type: "post",
 		       url: "/ajax/create-challenge",
@@ -129,9 +130,10 @@ define(["jquery"], function($){
 				    description: description,
 					rules: rules,
 					users: users,
-					public: public,
+					isPublic: isPublic,
 					date: date,
-					achievements: achievements
+					achievements: achievements,
+					hosts: hosts
 		       },
 
 		       success: function(data){

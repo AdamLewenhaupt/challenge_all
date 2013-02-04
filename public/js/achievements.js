@@ -12,15 +12,19 @@ can create an achivement.
 
 */
 
-define(["jquery", "./popup", "jquery-plugins/colorpicker"], function($, popup, cp){
+define(["jquery", "./popup", "jquery-plugins/colorpicker", "./ssv"], function($, popup, cp, SSV){
 
-	var options = [{ name: "proto", image: "/images/achivproto.png"}],
+	var options = [],
 		index = 0;
+
+	SSV.onInit(function(){
+		options = SSV.get("achievement-images");
+	});
 
 	function setImage($display){
 		var val = options[index];
-		$("#popup-field-image").val(val.name);
-		$display.attr("src", val.image);
+		$("#popup-field-image").val(val);
+		$display.attr("src", "/images/achievements/"+val);
 	}
 
 	function createAchievementStep1(fn){
@@ -99,7 +103,7 @@ define(["jquery", "./popup", "jquery-plugins/colorpicker"], function($, popup, c
 				submit: "Create Achievement",
 				title: "Achievement Creator, Step 2",
 				inputs: [
-					{name: "image", type: "hidden", label:"", def: options[index].image },
+					{name: "image", type: "hidden", label:"", def: options[index] },
 					{name: "color", type: "hidden", label:"", def: "blue" }
 				],
 				success: function(e){

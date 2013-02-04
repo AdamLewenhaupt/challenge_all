@@ -37,11 +37,8 @@ define(["jquery", "underscore", "../user", "../persistent"], function($, _, User
     }
 
     function runUserRelationAnalyzis(self, target){
-        var friends = User.friends().indexOf(target) !== -1,
+        var friends = _.map(User.friends(), function(f){ return f.tag; }).indexOf(target.tag) !== -1,
             $dynamic = $("#main-frame").find("#mainframe-profile-menu .dynamic-content").html("");
-
-        console.log(target);
-        console.log(friends);
 
         if(!friends){
             $addFriend = $("<div/>").html("Add friend").css({

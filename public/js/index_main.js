@@ -45,8 +45,8 @@ require.config({
 });
 
 // §2
-require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "./index_load"], 
-	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, load){
+require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "./user", "./index_load", "./compability"], 
+	function($, Mainframe, SSV, Newsfeed, Prompts, SSE, User, load, compability){
 
 	SSE.onInit(function(){
 
@@ -69,6 +69,19 @@ require(["jquery", "./mainframe", "./ssv", "./newsfeed", "./prompts", "./sse", "
 
 	    $("#btn-create-challenge").click(function(){
 	        Mainframe.saturate("create_challenge");
+	    });
+
+	    $("#btn-challenges").click(function(){
+	    	Mainframe.saturate("challenges");
+	    });
+
+	    $("#btn-achievements").click(function(){
+	    	Mainframe.saturate("achievements");
+
+	    });
+
+	    $("#btn-find-challenge").click(function(){
+	    	Mainframe.saturate("find_challenge");
 	    });
 
 	    // §4

@@ -1,9 +1,27 @@
-define(["jquery", "../user","../persistent"], function($, User, Persistent){
+define(["jquery", "../user","../persistent","../achievements"], function($, User, Persistent, Achievements){
         var ruleslist = {},
             counter = 0,
-            friends = [];
+            friends = [],
+            achievements = [],
+            isPublic = false;
 
 	return function(){
+
+        var $mainframe = $("#main-frame");
+        $mainframe.find(".friend-display li div").button();
+        $mainframe.find(".friend-display").selectable({
+            stop: function() {
+                
+                friends = [];
+                $(this).children().removeClass("ui-selected");
+
+                $( "li.ui-selected", this ).each(function(){
+                    friends.push($(this).attr("tag"));
+                    $(this).children().addClass("ui-selected");
+                });
+            }
+        });
+
 		$( "#from" ).datepicker({
             defaultDate: "+1w",
             changeMonth: true,
@@ -20,16 +38,6 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
                 $( "#from" ).datepicker( "option", "maxDate", selectedDate );
             }
         });
-        $( "#friend-box" ).selectable({
-            stop:function() {
-                
-                friends = [];
-
-                $( ".ui-selected", this ).each(function(){
-                    friends.push($(this).attr("tag"));
-                });
-            }
-        });
 
         $("#add-rule-button").click(function(){
             var rule = $("#rule-input").val();
@@ -40,7 +48,7 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
             $li = $("<li/>").append(rule, $button);
             $("#rule-box").append($new.html($li));
             counter++;
-        });
+        }).button();
 
         $('#rule-box button.removerule').live('click', function(){
                 $(this).parent().remove();
@@ -50,7 +58,22 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
                 console.log(rules);
             });
 
-        $("#achievement-box").button();
+        $("#achievement-box").click(function(){
+            Achievements.createAchievement(function(e){
+                achievements.push(e);
+            });
+        }).button();
+
+        $("#public-box").click(function(){
+            if(isPublic){
+                isPublic = false;
+                $("#public-box").css("background", "white");
+            }
+            else if(!isPublic){
+                isPublic = true;
+                $("#public-box").css("background", "#4DB8DB");
+            }
+        }).button();
 
         $("#create-button").click(function(){
             var name = $("#name-input").val();
@@ -61,19 +84,40 @@ define(["jquery", "../user","../persistent"], function($, User, Persistent){
             }
             var rules = arrRules;
             var users = friends;
-            var public = false;
-            if($('#public-input').is(":checked")){ public = true; }
             var date = $("#from").val()+" - " +$("#to").val();
-            var achievements = [{name:$("#achievement-input").val()}];
-            Persistent.createChallenge(name,description,rules,users,public,date,achievements);
+            Persistent.createChallenge(name,description,rules,users,isPublic,date,achievements, [User.get().tag]);
             return false;
-        });
+        }).button();
 
         //Disable the enter key.
         $('input').keypress(function (e) {
             var code = null;
             code = (e.keyCode ? e.keyCode : e.which);
             return (code == 13) ? false : true;
+        });
+
+        $mainframe.find(".form-input").each(function(){
+            var $this = $(this);
+
+            $this.css("font-size", $this.height() * 0.8);
+
+            $this.click(function(){
+                if($this.val() === "Enter Name"){
+                    $this.val("");
+                }
+                if($this.val() === "Enter Description"){
+                    $this.val("");
+                }
+                if($this.val() === "Enter Rule"){
+                    $this.val("");
+                }
+            });
+        });
+        $mainframe.find("#description-input").css("font-size", ($("#description-input").height()/2.5) * 0.8);
+
+        $mainframe.find(".line-height").each(function(){
+            var $this = $(this);
+            $this.css("line-height", $this.height());
         });
 	};
 });

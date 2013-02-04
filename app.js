@@ -26,6 +26,7 @@ app.get('/event-stream/:id', sse.eventStream);
 app.get('/ajax/login', routes.ajax.login);
 app.get("/ajax/get-user", routes.ajax.get_user);
 app.get("/file/:file", routes.file.get);
+app.get("/ajax/get-challenge/:id", routes.ajax.get_challenge);
 
 //Posts
 app.post("/ajax/create-user", routes.ajax.create_user);
@@ -33,7 +34,8 @@ app.post("/ajax/make-friends", routes.ajax.make_friends);
 app.post("/ajax/sse-send", sse.ajax_send);
 app.post("/ajax/send-friend-request", routes.ajax.send_friend_request);
 app.post("/ajax/create-challenge", routes.ajax.create_challenge);
-app.post("/ajax/remove-event", routes.ajax.remove_event)
+app.post("/ajax/remove-event", routes.ajax.remove_event);
+app.post("/ajax/give-achievement", routes.ajax.give_achievement);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Server up and running on port: " + app.get('port'));
