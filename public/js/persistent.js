@@ -121,7 +121,7 @@ define(["jquery"], function($){
 			});
 		},
 
-		createChallenge:function(name, description, rules, users, isPublic, date, achievements, hosts){
+		createChallenge: function(name, description, rules, users, isPublic, date, achievements, hosts){
 		    $.ajax({
 		       type: "post",
 		       url: "/ajax/create-challenge",

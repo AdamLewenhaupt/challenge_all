@@ -4,6 +4,7 @@ var models = require('../../models'),
 	Achievement = models.schemas.Achievement;
 
 exports.route = function(req, res){
+	req.body.isPublic = req.body.isPublic == "true";
 	var chall = new Challenge(req.body);
 	chall.achievements = _.map(chall.achievements, function(a){
 		return new Achievement(a);
