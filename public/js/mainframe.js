@@ -41,12 +41,13 @@ define(["require", "jquery", "./templates", "sat"], function(require, $, Templat
 
 	return {
 		$el: $("#main-frame"),
-
+        state: "undefined",
 
         // §3
 		saturate: function(id){
             try{
     		    this.$el.html(Templates.clone(id));
+                this.state = id;
                 sat[id]();
             }catch(e){
                 console.log("Error when saturating mainframe: " + e);

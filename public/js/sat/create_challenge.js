@@ -121,12 +121,3 @@ define(["jquery", "../user","../persistent","../achievements"], function($, User
         });
 	};
 });
-
-/* Achvievement
-{
-    name: string,
-    description: string,
-    image: string,
-    color: string
-}
-*/
