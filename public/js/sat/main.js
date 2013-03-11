@@ -7,11 +7,12 @@ In other words when a mainframe is loaded. The same id can be used to call
 a saturater function that initializes the mainframe.
 */
 
-define(["./social", "./create_challenge", "./achievements", "./find_challenge"], function(social, create_challenge, achievements, find_challenge){
+define(["./social", "./create_challenge", "./achievements", "./find_challenge", "./challenges"], function(social, create_challenge, achievements, find_challenge, challenges){
     return {
         social: social,
         create_challenge: create_challenge,
         achievements: achievements,
-        find_challenge: find_challenge
+        find_challenge: find_challenge,
+        challenges: challenges
     }
 })

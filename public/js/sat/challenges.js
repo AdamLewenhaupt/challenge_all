@@ -1,5 +1,6 @@
 define(["jquery"], function($){
 	return function(){
-		$( "#challenges-scrollbar" ).append($(".challenge"));
+		var $mainframe = $("#main-frame");
+		$mainframe.find(".challenge-display li div").button();
 	};
 });

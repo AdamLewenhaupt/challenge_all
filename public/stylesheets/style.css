@@ -421,7 +421,7 @@ input.profile-menu:focus{
     width: 70%;
     height: 100%;
     font-size: 50px;
-    color: grey;
+    color: black;
 }
 
 #challenges-name{
@@ -449,18 +449,65 @@ input.profile-menu:focus{
 }
 
 #challenges-scrollbar{
-    position: relative;
-    height: 100%;
+    background: #45484d; /* Old browsers */
+    background: -moz-linear-gradient(left,  #45484d 0%, #000000 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#45484d), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #45484d 0%,#000000 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #45484d 0%,#000000 100%); /* IE10+ */
+    background: linear-gradient(to right,  #45484d 0%,#000000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 */
+
+    position: absolute;
+    right: 0px;
     width: 30%;
-    background-color: grey;
-    overflow: auto;
-    left: 70%;
+    height: 100%;
+    border: 2px solid white;
+
+    overflow: hidden;
 }
 
-.challenge-display{
+#challenges-scrollbar ul{
+    list-style: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+#challenges-scrollbar ul li{
     position: relative;
-    margin: 5px;
-    height: 100px;
+    height: 120px;
+    background-color: white;
+    border: 1px solid #4DB8DB;
+    line-height: 100px;
+    font-size: 24px;
+    text-align: center;
     width: 100%;
-    background-color: red;
+
+}
+
+#challenges-scrollbar ul li div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    font-weight: bold;
+    line-height: 120px;
+    text-align: center;
+
+}
+
+#challenges-scrollbar ul li div span{
+    line-height: 100px;
+
+}
+
+#challenges-scrollbar ul li img{
+    border: 1px solid black;
+    float: left;
+    margin: 5px;
+    width: 90px;
+    height: 90px;
 }
