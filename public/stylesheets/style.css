@@ -425,14 +425,22 @@ input.profile-menu:focus{
 }
 
 #challenges-name{
-    position: relative;
-    width: 100%;
+    position: absolute;
+    width: 50%;
     height: 10%;
+}
+
+#challenges-date{
+    position: relative;
+    width: 50%;
+    height: 10%;
+    left: 50%;
+    font-size: 40px;
 }
 
 #challenges-host{
     position: relative;
-    width: 100%;
+    width: 60%;
     height: 10%;
 }
 
