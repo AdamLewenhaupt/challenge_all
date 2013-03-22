@@ -1,15 +1,16 @@
 #mainframe-challenges
 	#challenges-info
 		#challenges-name
-		#challenges-date 13/05/2013 - 14/05/2013
-		#challenges-host Host: Simpelito
-		#challenges-public Public
-		#challenges-description Be Epic
-		#challenges-rules Rules:
+		#challenges-public 
+		#challenges-date 
+		#challenges-host
+		#challenges-description 
+		#challenges-rules
+		#challenges-achievement
 
 	#challenges-scrollbar
 		ul.challenge-display
 			- each challenge in [1,2,3]
-				li
+				li(challenge-id=challenge)
 					div
 						img(src="/images/achievements/circle.png")

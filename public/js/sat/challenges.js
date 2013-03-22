@@ -1,27 +1,37 @@
 define(["jquery"], function($){
 	function retrieve(challengeID){
 			return({
-				name: "Test name",
+				name: "Test namaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae",
 				description: "Best shit ever",
-				rules: ["brinn"],
+				rules: ["brinn","Dö"],
 				users: ["simpelito"],
 				isPublic: true,
-				date: "",
+				date: "13/05/2013 - 14/05/2013",
 				achievements: { 
-					name: "",
-					image: "",
-					color: "",
-					description: ""
+					name: "YOLO",
+					image: ":)",
+					color: "blue",
+					description: "swagger"
 				},
-				hosts: hosts
+				hosts: "simpelito"
 			});
-		}
+	}
 
 	function displayChallenge(challengeID){
-		$("#challenges-name").animate({opacity: 0}, { duration: 500, queue: false, complete: function(){
-                var result = retrieve(challengeID.name);
+		$("#challenges-info").animate({opacity: 0}, { duration: 500, queue: false, complete: function(){
+                var result = retrieve(challengeID);
+                var showPublic = "";
+                if(result.isPublic==true){showPublic = "(Public)"}
+                else{showPublic = "(Private)"}
 
-                $("#challenges-name").html(result).animate({opacity: 1}, { duration: 500, queue: false });
+                $("#challenges-info").animate({opacity: 1}, { duration: 500, queue: false });
+                $("#challenges-name").html(result.name+showPublic);
+                $("#challenges-description").html(result.description);
+                $("#challenges-rules").html("Rules: "+result.rules);
+                $("#challenges-users").html(result.users);
+                $("#challenges-date").html(result.date);
+                $("#challenges-achievement").html(result.achievements);
+                $("#challenges-host").html("Hosts: "+result.hosts);
             } });
 	}
 	return function(){
@@ -29,7 +39,10 @@ define(["jquery"], function($){
 		$mainframe.find(".challenge-display li div").button();
 
 		$(".challenge-display li").click(function(){
-			var found= new object();
+			var $this = $(this);
+
+			var found = $this.attr("challenge-id");
+
             displayChallenge(found);
             });
 	};

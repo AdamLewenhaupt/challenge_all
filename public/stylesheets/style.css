@@ -428,6 +428,7 @@ input.profile-menu:focus{
     position: absolute;
     width: 50%;
     height: 10%;
+    overflow: hidden;
 }
 
 #challenges-date{
@@ -440,19 +441,26 @@ input.profile-menu:focus{
 
 #challenges-host{
     position: relative;
-    width: 60%;
+    width: 100%;
     height: 10%;
 }
 
 #challenges-description{
     position: relative;
-    width: 100%;
+    width: 50%;
     height: 40%;
 }
 
 #challenges-rules{
     position: relative;
-    width: 100%;
+    width: 50%;
+    height: 40%;
+}
+
+#challenges-achievement{
+    position: fixed;
+    left:50%;
+    width: 50%;
     height: 40%;
 }
 
