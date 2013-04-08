@@ -1,7 +1,7 @@
 define(["jquery"], function($){
 	function retrieve(challengeID){
 			return({
-				name: "Test namaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae",
+				name: "Test namaaae",
 				description: "Best shit ever",
 				rules: ["brinn","Dö"],
 				users: ["simpelito"],
