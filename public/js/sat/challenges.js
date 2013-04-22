@@ -28,6 +28,7 @@ define(["jquery"], function($){
                 $("#challenges-name").html(result.name+showPublic);
                 $("#challenges-description").html(result.description);
                 $("#challenges-rules").html("Rules: "+result.rules);
+                $("#challenges-rules li").html(result.rules);
                 $("#challenges-users").html(result.users);
                 $("#challenges-date").html(result.date);
                 $("#challenges-achievement").html(result.achievements);

@@ -453,14 +453,15 @@ input.profile-menu:focus{
 
 #challenges-rules{
     position: relative;
-    width: 50%;
+    width: 70%;
     height: 40%;
 }
 
 #challenges-achievement{
-    position: fixed;
-    left:50%;
-    width: 50%;
+    position: relative;
+    bottom:40%;
+    left:70%;
+    width: 30%;
     height: 40%;
 }
 
