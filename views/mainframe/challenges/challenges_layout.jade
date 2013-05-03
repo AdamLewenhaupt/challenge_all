@@ -1,8 +1,16 @@
 #mainframe-challenges
 	#challenges-info
-		|Name:
-		|Creator:
-		|Description:
-		|Rules:
+		#challenges-name
+		#challenges-public 
+		#challenges-date 
+		#challenges-host
+		#challenges-description 
+		#challenges-rules
+		#challenges-achievement
 
 	#challenges-scrollbar
+		ul.challenge-display
+			- each challenge in [1,2,3]
+				li(challenge-id=challenge)
+					div
+						img(src="/images/achievements/circle.png")
