@@ -1,26 +1,24 @@
 define(["jquery"], function($){
-	function retrieve(challengeID){
-			return({
-				name: "Test namaaae",
-				description: "Best shit ever",
-				rules: ["brinn","Dö"],
-				users: ["simpelito"],
-				isPublic: true,
-				date: "13/05/2013 - 14/05/2013",
-				achievements: { 
-					name: "YOLO",
-					image: ":)",
-					color: "blue",
-					description: "swagger"
-				},
-				hosts: "simpelito"
-			});
+
+	function retrieve(challengeID, fn){
+
+		$.ajax({
+
+			type: "get",
+			url: "/ajax/get-challenge/" + challengeID,
+
+			success: function (challenge){
+				fn(challenge);
+			}
+		});
 	}
 
 	function displayChallenge(challengeID){
 		$("#challenges-info").animate({opacity: 0}, { duration: 500, queue: false, complete: function(){
-                var result = retrieve(challengeID);
-                var showPublic = "";
+	            
+            retrieve(challengeID, function (result){
+
+            	var showPublic = "";
                 if(result.isPublic==true){showPublic = "(Public)"}
                 else{showPublic = "(Private)"}
 
@@ -33,8 +31,12 @@ define(["jquery"], function($){
                 $("#challenges-date").html(result.date);
                 $("#challenges-achievement").html(result.achievements);
                 $("#challenges-host").html("Hosts: "+result.hosts);
-            } });
+            }); 
+            
+            }
+        });
 	}
+
 	return function(){
 		var $mainframe = $("#main-frame");
 		$mainframe.find(".challenge-display li div").button();

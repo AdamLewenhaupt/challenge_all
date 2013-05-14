@@ -14,6 +14,7 @@ var ajax_login = require('./social/login'),
     ajax_give_achievement = require("./challenges/giveAchievement"),
     ajax_create_challenge = require('./challenges/create'),
     ajax_get_challenge = require('./challenges/get'),
+    ajax_get_challenges = require('./challenges/ids'),
     events = require("./events"),
     fs = require("fs"),
     _ = require("underscore");
@@ -23,10 +24,14 @@ exports.index = function(req, res){
     fs.readdir("public/images/achievements", function(err, files){
         res.ssv.add("achievement-images", _.initial(files));
 
-        res.render('index', { 
-            title: 'Challenge All', 
-            user: req.user, 
-            ssv: res.ssv
+        ajax_get_challenges.internal(function (challenges){
+
+            res.render('index', { 
+                title: 'Challenge All', 
+                user: req.user, 
+                ssv: res.ssv,
+                challenges: challenges
+            });
         });
     }); 
 }
@@ -40,7 +45,8 @@ exports.ajax = {
     send_friend_request: ajax_send_friend_request.route,
     create_challenge: ajax_create_challenge.route,
     remove_event: events.remove,
-    give_achievement: ajax_give_achievement.route
+    give_achievement: ajax_give_achievement.route,
+    get_challenges: ajax_get_challenges.route
 };
 
 exports.file = require("./file");
